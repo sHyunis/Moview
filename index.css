@@ -1,0 +1,228 @@
+@font-face {
+  font-family: "main";
+  src: url(/assets/font/sugarmagicpersonaluseonly-jemyo.otf);
+}
+body {
+  background-color: rgb(5, 5, 5);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+header {
+  width: 100%;
+  height: 3vh;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+header h1 {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: white;
+}
+section {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1em;
+}
+.search {
+  display: flex;
+  margin-top: 30px;
+  margin: 0 auto;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.search input {
+  width: 200px;
+  border: none;
+  text-align: center;
+  background-color: rgb(255, 250, 235);
+}
+.search input::placeholder {
+  color: rgb(20, 19, 19);
+  font-weight: 600;
+  font-family: "Noto Serif KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+#searchButton {
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: grab;
+}
+.search img {
+  width: 100%;
+  height: 100%;
+}
+.section2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+.down-arrow {
+  cursor: grab;
+  position: relative;
+  transition-duration: 0.4s;
+  left: 18rem;
+  bottom: 5rem;
+}
+.down-arrow::before {
+  content: "click and Search the Movie";
+  width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 1.5rem;
+  color: wheat;
+  font-weight: 700;
+  position: absolute;
+  font-family: "Courier New", Courier, monospace;
+  left: 6rem;
+  animation: typing 2s steps(22), step-end infinite;
+}
+
+@keyframes blinkLetter {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+.container1 {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+  font-family: "main";
+}
+
+header h1 {
+  font-family: "main";
+  font-weight: 100;
+}
+
+.containerP-3 {
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgb(142, 226, 208);
+}
+.containerP-3 span {
+  color: rgb(255, 230, 160);
+}
+.containerP-2 {
+  font-size: 17rem;
+  font-weight: 900;
+  color: rgb(160, 177, 255);
+  margin-top: 8rem;
+  margin-bottom: 1rem;
+  line-height: 9rem;
+}
+.containerP-2 span {
+  color: rgb(212, 192, 255);
+}
+.containerP-1 {
+  font-size: 24rem;
+  font-weight: 900;
+  color: pink;
+  margin-top: 11rem;
+  line-height: 6rem;
+}
+
+.containerP-1 span {
+  color: rgb(255, 141, 232);
+}
+
+.comment {
+  font-size: 0.8rem;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  line-height: 1.3rem;
+  margin-bottom: 3.4rem;
+  color: cornsilk;
+}
+.comment span:nth-child(1) {
+  font-size: 2rem;
+}
+.comment span:nth-child(3) {
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+.comment span:nth-child(5) {
+  font-size: 0.8rem;
+}
+
+#movie-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 70px;
+}
+.movie-card {
+  width: 250px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  border-bottom: 1px solid rgb(255, 250, 235);
+}
+
+.movie-content {
+  height: 100px;
+  border-top: 1px solid rgb(255, 250, 235);
+  overflow: scroll;
+}
+
+.card-img {
+  width: 100%;
+  height: 300px;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.movie-card h3 {
+  width: 100%;
+
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  margin-bottom: 3px;
+  color: rgb(255, 250, 235);
+  border-bottom: 1px solid rgb(255, 250, 235);
+}
+.movie-card p,
+.movie-card span {
+  color: rgb(255, 250, 235);
+}
+.movie-content::-webkit-scrollbar {
+  display: none;
+}
+
+.showContent {
+  display: block;
+}
+
+/* star css */
