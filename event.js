@@ -1,8 +1,13 @@
-// // 버튼 클릭시 모든 영화표시
+// 이전 버튼 클릭시 모든 영화표시
 
 const beforeButton = document.querySelector(".beforeButton");
 beforeButton.addEventListener("click", () => {
-  fetchLoad();
+  const movieCards = document.querySelectorAll(".movie-card");
+
+  movieCards.forEach((card) => {
+    card.style.display = "block";
+  });
+  preventDefault();
 });
 
 // 버튼 클릭시 지정한 요소가 보이도록, 스크롤 이동 이벤트
