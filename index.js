@@ -31,11 +31,7 @@ fetch(URL)
   .catch((error) => console.error("Error:", error));
 
 // 검색기능
-// const form = document
-//   .querySelector(".search")
-//   .addEventListener("submit", (e) => {
-//     e.preventDefault();
-//   });
+
 document.querySelector(".search").addEventListener("submit", (e) => {
   // input 에 넣은 값 소문자로 변환
   e.preventDefault();
@@ -44,13 +40,19 @@ document.querySelector(".search").addEventListener("submit", (e) => {
     .value.toLowerCase();
   const movieCards = document.querySelectorAll(".movie-card");
   // 모든 카드들의 제목과 input값 포함시 조건에 따라 display 변화주기
+  // 아무것도 입력하지 않았을 시 검색어 입력요청 alert창
   movieCards.forEach((card) => {
     const title = card.querySelector("h3").textContent.toLowerCase();
 
-    if (title.includes(searchInput)) {
-      card.style.display = "block";
+    if (searchInput.length > 1) {
+      if (title.includes(searchInput)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
     } else {
-      card.style.display = "none";
+      alert("검색어를 입력해주세요");
+      preventDefault();
     }
   });
 });

@@ -58,10 +58,12 @@ section {
 }
 .section2 {
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 30px;
+  position: relative;
 }
 .down-arrow {
   cursor: grab;
@@ -225,4 +227,23 @@ header h1 {
   display: block;
 }
 
-/* star css */
+/*  upHomeButtons*/
+.upHomeButtons {
+  width: 50px;
+  height: 150px;
+  position: absolute;
+  position: sticky;
+  bottom: 50%;
+  margin-left: 95%;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: antiquewhite;
+}
+.beforeButton,
+.topButton,
+.homeButton {
+  cursor: grab;
+}
