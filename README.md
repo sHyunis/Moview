@@ -6,13 +6,19 @@
 
 ## 메인홈 이미지
 
-# 메인홈
+<img width="1427" alt="스크린샷 2024-07-26 오후 10 39 15" src="https://github.com/user-attachments/assets/f33e1224-0fd3-4564-bdb5-c9564b3e6565">
+
+## 메인검색페이지
+
+<img width="1440" alt="스크린샷 2024-07-26 오후 10 45 21" src="https://github.com/user-attachments/assets/ce82840e-344a-4f0e-a8f8-83a6b7bc242f">\
+
+# 메인홈 주요기능
 
     - css 디자인
     - css keyframe 을 활용한 타이핑 글자
     - 버튼 클릭 시 메인검색 페이지로 스크롤 다운
 
-# 메인검색페이지
+# 메인검색페이지 주요기능
 
     1. fetch를 활용한 Dom연결
     2. 검색창
