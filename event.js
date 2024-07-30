@@ -37,9 +37,11 @@ import { countryFetch, countryFetchEng } from "./index.js";
 const koreaMovie = document.querySelector(".koreaMovie");
 koreaMovie.addEventListener("click", () => {
   countryFetch();
+  preventDefault();
 });
 // 버튼 클릭시 외국영화로 변경
 const englishMovie = document.querySelector(".englishMovie");
 englishMovie.addEventListener("click", () => {
   countryFetchEng();
+  preventDefault();
 });
