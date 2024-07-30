@@ -230,7 +230,7 @@ header h1 {
 /*  upHomeButtons*/
 .upHomeButtons {
   width: 50px;
-  height: 150px;
+  height: auto;
   position: absolute;
   position: sticky;
   bottom: 50%;
@@ -241,9 +241,13 @@ header h1 {
   flex-direction: column;
   justify-content: space-between;
   background-color: antiquewhite;
+  font-size: 40px;
+  text-align: center;
 }
 .beforeButton,
 .topButton,
 .homeButton {
   cursor: grab;
 }
+
+/* nav 바 css */

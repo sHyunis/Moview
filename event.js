@@ -1,3 +1,4 @@
+// import { countryFetch } from "./index";
 // 이전 버튼 클릭시 모든 영화표시
 
 const beforeButton = document.querySelector(".beforeButton");
@@ -29,4 +30,16 @@ topButton.addEventListener("click", (e) => {
 const homeButton = document.querySelector(".homeButton");
 homeButton.addEventListener("click", () => {
   window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+});
+
+import { countryFetch, countryFetchEng } from "./index.js";
+// 버튼 클릭시 한국영화로 변경
+const koreaMovie = document.querySelector(".koreaMovie");
+koreaMovie.addEventListener("click", () => {
+  countryFetch();
+});
+// 버튼 클릭시 외국영화로 변경
+const englishMovie = document.querySelector(".englishMovie");
+englishMovie.addEventListener("click", () => {
+  countryFetchEng();
 });

@@ -1,9 +1,16 @@
 // Database연결
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: "Bearer fbf16579bff5b8c3f6664841d9dd0613",
+  },
+};
 const API_KEY = "fbf16579bff5b8c3f6664841d9dd0613";
 const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
-// 영화카드 생성
-function createMovieCard(movie) {
+// 전체영화카드 생성
+export function createMovieCard(movie) {
   const card = document.createElement("div");
   card.className = "movie-card";
   card.innerHTML = `
@@ -17,19 +24,22 @@ function createMovieCard(movie) {
   card.addEventListener("click", () => alert(`Movie ID: ${movie.id}`));
   return card;
 }
-// Dom에 추가
-fetch(URL)
-  .then((response) => response.json())
-  .then((data) => {
-    const movies = data.results;
-    const movieContainer = document.getElementById("movie-container");
-    movies.forEach((movie) => {
-      const card = createMovieCard(movie);
-      movieContainer.appendChild(card);
-    });
-  })
-  .catch((error) => console.error("Error:", error));
+// Dom에 카드 추가
 
+async function fetchUrl() {
+  const makeCardFetchUrl = fetch(URL)
+    .then((response) => response.json())
+    .then((data) => {
+      const movies = data.results;
+      const movieContainer = document.getElementById("movie-container");
+      movies.forEach((movie) => {
+        const card = createMovieCard(movie);
+        movieContainer.appendChild(card);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+}
+fetchUrl();
 // 검색기능
 
 document.querySelector(".search").addEventListener("submit", (e) => {
@@ -56,3 +66,38 @@ document.querySelector(".search").addEventListener("submit", (e) => {
     }
   });
 });
+
+//한국 영화장르 fetch
+export async function countryFetch() {
+  const movieContainer = document.getElementById("movie-container");
+  const koUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_origin_country=KR&with_genres=16&without_genres=10749}&page=1`;
+  movieContainer.innerText = "";
+  const koFetch = await fetch(koUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      const movies = data.results;
+
+      movies.forEach((movie) => {
+        const card = createMovieCard(movie);
+        movieContainer.appendChild(card);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+export async function countryFetchEng() {
+  const movieContainer = document.getElementById("movie-container");
+  const enUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-En&with_origin_country=US&with_genres=16&without_genres=10749}&page=1`;
+  movieContainer.innerText = "";
+  const englishFecth = await fetch(enUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      const movies = data.results;
+
+      movies.forEach((movie) => {
+        const card = createMovieCard(movie);
+        movieContainer.appendChild(card);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+}
