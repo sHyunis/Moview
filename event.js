@@ -2,13 +2,13 @@
 // 이전 버튼 클릭시 모든 영화표시
 
 const beforeButton = document.querySelector(".beforeButton");
-beforeButton.addEventListener("click", () => {
+beforeButton.addEventListener("click", (e) => {
   const movieCards = document.querySelectorAll(".movie-card");
 
   movieCards.forEach((card) => {
     card.style.display = "block";
   });
-  preventDefault();
+  e.preventDefault();
 });
 
 // 버튼 클릭시 지정한 요소가 보이도록, 스크롤 이동 이벤트
@@ -35,13 +35,13 @@ homeButton.addEventListener("click", () => {
 import { countryFetch, countryFetchEng } from "./index.js";
 // 버튼 클릭시 한국영화로 변경
 const koreaMovie = document.querySelector(".koreaMovie");
-koreaMovie.addEventListener("click", () => {
+koreaMovie.addEventListener("click", (e) => {
   countryFetch();
-  preventDefault();
+  e.preventDefault();
 });
 // 버튼 클릭시 외국영화로 변경
 const englishMovie = document.querySelector(".englishMovie");
-englishMovie.addEventListener("click", () => {
+englishMovie.addEventListener("click", (e) => {
   countryFetchEng();
-  preventDefault();
+  e.preventDefault();
 });
