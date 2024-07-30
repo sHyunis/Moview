@@ -89,7 +89,7 @@ export async function countryFetchEng() {
   const movieContainer = document.getElementById("movie-container");
   const enUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-En&with_origin_country=US&with_genres=16&without_genres=10749}&page=1`;
   movieContainer.innerText = "";
-  const englishFecth = await fetch(enUrl)
+  const englishFetch = await fetch(enUrl)
     .then((res) => res.json())
     .then((data) => {
       const movies = data.results;
