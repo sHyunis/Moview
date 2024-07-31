@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="myPage_temp.css">
+</head>
+
+
+<body>
+    <div class="header">Moview</div>
+
+    <div class="activity">
+        <div class="activity-header">
+            <div class="activity-header-title">
+                <h3>내 활동</h3>
+            </div>
+            <ul class="activity-header-type">
+                <li class="activity-tab rating-box" style="color:red;">
+                    별점
+                </li>
+                <li class="activity-tab review-box">
+                    리뷰
+                </li>
+                <li class="activity-tab like-box">
+                    좋아요
+                </li>
+            </ul>
+        </div>
+        <!-- content-list 하위에 별점, 리뷰 생성 (탭 전환 js 이벤트처리) -->
+        <ul class="rating-list">
+            <li class="rating-container">
+                <div class="rating-img">
+                    <a href="../index.html"> <img src="../img/test_img/인터스텔라.jpg"></a>
+                </div>
+                <div class="rating-title">
+                    <p>인터스텔라</p>
+                </div>
+                <div class="rating-rating">
+                    ★ 5
+                </div>
+            </li>
+            <li class="rating-container">
+                <div class="rating-img">
+                    <a href="../index.html"> <img src="../img/test_img/나루토2.jpg"></a>
+                </div>
+                <div class="rating-title">
+                    <p>나루토</p>
+                </div>
+                <div class="rating-rating">
+                    ★ 5
+                </div>
+            </li>
+            <li class="rating-container">
+                <div class="rating-img">
+                    <a href="../index.html"> <img src="../img/test_img/하울.jpg"></a>
+                </div>
+                <div class="rating-title">
+                    <p>하울</p>
+                </div>
+                <div class="rating-rating">
+                    ★ 5
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- `리뷰` 탭 눌렀을때 예시 코드-->
+    <div style="margin: 200px auto;" class="activity">
+        <div class="activity-header">
+            <div class="activity-header-title">
+                <h3>내 활동</h3>
+            </div>
+            <ul class="activity-header-type">
+                <li class="activity-tab rating-box">
+                    별점
+                </li>
+                <li class="activity-tab review-box" style="color:red;">
+                    리뷰
+                </li>
+                <li class="activity-tab like-box">
+                    좋아요
+                </li>
+            </ul>
+        </div>
+        <!-- content-list 하위에 별점, 리뷰 생성 (탭 전환 js 이벤트처리) -->
+        <ul class="review-list">
+            <li class="review-container">
+                <div class="review-img">
+                    <a href="../index.html"><img src="../img/test_img/인터스텔라.jpg"></a>
+                </div>
+                <div class="review-contents">
+                    <h4>인터스텔라</h4>
+                    <p>ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
+                    <div class="feed-box">
+                        <p>좋아요(3)</p>
+                        <p>댓글(323)</p>
+                    </div>
+                </div>
+                <div class="review-date">
+                    <p>24분 전</p>
+                </div>
+            </li>
+            <li class="review-container">
+                <div class="review-img">
+                    <a href="../index.html"><img src="../img/test_img/인터스텔라.jpg"></a>
+                </div>
+                <div class="review-contents">
+                    <h4>인터스텔라</h4>
+                    <p>ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
+                    <div class="feed-box">
+                        <p>좋아요(3)</p>
+                        <p>댓글(323)</p>
+                    </div>
+                </div>
+                <div class="review-date">
+                    <p>24분 전</p>
+                </div>
+            </li>
+            <li class="review-container">
+                <div class="review-img">
+                    <a href="../index.html"><img src="../img/test_img/인터스텔라.jpg"></a>
+                </div>
+                <div class="review-contents">
+                    <h4>인터스텔라</h4>
+                    <p>ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
+                    <div class="feed-box">
+                        <p>좋아요(3)</p>
+                        <p>댓글(323)</p>
+                    </div>
+                </div>
+                <div class="review-date">
+                    <p>24분 전</p>
+                </div>
+            </li>
+            <li class="review-container">
+                <div class="review-img">
+                    <a href="../index.html"><img src="../img/test_img/인터스텔라.jpg"></a>
+                </div>
+                <div class="review-contents">
+                    <h4>인터스텔라</h4>
+                    <p>ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
+                    <div class="feed-box">
+                        <p>좋아요(3)</p>
+                        <p>댓글(323)</p>
+                    </div>
+                </div>
+                <div class="review-date">
+                    <p>24분 전</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- `좋아요` 탭 예시 코드  -->
+    <div class="activity">
+        <div class="activity-header">
+            <div class="activity-header-title">
+                <h3>내 활동</h3>
+            </div>
+            <ul class="activity-header-type">
+                <li class="activity-tab rating-box">
+                    별점
+                </li>
+                <li class="activity-tab review-box">
+                    리뷰
+                </li>
+                <li class="activity-tab like-box selected" style="color:red;">
+                    좋아요
+                </li>
+            </ul>
+        </div>
+        <!-- 좋아요 예시 목록-->
+        <ul class="like-list">
+            <li class="like-container">
+                <div class="like-img">
+                    <a href="../index.html"><img src="../img/test_img/인터스텔라.jpg"></a>
+                </div>
+                <div class="like-contents">
+                    <h4>인터스텔라</h4>
+                    <p>지구의 자원이 뭐시기 없어지고 인류의 멸망을 막기 위해서 우주 저 멀리 어디론가 떠난 쿠퍼의 모험이 시작...</p>
+                    <div class="feed-box">
+                        <p>이 작품을 좋아요한 사람수(32304)</p>&nbsp;&nbsp;
+                        <p> 작품평(3232)</p>
+                    </div>
+                </div>
+                <div class="like-date">
+                    <p>24분 전</p>
+                </div>
+            </li>
+            <li class="like-container">
+                <div class="like-img">
+                    <a href="../index.html"><img src="../img/test_img/나루토2.jpg"></a>
+                </div>
+                <div class="like-contents">
+                    <h4>나루토</h4>
+                    <p>미안하다 이거 보여주려고 어그로 끌었다 나루토 사스케 싸움 수준 실. . .</p>
+                    <div class="feed-box">
+                        <p>이 작품을 좋아요한 사람수(62304)</p>&nbsp;&nbsp;
+                        <p> 작품평(7232)</p>
+                    </div>
+                </div>
+                <div class="like-date">
+                    <p>24. 01. 01</p>
+                </div>
+            </li>
+            <li class="like-container">
+                <div class="like-img">
+                    <a href="../index.html"><img src="../img/test_img/조커.jpg"></a>
+                </div>
+                <div class="like-contents">
+                    <h4>조커</h4>
+                    <p>놀림 받고 흑화했다! 막나가는 조커! 그...</p>
+                    <div class="feed-box">
+                        <p>이 작품을 좋아요한 사람수(532304)</p>&nbsp;&nbsp;
+                        <p> 작품평(3252)</p>
+                    </div>
+                </div>
+                <div class="like-date">
+                    <p>24. 07. 07</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
