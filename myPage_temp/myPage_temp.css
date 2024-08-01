@@ -73,7 +73,6 @@ li {
 /* * * * * * * * * * * * * * * * 리뷰 & 좋아요 * * * * * * * * * * * * * * * * */
 .common-list {
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
     justify-content: start;
     width: 100%;
