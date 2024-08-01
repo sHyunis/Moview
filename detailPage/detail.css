@@ -1,3 +1,6 @@
+body{
+  background-color: rgb(5, 5, 5);
+}
 .Header {
   height: 400px;
   background-color: aqua;
@@ -60,21 +63,21 @@
   background-color: palevioletred;
   margin: 100px 300px 0px 300px;
 }
-.castList {
+.cast-List {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   margin: 10px;
   padding: 0;
 }
-.castCard {
+.cast-Card {
     display: flex;
     flex: 1 1 calc(20%)
 }
-.castProfileImage{
+.cast-ProfileImage{
     background-color: beige;
 }
-.castInfo{
+.cast-Info{
     display: flex;
     flex-direction: column;
 }
@@ -85,6 +88,6 @@
   background-color: skyblue;
   margin: 20px 300px 20px 300px;
 }
-.reviewsHeader {
+.reviews-Header {
 }
 /* movie- */
