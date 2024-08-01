@@ -14,10 +14,10 @@ const LANG_EN = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&
 
 
 /*
- * 언어 API 함수 입니다.
+ * 언어 변경 API 함수 입니다.
  * 언어가 추가될 경우 if문 추가, language.js 이벤트 리스너 추가하시면 됩니다.
 */
-async function getLanguageUrl(language) {
+async function changeMovieLang(language) {
   let url;
   if (language === 'kr') url = LANG_KR;
   else if (language === 'en') url = LANG_EN;

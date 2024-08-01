@@ -31,5 +31,5 @@ function handleMovieRender(movies) {
 }
 
 // 클릭 이벤트
-btnLanguageKr.addEventListener("click", () => getLanguageUrl('kr'));
-btnLanguageEn.addEventListener("click", () => getLanguageUrl('en'));
+btnLanguageKr.addEventListener("click", () => changeMovieLang('kr'));
+btnLanguageEn.addEventListener("click", () => changeMovieLang('en'));
