@@ -1,0 +1,119 @@
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 p,
+ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+li {
+    list-style: none;
+}
+
+.header {
+    height: 100px;
+    background-color: black;
+    color: red;
+}
+
+.activity {
+    width: 100vw;
+    max-width: 1200px;
+    min-width: 1100px;
+    margin: 0 auto;
+}
+
+.activity-header-type {
+    display: flex;
+    gap: 10px;
+}
+
+.selected {
+    color: red;
+}
+
+/* * * * * * * * * * * * * * * * 평점 * * * * * * * * * * * * * * * * */
+.rating-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 20px;
+    width: 100%;
+}
+
+.rating-container {
+    width: calc(33.3333% - 1rem);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.rating-img {
+    width: 100%;
+}
+
+.rating-img img {
+    width: 100%;
+    /* width: 384px; */
+    /* height: 216px; */
+    object-fit: cover;
+    display: block;
+}
+
+
+/* * * * * * * * * * * * * * * * 리뷰 & 좋아요 * * * * * * * * * * * * * * * * */
+.common-list {
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    height: 900px;
+    /* overflow-y: hidden; */
+    overflow-y: scroll;
+}
+
+.common-container {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.common-img {
+    width: calc(18%);
+}
+
+.common-img img {
+    /* width: 100%; */
+    width: 206px;
+    height: 116px;
+    object-fit: cover;
+}
+
+.common-contents {
+    display: flex;
+    flex-direction: column;
+    width: calc(62%);
+}
+
+.common-contents div {
+    display: flex;
+    gap: 5px;
+}
+
+.common-date {
+    display: flex;
+    justify-content: end;
+    width: calc(20%);
+}
