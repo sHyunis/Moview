@@ -101,3 +101,13 @@ export async function countryFetchEng() {
     })
     .catch((error) => console.error("Error:", error));
 }
+
+
+export async function setLanguage() {
+  const movieContainer = document.getElementById("movie-container");
+  const languageKr = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_origin_country=KR&with_genres=16&without_genres=10749}&page=1`;
+  const languageEn = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&with_origin_country=US&with_genres=16&without_genres=10749}&page=1`;
+  movieContainer.innerText = "";
+  const languageFetch = await fetch(languageKr, languageEn)
+    .then((rest) => re)
+}
