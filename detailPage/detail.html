@@ -1,86 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail page</title>
-  </head>
-  <link rel="stylesheet" href="detail.css">
-  <body>
-    <div class="Header">
-      <h1>영화 이미지</h1>
-    </div>
-    <div class="movie-info">
-      <div class="movie-info-left">
-        <div class="movie-poster">
-          <!-- 영화 포스터 -->
-          영화 포스터
-        </div>
-      </div>
-      <div class="movie-info-middle">
-        <div class="movie-summary">
-          <h1>영화 제목</h1>
-          <div>Movie Name</div>
-          <div>2024 · 액션/코미디/SF · 미국</div>
-          <div>2시간 7분 · 청불</div>
-          <div>예매 순위 2위(11%) · 개봉 9일째 · 누적 관객 135.2만명</div>
-          <div>평점 : 8.6</div>
-        </div>
-      </div>
-      <div class="movie-info-right">
-        <!-- 좋아요 버튼, 리뷰 기능 -->
-        <div class="movie-options">
-          <button>하트이미지</button>
-          <button>관람평작성</button>
-          <button>더보기이미지</button>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail page</title>
+</head>
+<link rel="stylesheet" href="detail.css">
+
+<body>
+  <div class="Header">
+    <h1>영화 이미지</h1>
+  </div>
+  <div class="movie-info">
+    <div class="movie-info-left">
+      <div class="movie-poster">
+        <!-- 영화 포스터 -->
+        영화 포스터
       </div>
     </div>
-    <div class="movie-castReviews">
-      <!-- 영화 출연진/감독/제조사나 배급사 등 -->
-      <div class="movie-castReviews-cast">
-        <div class="castHeader">
-          <h2>감독/출연</h2>
-        </div>
-        <ul class="castList">
-          <li class="castCard">
-            <div class="castProfileImage">프로필</div>
-            <div class="castInfo">
-                <div>하정우</div>
-                <div>주연</div>
-            </div>
-          </li>
-          <li class="castCard">
-            <div class="castProfileImage">프로필</div>
-            <div class="castInfo">
-                <div>하정우</div>
-                <div>주연</div>
-            </div>
-          </li>
-          <li class="castCard">
-            <div class="castProfileImage">프로필</div>
-            <div class="castInfo">
-                <div>하정우</div>
-                <div>주연</div>
-            </div>
-          </li>
-                    <li class="castCard">
-            <div class="castProfileImage">프로필</div>
-            <div class="castInfo">
-                <div>하정우</div>
-                <div>주연</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="movie-castReviews-reviews">
-        <div class="reviewsHeader">
-          <h2>관람평</h2>
-        </div>
-        <div class="reviewList">
-          <div class="reviewCard">댓글</div>
-        </div>
+    <div class="movie-info-middle">
+      <div class="movie-summary">
+        <h1>영화 제목</h1>
+        <div>Movie Name</div>
+        <div>2024 · 액션/코미디/SF · 미국</div>
+        <div>2시간 7분 · 청불</div>
+        <div>예매 순위 2위(11%) · 개봉 9일째 · 누적 관객 135.2만명</div>
+        <div>평점 : 8.6</div>
       </div>
     </div>
-  </body>
+    <div class="movie-info-right">
+      <!-- 좋아요 버튼, 리뷰 기능 -->
+      <div class="movie-options">
+        <button>하트이미지</button>
+        <button>관람평작성</button>
+        <button>더보기이미지</button>
+      </div>
+    </div>
+  </div>
+  <div class="movie-castReviews">
+    <!-- 영화 출연진/감독/제조사나 배급사 등 -->
+    <div class="movie-castReviews-cast">
+      <div class="castHeader">
+        <h2>감독/출연</h2>
+      </div>
+      <ul class="castList">
+        <li class="castCard">
+          <div class="castProfileImage">프로필</div>
+          <div class="castInfo">
+            <div>하정우</div>
+            <div>주연</div>
+          </div>
+        </li>
+        <li class="castCard">
+          <div class="castProfileImage">프로필</div>
+          <div class="castInfo">
+            <div>하정우</div>
+            <div>주연</div>
+          </div>
+        </li>
+        <li class="castCard">
+          <div class="castProfileImage">프로필</div>
+          <div class="castInfo">
+            <div>하정우</div>
+            <div>주연</div>
+          </div>
+        </li>
+        <li class="castCard">
+          <div class="castProfileImage">프로필</div>
+          <div class="castInfo">
+            <div>하정우</div>
+            <div>주연</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="movie-castReviews-reviews">
+      <div class="reviewsHeader">
+        <h2>관람평</h2>
+      </div>
+      <div class="reviewList">
+        <input class="commentInput" type="text">
+        <button class="postingButton"></button>
+        <div class="reviewCard">
+          댓글</div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
