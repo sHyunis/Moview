@@ -7,8 +7,8 @@
     <title>THISISMOVIE</title>
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./assets/css/common.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
-    <script src="./api.js"></script>
+
 </head>
 
 <body>
@@ -42,7 +42,7 @@
         <div class="section2">
             <form class="search">
                 <input type="text" id="searchInput" placeholder="Search Movie">
-                <button id="searchButton"><img src="img/searchIcon.png" alt="search"></button>
+                <button id="searchButton"><img src="./assets/img/searchIcon.png" alt="search"></button>
             </form>
             <div id="movie-container">
                 <!-- <div class="card-img>
@@ -58,11 +58,12 @@
             <div class="upHomeButtons">
                 <p class="koreaMovie">🇰🇷</p>
                 <p class="englishMovie">🇭🇲</p>
-                <img class="beforeButton" src="./img/beforeButton.png" alt="beforeButton">
-                <img class="topButton" src="img/searchIcon.png" alt="upArrow">
-                <img class="homeButton" src="img/HomeButton.png" alt="HomeButton">
-                <a style="background-color: red;" href="myPage_temp/myPage_temp.html"><img class="homeButton"
-                        src="img/test_img/myPageButton.png" alt="MyPageButton"></a>
+                <img class="beforeButton" src="./assets/img/beforeButton.png" alt="beforeButton">
+                <img class="topButton" src="./assets/img/searchIcon.png" alt="upArrow">
+                <img class="homeButton" src="./assets/img/HomeButton.png" alt="HomeButton">
+                <a style="background-color: red;" href="./view/myPage_temp.html">
+                    <img class="homeButton" src="./assets/img/test_img/myPageButton.png" alt="MyPageButton">
+                </a>
             </div>
 
 
@@ -71,9 +72,9 @@
 
     </section>
 
-
-    <script src="index.js" type="module"></script>
-    <script src="event.js" type="module"></script>
+    <script src="./assets/js/api.js"></script>
+    <script src="./assets/js/index.js" type="module"></script>
+    <script src="./assets/js/event.js" type="module"></script>
 </body>
 
 </html>
