@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="./assets/css/common.css">
     <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/hamburgerMenu.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,11 +18,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
     <header>
+        <div class="hamburger">
+            <img id="menu-button" src="/assets/img/menuIcon.png" alt="hamburger-icon">
+            <div id="hamburger-menu" class="hamburger-menu">
+                <div id="menu-close-button"><img src="/assets/img/closeIcon.png" alt="closeIcon">
+                </div>
+                <h2>MOVIEW</h2>
+                <ul class="hamburger-nav">
+                    <li><a href="/view/signIn.html">LogIn</a></li>
+                    <li><a href="/view/signUp.html">SignUp</a></li>
+                    <li><a href="/view/myPage_temp.html">MyPage</a></li>
+
+                </ul>
+            </div>
+        </div>
         <h1>THISISMOVIE</h1>
     </header>
     <section>
@@ -83,6 +99,7 @@
     <script src="./assets/js/language.js"></script>
     <script src="./assets/js/index.js" type="module"></script>
     <script src="./assets/js/event.js" type="module"></script>
+    <script src="./assets/js/menuToggle.js"></script>
 </body>
 
 </html>
