@@ -90,9 +90,3 @@ export async function countryFetchEng() {
     })
     .catch((error) => console.error("Error:", error));
 }
-
-
-export async function setLanguage() {
-  const movieContainer = document.getElementById("movie-container");
-
-}
