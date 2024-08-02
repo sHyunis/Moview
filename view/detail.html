@@ -7,6 +7,7 @@
     <title>Detail page</title>
 </head>
 <link rel="stylesheet" href="../assets/css/detail.css" />
+<link rel="stylesheet" href="../assets/css/common.css">
 
 <body>
     <div id="detail">
@@ -47,20 +48,34 @@
                     </div>
                     <div class="review-List">
                         <form id="review-form">
-                            <label for="user-name">ID</label>
                             <input id="user-name" placeholder="Id" type="text" required>
-                            <label for="review-comment">감상평</label>
+
+                            <label class="comment-label" for="review-comment"></label>
                             <textarea id="review-comment" type="text" required placeholder="Movie review!"></textarea>
-                            <button style="padding: 5px;" type="submit"></button>
+                            <button class="review-button" type="submit">Upload</button>
                         </form>
 
-                        <div id="review-card" class="review-Card">댓글</div>
+                        <h4>댓글</h4>
+                        <div id="review-cards">
+
+                            <!-- <li class=" review-card">
+                            <div class="review-card-id">
+                                ${name}
+                            </div>
+                            <div class="review-card-content">
+                                ${review}
+                            </div>
+                            <button class="review-modify-button">수정</button>
+                            <button class="review-delete-button">삭제</button>
+                            </li> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../assets/js/detail.js"></script>
+    <!-- <script src="../assets/js/detail.js"></script> -->
+    <script src="../assets/js/comment.js"></script>
 </body>
 
 </html>

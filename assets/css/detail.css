@@ -5,14 +5,14 @@
 ul {
   list-style: none;
   padding: 0;
-  margin: 0; 
+  margin: 0;
 }
-.inner{
+.inner {
   max-width: 1600px;
   color: white;
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.743);
-  width: 75%; 
+  width: 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,10 +37,10 @@ ul {
   width: 33%;
 }
 .movie-poster {
-  width: 100%; 
-  max-width: 200px; 
-  margin: 40px 80px 0px auto; 
-  display: flex; 
+  width: 100%;
+  max-width: 200px;
+  margin: 40px 80px 0px auto;
+  display: flex;
 }
 /* movie-info 가운데 공간 */
 .movie-info-middle {
@@ -81,15 +81,15 @@ ul {
   padding: 0;
 }
 .cast-Card {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
-.cast-ProfileImage{
-    background-color: beige;
+.cast-ProfileImage {
+  background-color: beige;
 }
-.cast-Info{
-    display: flex;
-    flex-direction: column;
+.cast-Info {
+  display: flex;
+  flex-direction: column;
 }
 .movie-castReviews-reviews {
   display: flex;
@@ -100,3 +100,89 @@ ul {
 .reviews-Header {
 }
 /* movie- */
+
+/* comment */
+
+.review-List {
+  width: 100%;
+}
+#review-form {
+  width: 100%;
+  height: 250px;
+  background-color: black;
+  border: rgba(211, 211, 211, 0.4) 2px solid;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#user-name {
+  background-color: transparent;
+  width: 100%;
+  height: 20px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+}
+
+#review-comment {
+  width: 100%;
+  height: 230px;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  border: none;
+  padding: 20px;
+}
+
+.review-button {
+  width: 90px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: rgb(212, 192, 255);
+}
+.review-card {
+  width: 100%;
+  height: 250px;
+  background-color: black;
+  border: rgba(211, 211, 211, 0.4) 2px solid;
+  position: relative;
+}
+.review-card-id {
+  background-color: transparent;
+  width: 100%;
+  height: 20px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+}
+.review-card-content {
+  width: 100%;
+  height: 230px;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  border: none;
+  padding: 20px;
+}
+.review-card button {
+  width: 90px;
+  height: 30px;
+  background-color: rgb(212, 192, 255);
+}
+.review-modify-button {
+  position: absolute;
+  right: 110px;
+  bottom: 10px;
+  gap: 30px;
+}
+.review-delete-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  gap: 30px;
+}
