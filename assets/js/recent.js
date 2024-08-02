@@ -28,7 +28,7 @@ let recentMovies = JSON.parse(localStorage.getItem('recentMovies'));
 })()
 
 
-// 최근 본 중복 제거
+// `최근 본` 중복 제거
 function removeDuplicates(arr) {
     const unique = new Set();
     return arr.filter(item => {

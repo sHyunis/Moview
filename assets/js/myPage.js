@@ -17,8 +17,8 @@ async function dummyRatingFetch(userId) {
     // 대충 firebase 데이터 가져오는 코드 작성 (userId로 user가 작성한 평점 데이터 가져오기)
     // 대충 데이터 가공해서 반환하기
     const ratingDummy = [
-        { title: "인터스텔라", backdrop_path: "../img/test_img/인터스텔라.jpg", rating: 5 },
-        { title: "나루토", backdrop_path: "../img/test_img/나루토2.jpg", rating: 5 }
+        { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", rating: 5 },
+        { title: "나루토", backdrop_path: "/assets/img/test_img/나루토2.jpg", rating: 5 }
     ]
     return ratingDummy;
 }
@@ -37,15 +37,15 @@ async function dummyReviewFetch(userId) {
      * 리뷰 데이터에 있는 movieId로 영화 데이터 api요청
      * (근데 하나의 컬렉션에서 작업한다면 api 요청 필요 X)
      * 예시(영화정보도 DB에 다 때려박기)
-     * [{userId: qwer, movieId: 1234, title: "하울", backdrop_path:"../img/test_img/인터스텔라.jpg", review: "ㅋㅋㅋㅋㅋ"}]
+     * [{userId: qwer, movieId: 1234, title: "하울", backdrop_path:"/assets/img/test_img/인터스텔라.jpg", review: "ㅋㅋㅋㅋㅋ"}]
      * 
      * */
 
     // 아래 데이터에서 title, backdrop_path는 movie_id로 api 요청해서 가져와야 합니다?
     const reviewDummy = [
-        { title: "인터스텔라", backdrop_path: "../img/test_img/인터스텔라.jpg", content: "ㅋㅋ 쿠퍼 레전드" },
-        { title: "하울", backdrop_path: "../img/test_img/하울.jpg", content: "하울 너무 멋져요" },
-        { title: "나루토", backdrop_path: "../img/test_img/나루토.jpg", content: "하울 너무 멋져" },
+        { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", content: "ㅋㅋ 쿠퍼 레전드" },
+        { title: "하울", backdrop_path: "/assets/img/test_img/하울.jpg", content: "하울 너무 멋져요" },
+        { title: "나루토", backdrop_path: "/assets/img/test_img/나루토.jpg", content: "하울 너무 멋져" },
     ]
 
     return reviewDummy;
@@ -54,15 +54,15 @@ async function dummyReviewFetch(userId) {
 // 좋아요 더미 데이터
 async function dummyLikeFetch(userId) {
     const likeDummy = [
-        { title: "인터스텔라", backdrop_path: "../img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
-        { title: "조커", backdrop_path: "../img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
-        { title: "나루토", backdrop_path: "../img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
-        { title: "인터스텔라", backdrop_path: "../img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
-        { title: "조커", backdrop_path: "../img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
-        { title: "나루토", backdrop_path: "../img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
-        { title: "인터스텔라", backdrop_path: "../img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
-        { title: "조커", backdrop_path: "../img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
-        { title: "나루토", backdrop_path: "../img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
+        { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
+        { title: "조커", backdrop_path: "/assets/img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
+        { title: "나루토", backdrop_path: "/assets/img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
+        { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
+        { title: "조커", backdrop_path: "/assets/img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
+        { title: "나루토", backdrop_path: "/assets/img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
+        { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
+        { title: "조커", backdrop_path: "/assets/img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
+        { title: "나루토", backdrop_path: "/assets/img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
     ]
 
     return likeDummy;
@@ -72,7 +72,7 @@ document.querySelector('.activity').addEventListener('click', async function (ev
     const targetElement = event.target;
     if (targetElement.closest('.rating-box')) {
         resetElement(targetElement);
-        createParentList(["rating-list"]);
+        createParentList(["rating-list", "item-list"]);
 
         const data = await dummyRatingFetch("1234");
 
@@ -81,7 +81,7 @@ document.querySelector('.activity').addEventListener('click', async function (ev
     } else if (targetElement.closest('.review-box')) {
         resetElement(targetElement);
 
-        createParentList(["review", "common-list"]);
+        createParentList(["review", "common-list", "item-list"]);
 
         const data = await dummyReviewFetch("1234");
         processCommonData(data, "review");
@@ -89,7 +89,7 @@ document.querySelector('.activity').addEventListener('click', async function (ev
     } else if (targetElement.closest('.like-box')) {
         resetElement(targetElement);
 
-        createParentList(["like", "common-list"]);
+        createParentList(["like", "common-list", "item-list"]);
 
         const data = await dummyLikeFetch("1234");
         processCommonData(data, "like");
