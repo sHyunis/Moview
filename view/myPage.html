@@ -6,44 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="myPage_temp.css">
+    <link rel="stylesheet" href="../assets/css/myPage.css">
 </head>
 
 
 <body>
     <div class="header">Moview</div>
 
-
-    <!-- 
-            별점 준 작품들 목록
-            탭 눌러서 나뉘도록 제작했습니다. (js 추가 이벤트 처리 필요)
-
-            아래는 각각 탭 눌렀을떄 레이아웃 예시 코드입니다.
-
-      -->
     <div class="activity">
         <div class="activity-header">
             <div class="activity-header-title">
-                <h3>내 활동</h3>
+                <h3>My <span>Activities</span></h3>
             </div>
             <ul class="activity-header-type">
                 <li class="activity-tab rating-box">
-                    별점
+                    <p>Rating</p>
                 </li>
                 <li class="activity-tab review-box">
-                    리뷰
+                    <p>Review</p>
                 </li>
                 <li class="activity-tab like-box">
-                    좋아요
+                    <p>Like</p>
+                </li>
+                <li class="activity-tab recent-box">
+                    <p>Recent</p>
                 </li>
             </ul>
         </div>
-        <!-- content-list 하위에 별점, 리뷰, 좋아요 등 HTML 생성 (탭 전환 js 이벤트처리) -->
     </div>
 
-
-    <script type="text/javascript" src="myPage_temp.js"></script>
-
+    <script type="text/javascript" src="../assets/js/myPage.js"></script>
 </body>
 
 </html>

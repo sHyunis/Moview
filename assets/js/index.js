@@ -10,7 +10,16 @@ export function createMovieCard(movie) {
     <span>Rating: ${movie.vote_average}</span>
     </div>
   `;
-  card.addEventListener("click", () => alert(`Movie ID: ${movie.id}`));
+  card.addEventListener("click", () => {
+    (window.location.href = `./view/detail.html?id=${movie.id}`)
+
+    /** 최근 본 목록  localStorage에 저장 * */
+    const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
+    recentMovies.push(movie);
+
+    localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
+    /** 최근 본 목록  localStorage에 저장 끝 * */
+  });
   return card;
 }
 // Dom에 카드 추가
@@ -91,8 +100,6 @@ export async function countryFetchEng() {
     .catch((error) => console.error("Error:", error));
 }
 
-
 export async function setLanguage() {
   const movieContainer = document.getElementById("movie-container");
-
 }
