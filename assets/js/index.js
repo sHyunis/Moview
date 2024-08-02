@@ -10,7 +10,7 @@ export function createMovieCard(movie) {
     <span>Rating: ${movie.vote_average}</span>
     </div>
   `;
-  card.addEventListener("click", () => alert(`Movie ID: ${movie.id}`));
+  card.addEventListener("click", () => window.location.href = `./view/detail.html?id=${movie.id}`);
   return card;
 }
 // Dom에 카드 추가
