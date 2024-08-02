@@ -82,7 +82,7 @@ function showMovieInfo(movie){
             <div>${movie.runtime}Min · ${movie.origin_country}</div>
             <div>평점 : ${movie.vote_average}</div>
           </div>
-    `;
+    `; 
 }
 function showCastInfo(movie){
     console.log("캐스트인포 실행")
