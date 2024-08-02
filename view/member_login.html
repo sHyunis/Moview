@@ -4,12 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>로그인 임시 페이지</title>
+  <script type="module" src="../assets/js/common.js"></script>
   <script type="module" src="../assets/js/login.js"></script>
   <style>
-    body {background:#111;}
+    body {background:#111; padding:100px 0 0 0;}
+    header a {color:#fff}
   </style>
 </head>
 <body>
+    <header id="header-example">
+      <div class="inner">
+        <a id="header-btn-login" href="./member_login.html">로그인</a>
+        <a id="header-btn-logout">로그아웃</a>
+        <a id="header-btn-mypage" href="./myPage_temp.html">마이페이지</a>        
+      </div>      
+    </header>
     <div id="login-wrap">
       <form id="login-box">
         <input type="text" id="login-id">
