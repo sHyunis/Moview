@@ -6,6 +6,7 @@
 }
 .hamburger img {
   width: 36px;
+  cursor: grab;
 }
 .hamburger-menu {
   width: 200px;
@@ -45,7 +46,6 @@
   position: fixed;
   left: 150px;
   top: 20px;
-  cursor: grab;
 }
 #menu-close-button img {
   width: 100%;
