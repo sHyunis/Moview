@@ -3,6 +3,7 @@
   width: 50px;
   position: fixed;
   left: 30px;
+  z-index: 1;
 }
 .hamburger img {
   width: 36px;
