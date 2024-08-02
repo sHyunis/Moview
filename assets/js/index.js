@@ -10,20 +10,16 @@ export function createMovieCard(movie) {
     <span>Rating: ${movie.vote_average}</span>
     </div>
   `;
-<<<<<<< HEAD
-  card.addEventListener("click", () => window.location.href = `./view/detail.html?id=${movie.id}`);
-=======
   card.addEventListener("click", () => {
     alert(`Movie ID: ${movie.id}`);
 
     /** 최근 본 목록  localStorage에 저장 * */
-    const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
+    const recentMovies = JSON.parse(localStorage.getItem("recentMovies")) || [];
     recentMovies.push(movie);
 
-    localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
+    localStorage.setItem("recentMovies", JSON.stringify(recentMovies));
     /** 최근 본 목록  localStorage에 저장 끝 * */
   });
->>>>>>> 7de30543ccdb2c5c390258878db7b9b6b5a6dfcd
   return card;
 }
 // Dom에 카드 추가
