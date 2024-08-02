@@ -56,10 +56,11 @@ function showImages(movie) {
   const moviePoster = document.querySelector(".movie-poster");
   moviePoster.innerHTML = `<img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">`;
 
-  const moviebackdrop = document.querySelector("*");
-  moviebackdrop.style.backgroundImage = `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`;
-  moviebackdrop.style.backgroundSize = "cover";
-  moviebackdrop.style.backgroundPosition = "center";
+  /// 백드롭 스타일도 추가
+  const moviebackdropArea = document.querySelector("*");
+  moviebackdropArea.style.backgroundImage = `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`;
+  moviebackdropArea.style.backgroundSize = "cover";
+  moviebackdropArea.style.backgroundPosition = "center";
 }
 
 //영화 정보들 (제목, 장르, 개봉일, 등등) 보여주는 함수
