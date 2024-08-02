@@ -9,16 +9,15 @@ ul {
 }
 .inner{
   max-width: 1600px;
+  max-height: 800px;
   color: white;
-  margin: 0 auto;
+  margin: 100px auto 100px auto;
   background-color: rgba(0, 0, 0, 0.743);
   width: 75%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.Header {
-  height: 150px;
+  border-radius: 8px;
 }
 .movie-info {
   height: 400px;
@@ -27,9 +26,11 @@ ul {
   flex-direction: row;
 }
 .movie-castReviews {
-  height: 1000px;
+  width: 70%;
+  height: 400px;
   display: flex;
   flex-direction: column;
+  margin: auto;
 }
 
 /* movie-info 왼쪽 공간  */
@@ -39,7 +40,7 @@ ul {
 .movie-poster {
   width: 100%; 
   max-width: 200px; 
-  margin: 40px 80px 0px auto; 
+  margin: 50px 80px 0px auto; 
   display: flex; 
 }
 /* movie-info 가운데 공간 */
@@ -63,29 +64,46 @@ ul {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  margin: 40px auto 0px 30px;
+  margin: 50px auto 0px 30px;
 }
 /* movie-castReives 감독/출연  */
 .movie-castReviews-cast {
   display: flex;
   flex-direction: column;
-  height: 50%;
-  margin: 100px 300px 0px 300px;
+  margin: 20px;
 }
-.cast-List {
+.cast-list {
+  height: 100%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  gap: 20px;
-  margin: 10px;
-  padding: 0;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: flex-start;
 }
-.cast-Card {
+.cast-card{
     display: flex;
     flex-direction: row;
+    gap: 5px;
+    width: 200px;
+    
 }
 .cast-ProfileImage{
-    background-color: beige;
+    width: 30px;
+    height: 30px;
+}
+.profileImage{
+  max-width:50px;
+  max-height:50px;
+  border-radius: 5px;
+}
+.cast-producer{
+  color: rgb(204, 204, 204);
+  font-size: 14px;
+}
+.cast-acter{
+  color: rgb(204, 204, 204);
+  font-size: 14px;
 }
 .cast-Info{
     display: flex;
@@ -95,7 +113,6 @@ ul {
   display: flex;
   flex-direction: column;
   height: 50%;
-  margin: 20px 300px 20px 300px;
 }
 .reviews-Header {
 }
