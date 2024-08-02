@@ -1,13 +1,18 @@
-ul {
-  list-style: none; /* 마커(불릿)를 제거합니다. */
-  padding: 0; /* 기본 패딩을 제거합니다. */
-  margin: 0; /* 기본 마진을 제거합니다. */
+@font-face {
+  font-family: "main";
+  src: url(../font/sugarmagicpersonaluseonly-jemyo.otf);
 }
-.parent{
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; 
+}
+.inner{
+  max-width: 1600px;
   color: white;
-  margin: 100px auto 100px auto;
+  margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.743);
-  width: 75%;
+  width: 75%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
