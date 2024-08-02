@@ -1,0 +1,49 @@
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 p,
+ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+li {
+    list-style: none;
+}
+
+
+/* * * * * * * * * * * * * * * * 평점 * * * * * * * * * * * * * * * * */
+.recent-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 20px;
+    width: 100%;
+}
+
+.recent-container {
+    width: calc(33.3333% - 1rem);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.recent-img {
+    width: 100%;
+}
+
+.recent-img img {
+    width: 100%;
+    /* width: 384px; */
+    /* height: 216px; */
+    object-fit: cover;
+    display: block;
+}
