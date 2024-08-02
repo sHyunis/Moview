@@ -12,10 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     reviewCards.innerHTML = ""; //초기화
     comments.forEach(({ name, review }, index) => {
       // 카드목록, 제목, 내용 생성
-      // const reviewContent = ``;
       const reviewLi = document.createElement("li");
       reviewLi.className = "review-card";
-      reviewLi.dataset = index;
+      reviewLi.dataset.index = index;
       const reviewCardContent = `
       <div class="review-card-id">${name}</div>
       <div class="review-card-content">${review}</div>
@@ -32,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 댓글내용 저장
-  function addComment(name, comment) {
+  function addComment(name, review) {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
-    comments.push({ name, comment });
+    comments.push({ name, review });
     localStorage.setItem("comments", JSON.stringify(comments));
   }
 
@@ -42,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   reviewForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const name = userId.value;
-    const comment = reviewComment.value;
+    const review = reviewComment.value;
     // 기존저장배열 + 새로운 배열 로컬에 저장(로컬저장시 문자열반환)
-    if (name && comment) {
-      addComment(name, comment);
+    if (name && review) {
+      addComment(name, review);
       //초기화
       userId.value = "";
       reviewComment.value = "";
@@ -59,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function deleteReview(event) {
     const reviewLi = event.target.closest(".review-card");
-    const reviewCard = document.getElementsByClassName("review-card");
     const index = reviewLi.dataset.index;
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments.splice(index, 1);
