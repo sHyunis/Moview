@@ -49,9 +49,9 @@ btnJoinUp.addEventListener("click", async () => {
     // 사용자 추가 또는 중복 메시지 출력
     if (!userChk) {
       await addDoc(collection(db, "user"), doc);
-      console.log("사용자가 성공적으로 추가되었습니다.");
+      alert("사용자가 성공적으로 추가되었습니다.");
     } else {
-      console.log("중복된 아이디가 있습니다.");
+      alert("중복된 아이디가 있습니다.");
     }
 
 
