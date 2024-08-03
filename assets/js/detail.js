@@ -1,23 +1,19 @@
 // 현재 detail페이지의 id 가져오기
-
 document.addEventListener("DOMContentLoaded", () => {
-  //window.location.search가 "?id=12345"를 반환하면
-  //URLSearchParams 객체로 get 메소드를 사용하여 특정 쿼리 파라미터의 값을 추출
-
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get("id");
-  //해당 영화 아이디 console.log로 찍어보고
   console.log(movieId);
 
   if (movieId) {
-    // 영화 id가 있으면 데이터 가져와서 fetchMovieDetails의 인자로 전달ㄱㄱ
     fetchMovieDetails(movieId);
     fetchMovieCredits(movieId);
   } else {
     console.error("영화 ID를 찾을 수 없어요.");
   }
-});
 
+  // 슬라이더 초기화
+  setupSlider();
+});
 
 // 데이터 요청
 // Promise 체이닝(fetch, then)에서  async/await 문법으로 변경했음
@@ -108,7 +104,9 @@ function showCastInfo(credit) {
   showCastInfoArea.innerHTML = `
                 <li class="cast-card">
                   <div class="cast-profileImage" style="background-size: cover;">
-                  <img class="profileImage" src="https://image.tmdb.org/t/p/w300${Producer.profile_path}" alt="이미지">
+                  <img class="profileImage" src="https://image.tmdb.org/t/p/w300${Producer.profile_path}" alt="이미지"
+                  onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'"
+                  >
                  </div> 
                 <div class="cast-info">
                   <div class="cast-name">${Producer.name}</div>
@@ -116,7 +114,7 @@ function showCastInfo(credit) {
                 </div>
                 </li>`;
 // 배우들 카드 형식으로 html 붙여주기
-  castList.slice(0,12).forEach(cast => {
+  castList.slice(0,11).forEach(cast => {
     const showCastInfoArea = document.querySelector(".cast-list");
     const profileImgUrl = cast.profile_path;
     const listItem = document.createElement("li");
@@ -124,11 +122,13 @@ function showCastInfo(credit) {
 
     listItem.innerHTML = `
                 <div class="cast-profileImage" style="background-size: cover;">
-                  <img class="profileImage" src="https://image.tmdb.org/t/p/w300${profileImgUrl}" alt="이미지">
+                  <img class="profileImage" src="https://image.tmdb.org/t/p/w300${profileImgUrl}" alt="이미지"
+                  onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'"
+                  >
                  </div> 
                 <div class="cast-info">
                   <div class="cast-name">${cast.name}</div>
-                  <div class="cast-acter">배우<div>
+                  <div class="cast-actor">배우<div>
                 </div>
                   `;
       showCastInfoArea.appendChild(listItem);

@@ -5,45 +5,40 @@
 ul {
   list-style: none;
   padding: 0;
-  margin: 0; 
+  margin: 0;
 }
-.inner{
+.inner {
+ position: relative;
+  min-width: 1200px;
   max-width: 1600px;
   max-height: 800px;
   color: white;
-  margin: 100px auto 100px auto;
+  margin: 100px auto;
   background-color: rgba(0, 0, 0, 0.743);
-  width: 75%; 
+  width: 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 8px;
+  overflow: hidden;
 }
+/* 영화 정보 */
 .movie-info {
   height: 400px;
-
   display: flex;
   flex-direction: row;
 }
-.movie-castReviews {
-  width: 70%;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
 
-/* movie-info 왼쪽 공간  */
 .movie-info-left {
   width: 33%;
 }
 .movie-poster {
-  width: 100%; 
-  max-width: 200px; 
-  margin: 50px 80px 0px auto; 
-  display: flex; 
+  width: 100%;
+  max-width: 200px;
+  margin: 50px 80px 0 auto;
+  display: flex;
 }
-/* movie-info 가운데 공간 */
+
 .movie-info-middle {
   display: flex;
   flex-direction: column;
@@ -52,11 +47,11 @@ ul {
 .movie-summary {
   display: flex;
   flex-direction: column;
-  margin: 50px auto 0px 50px;
+  margin: 50px auto 0 50px;
   font-size: 16px;
   gap: 10px;
 }
-/* movie-info 오른쪽 공간 */
+
 .movie-info-right {
   width: 33%;
 }
@@ -64,16 +59,29 @@ ul {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  margin: 50px auto 0px 30px;
+  margin: 50px auto 0 30px;
 }
-/* movie-castReives 감독/출연  */
+
+/* 영화 캐스트 및 리뷰  */
+.movie-castReviews {
+  position: relative;
+  width: 70%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+/* 영화 캐스트 */
 .movie-castReviews-cast {
   display: flex;
   flex-direction: column;
   margin: 20px;
 }
+.cast-header > h2 {
+  display: inline-block;
+}
 .cast-list {
-  height: 100%;
+  margin-top: 30px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -81,39 +89,51 @@ ul {
   gap: 15px;
   justify-content: flex-start;
 }
-.cast-card{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    width: 200px;
-    
+.cast-card {
+  width: calc(100% / 4.24);
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  border-bottom: 1px solid rgba(90, 89, 89, 0.644);
+  white-space: nowrap;
+  overflow: hidden;
 }
-.cast-ProfileImage{
-    width: 30px;
-    height: 30px;
+.cast-ProfileImage {
+  width: 50px;
+  height: 50px;
 }
-.profileImage{
-  max-width:50px;
-  max-height:50px;
+.profileImage {
+  max-width: 50px;
+  max-height: 50px;
   border-radius: 5px;
 }
-.cast-producer{
-  color: rgb(204, 204, 204);
+.cast-producer {
+  color: rgb(153, 153, 153);
   font-size: 14px;
 }
-.cast-acter{
-  color: rgb(204, 204, 204);
+.cast-actor {
+  color: rgb(153, 153, 153);
   font-size: 14px;
 }
-.cast-Info{
-    display: flex;
-    flex-direction: column;
+.cast-Info {
+  display: flex;
+  flex-direction: column;
 }
+/* 영화 리뷰 */
 .movie-castReviews-reviews {
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 100%; /* 높이 설정 */
 }
-.reviews-Header {
+.reviews-header {
+  margin-bottom: 10px;
 }
-/* movie- */
+.review-list {
+  flex-grow: 1;
+}
+.review-card {
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}

@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail page</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail page</title>
   <link rel="stylesheet" href="../assets/css/detail.css" />
-  <body>
-    <div id="detail">
-      <div class="inner">
-        <div class="Header"></div>
-        <div class="movie-info">
-          <div class="movie-info-left">
-            <div class="movie-poster">
-              <!-- 영화 포스터 -->
-              영화 포스터
-            </div>
-          </div>
-          <div class="movie-info-middle">
-            <div class="movie-summary">
-              <!-- 영화 정보 -->
-            </div>
-          </div>
-          <div class="movie-info-right">
-            <!-- 좋아요 버튼, 리뷰 기능 -->
-            <div class="movie-options">
-              <button>하트이미지</button>
-              <button>관람평작성</button>
-              <button>더보기이미지</button>
-            </div>
+  <link rel="stylesheet" href="../assets/css/detailSlide.css">
+</head>
+<body>
+  <div id="detail">
+    <div class="inner">
+      <div class="Header"></div>
+      <div class="movie-info">
+        <div class="movie-info-left">
+          <div class="movie-poster">
+            <!-- 영화 포스터 -->
           </div>
         </div>
-        <div class="movie-castReviews">
-          <!-- 영화 출연진/감독/제조사나 배급사 등 -->
-          <div class="movie-castReviews-cast">
-            <div class="cast-header">
-              <h2>감독/출연</h2>
-            </div>
-            <ul class="cast-list"></ul>
+        <div class="movie-info-middle">
+          <div class="movie-summary">
+            <!-- 영화 정보 -->
           </div>
-          <!-- <div class="movie-castReviews-reviews">
-            <div class="reviews-header">
-              <h2>관람평</h2>
-            </div>
-            <div class="review-list">
-              <div class="review-card">댓글</div>
-            </div>
-          </div> -->
+        </div>
+        <div class="movie-info-right">
+          <!-- 좋아요 버튼, 리뷰 기능 -->
+          <div class="movie-options">
+            <button>하트이미지</button>
+            <button>관람평작성</button>
+            <button>더보기이미지</button>
+          </div>
         </div>
       </div>
+      <div class="movie-castReviews">
+        <div class="slider">
+          <!-- 슬라이드 1 영화 출연진/감독 -->
+          <div class="slide">
+            <div class="movie-castReviews-cast">
+              <div class="cast-header">
+                <h2>감독/출연</h2>
+              </div>
+              <ul class="cast-list"></ul>
+            </div>
+          </div>
+          <!-- 슬라이드 2 관람평 -->
+          <div class="slide">
+            <div class="movie-castReviews-reviews">
+              <div class="reviews-header">
+                <h2>관람평</h2>
+              </div>
+              <div class="review-list">
+                <div class="review-card">댓글</div>
+              </div>
+            </div>
+          </div>
+          <!-- 슬라이드 3 추가 정보 -->
+          <div class="slide">
+            <div>
+              <h2>상영 OTT 정보</h2>
+              <p>여기에 추가 정보</p>
+            </div>
+          </div>
+        </div>
     </div>
-    <script src="../assets/js/detail.js"></script>
-  </body>
+    <button class="slide-button left">←</button>
+    <button class="slide-button right">→</button>
+    </div>
+  </div>
+  <script src="../assets/js/detail.js"></script>
+  <script src="../assets/js/detailSlide.js"></script>
+</body>
 </html>
