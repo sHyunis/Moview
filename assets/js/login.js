@@ -66,7 +66,7 @@ btnLogin.addEventListener("click", async () => {
       alert("로그인이 완료되었습니다.");
       sessionStorage.setItem("loginState", "true"); // 로그인 상태 저장
       sessionStorage.setItem("userLoginId", userLoginId); // 로그인 아이디 저장
-      window.location.href = "/Moview/index.html";
+      window.location.href = "/";
     } else if (!idChk && pwChk) {
       alert("아이디를 확인해 주세요.");
     } else if (idChk && !pwChk) {
@@ -85,5 +85,5 @@ btnLogin.addEventListener("click", async () => {
 btnLogout.addEventListener("click", async () => {
   await sessionStorage.removeItem("loginState");
   alert("로그아웃 되었습니다.");
-  window.location.href = "/Moview/index.html";
+  window.location.href = "/";
 })
