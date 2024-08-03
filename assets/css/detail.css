@@ -120,29 +120,17 @@ ul {
 .cast-Info {
   display: flex;
   flex-direction: column;
-.cast-Info {
-  display: flex;
-  flex-direction: column;
 }
 /* 영화 리뷰 */
 .movie-castReviews-reviews {
   display: flex;
   flex-direction: column;
   height: 100%; /* 높이 설정 */
+  overflow-y: auto;
 }
 .reviews-header {
   margin-bottom: 10px;
 }
-.review-list {
-  flex-grow: 1;
-}
-.review-card {
-  margin: 10px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-}
-
 .reviews-header h2 {
   font-size: 30px;
   margin-bottom: 30px;
@@ -151,7 +139,7 @@ ul {
 
 /* comment */
 
-.review-List {
+.review-ist {
   width: 100%;
 }
 #review-form {
@@ -248,3 +236,4 @@ ul {
 .reviews-header-2 h4 {
   font-size: 30px;
 }
+
