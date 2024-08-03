@@ -197,6 +197,7 @@ header h1 {
 .card-img {
   width: 100%;
   height: 300px;
+  cursor: grab;
 }
 .card-img img {
   width: 100%;
@@ -249,5 +250,3 @@ header h1 {
 .homeButton {
   cursor: grab;
 }
-
-/* nav 바 css */

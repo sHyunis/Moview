@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detail page</title>
   <link rel="stylesheet" href="../assets/css/detail.css" />
+  <link rel="stylesheet" href="../assets/css/common.css">
   <link rel="stylesheet" href="../assets/css/detailSlide.css">
 </head>
 <body>
@@ -46,12 +47,36 @@
           <div class="slide">
             <div class="movie-castReviews-reviews">
               <div class="reviews-header">
-                <h2>관람평</h2>
+                  <h2>Make a Review</h2>
               </div>
-              <div class="review-list">
-                <div class="review-card">댓글</div>
+              <div class="review-List">
+                  <form id="review-form">
+                      <input id="user-name" placeholder="Id" type="text" required>
+
+                      <label class="comment-label" for="review-comment"></label>
+                      <textarea id="review-comment" type="text" required placeholder="Movie review!"></textarea>
+                      <button class="review-button" type="submit">Upload</button>
+                  </form>
+
+                  <div class="reviews-header-2">
+                      <h4>MovieReview</h4>
+                  </div>
+                  <div id="review-cards">
+
+                      <!-- <li class=" review-card">
+                      <div class="review-card-id">
+                          ${name}
+                      </div>
+                      <div class="review-card-content">
+                          ${review}
+                      </div>
+                      <button class="review-modify-button">수정</button>
+                      <button class="review-delete-button">삭제</button>
+                      </li> -->
+                  </div>
               </div>
-            </div>
+          </div>
+           </div>
           </div>
           <!-- 슬라이드 3 추가 정보 -->
           <div class="slide">
@@ -68,5 +93,6 @@
   </div>
   <script src="../assets/js/detail.js"></script>
   <script src="../assets/js/detailSlide.js"></script>
+  <script src="../assets/js/comment.js"></script>
 </body>
 </html>

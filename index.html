@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="./assets/css/common.css">
     <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/hamburgerMenu.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,10 +24,25 @@
 <body>
 
     <header>
+        <div class="hamburger">
+            <img id="menu-button" src="/assets/img/menuIcon.png" alt="hamburger-icon">
+            <div id="hamburger-menu" class="hamburger-menu">
+                <div id="menu-close-button"><img src="/assets/img/closeIcon.png" alt="closeIcon">
+                </div>
+                <a href="/index.html">
+                    <h2>MOVIEW</h2>
+                </a>
+                <ul class="hamburger-nav">
+                    <li><a id="header-btn-login" href="/view/member_login.html">LogIn</a></li>
+                    <li><a id="header-btn-logout" href="#">LogOut</a></li>
+                    <li><a id="header-btn-signup" href="/view/member_signup.html">SignUp</a></li>
+                    <li><a id="header-btn-mypage" href="/view/myPage.html">MyPage</a></li>
+
+                </ul>
+            </div>
+        </div>
         <h1>THISISMOVIE</h1>
     </header>
-    <button onclick="getLanguageUrl('KR')">KR</button>
-    <button onclick="getLanguageUrl('EN')">EN</button>
     <section>
         <div class="container1">
             <p class="containerP-1">Mo<span>vie</span></p>
@@ -38,7 +54,6 @@
         </div>
 
         <!--장르메뉴바-->
-
         <div class="section2">
             <form class="search">
                 <input type="text" id="searchInput" placeholder="Search Movie">
@@ -61,9 +76,20 @@
                 <img class="beforeButton" src="./assets/img/beforeButton.png" alt="beforeButton">
                 <img class="topButton" src="./assets/img/searchIcon.png" alt="upArrow">
                 <img class="homeButton" src="./assets/img/HomeButton.png" alt="HomeButton">
-                <a style="background-color: red;" href="./view/myPage_temp.html">
+                <a style="background-color: red;" href="./view/myPage.html">
                     <img class="homeButton" src="./assets/img/test_img/myPageButton.png" alt="MyPageButton">
                 </a>
+
+                <button id="btn-lang-kr" class="btn-lang">KR</button>
+                <button id="btn-lang-en" class="btn-lang">EN</button>
+
+
+
+                <a style="background-color: white; font-size:16px; border-top:1px solid black;"
+                    href="./view/recent.html">
+                    최근
+                </a>
+
             </div>
 
 
@@ -73,8 +99,10 @@
     </section>
 
     <script src="./assets/js/api.js"></script>
+    <script src="./assets/js/language.js"></script>
     <script src="./assets/js/index.js" type="module"></script>
     <script src="./assets/js/event.js" type="module"></script>
+    <script src="./assets/js/menuToggle.js"></script>
 </body>
 
 </html>

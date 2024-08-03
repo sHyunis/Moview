@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "main";
+    src: url(../font/sugarmagicpersonaluseonly-jemyo.otf);
+}
+
 body,
 div,
 span,
@@ -14,6 +19,11 @@ ul {
     vertical-align: baseline;
 }
 
+body {
+    background-color: black;
+}
+
+
 li {
     list-style: none;
 }
@@ -26,9 +36,29 @@ li {
 
 .activity {
     width: 100vw;
-    max-width: 1200px;
+    max-width: 1600px;
     min-width: 1100px;
     margin: 0 auto;
+}
+
+.activity-header {
+    font-family: "main";
+    border-bottom: 1px solid rgb(255, 230, 160);
+}
+
+.activity-header-title h3 {
+    font-size: 6rem;
+    color: rgb(160, 177, 255);
+}
+
+.activity-header-title span {
+    font-size: 6rem;
+    color: rgb(212, 192, 255);
+}
+
+.activity-tab {
+    font-size: 3rem;
+    color: rgb(255, 230, 160);
 }
 
 .activity-header-type {
@@ -37,19 +67,30 @@ li {
 }
 
 .selected {
-    color: red;
+    color: rgb(255, 141, 232);
+}
+
+.common-list {
+    color: cornsilk;
 }
 
 /* * * * * * * * * * * * * * * * 평점 * * * * * * * * * * * * * * * * */
-.rating-list {
+.row-list {
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-between; */
     gap: 20px;
     width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.rating-container {
+.row-list::-webkit-scrollbar {
+    display: none;
+}
+
+
+.row-container {
     width: calc(33.3333% - 1rem);
     margin-top: 2rem;
     display: flex;
@@ -57,11 +98,11 @@ li {
     justify-content: start;
 }
 
-.rating-img {
+.row-img {
     width: 100%;
 }
 
-.rating-img img {
+.row-img img {
     width: 100%;
     /* width: 384px; */
     /* height: 216px; */
@@ -71,7 +112,7 @@ li {
 
 
 /* * * * * * * * * * * * * * * * 리뷰 & 좋아요 * * * * * * * * * * * * * * * * */
-.common-list {
+.column-list {
     display: flex;
     /* flex-wrap: wrap; */
     flex-direction: column;
@@ -80,9 +121,15 @@ li {
     height: 900px;
     /* overflow-y: hidden; */
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.common-container {
+.column-list::-webkit-scrollbar {
+    display: none;
+}
+
+.column-container {
     width: 100%;
     margin-top: 2rem;
     display: flex;
@@ -90,29 +137,29 @@ li {
     gap: 20px;
 }
 
-.common-img {
+.column-img {
     width: calc(18%);
 }
 
-.common-img img {
+.column-img img {
     /* width: 100%; */
     width: 206px;
     height: 116px;
     object-fit: cover;
 }
 
-.common-contents {
+.column-contents {
     display: flex;
     flex-direction: column;
     width: calc(62%);
 }
 
-.common-contents div {
+.column-contents div {
     display: flex;
     gap: 5px;
 }
 
-.common-date {
+.column-date {
     display: flex;
     justify-content: end;
     width: calc(20%);
