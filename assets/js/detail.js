@@ -7,47 +7,56 @@ document.addEventListener("DOMContentLoaded", () => {
   if (movieId) {
     fetchMovieDetails(movieId);
     fetchMovieCredits(movieId);
+    fetchMovieOTT(movieId);
   } else {
     console.error("영화 ID를 찾을 수 없어요.");
   }
-
-  // 슬라이더 초기화
-  setupSlider();
 });
+const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
 
-// 데이터 요청
+// 영화 데이터 요청
 // Promise 체이닝(fetch, then)에서  async/await 문법으로 변경했음
 async function fetchMovieDetails(id) {
   // API 요청하기 위해서 apiKey랑 apiUrl 가져오기 일단 전체 영화가 담긴 apiURL로 가져오자
-  const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
   const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=ko-KR`;
   try {
-      const response = await fetch(apiUrl);
-      const movieData = await response.json();
-      //console.log로 먼저 데이터가 정확히 들어오는지 확인해보기
-      console.log(movieData);
-      //받아온 data로 html에 적용시켜야 하니까 showMovieDetails 함수에 데이터를 인자로 보내주기
-      showMovieDetails(movieData);
+    const response = await fetch(apiUrl);
+    const movieData = await response.json();
+    //console.log로 먼저 데이터가 정확히 들어오는지 확인해보기
+    console.log(movieData);
+    //받아온 data로 html에 적용시켜야 하니까 showMovieDetails 함수에 데이터를 인자로 보내주기
+    showMovieDetails(movieData);
   } catch (error) {
-      console.error("상세페이지 에러:", error);
+    console.error("상세페이지 에러:", error);
   }
 }
 
 // 크레딧 데이터 요청 방식은 fetchMovieDetails()와 똑같음
 async function fetchMovieCredits(id) {
-  const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
   const apiUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=ko`;
 
   try {
-      const response = await fetch(apiUrl);
-      const creditdata = await response.json();
-      console.log(creditdata);
-      showCastInfo(creditdata);
+    const response = await fetch(apiUrl);
+    const creditdata = await response.json();
+    console.log(creditdata);
+    showCastInfo(creditdata);
   } catch (error) {
-      console.error("크레딧 페이지 에러:", error);
+    console.error("크레딧 페이지 에러:", error);
   }
 }
 
+// OTT 데이터 요청
+async function fetchMovieOTT(id) {
+  const apiUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiKey}`;
+  try {
+    const response = await fetch(apiUrl);
+    const ottData = await response.json();
+    console.log("무비 오티티 =>", ottData);
+    showOttData(ottData);
+  } catch (error) {
+    console.error("OTT 정보 에러:", error);
+  }
+}
 
 function showMovieDetails(movie) {
   if (movie) {
@@ -98,7 +107,7 @@ function showMovieInfo(movie) {
 // 직무가 감독인 스텝 가지고 와서 html 붙여주기
 function showCastInfo(credit) {
   const castList = credit.cast;
-  const Producer = credit.crew.find(step => step.job === "Director");
+  const Producer = credit.crew.find((step) => step.job === "Director");
   const showCastInfoArea = document.querySelector(".cast-list");
 
   showCastInfoArea.innerHTML = `
@@ -113,9 +122,8 @@ function showCastInfo(credit) {
                   <div class="cast-producer">감독</div>
                 </div>
                 </li>`;
-// 배우들 카드 형식으로 html 붙여주기
-  castList.slice(0,11).forEach(cast => {
-    const showCastInfoArea = document.querySelector(".cast-list");
+  // 배우들 카드 형식으로 html 붙여주기
+  castList.slice(0, 11).forEach((cast) => {
     const profileImgUrl = cast.profile_path;
     const listItem = document.createElement("li");
     listItem.className = "cast-card";
@@ -131,6 +139,31 @@ function showCastInfo(credit) {
                   <div class="cast-actor">배우<div>
                 </div>
                   `;
-      showCastInfoArea.appendChild(listItem);
+    showCastInfoArea.appendChild(listItem);
   });
+
+}
+
+function showOttData(ottData) {
+  const ottList = ottData.results.US.flatrate;
+  console.log("ott=>", ottList);
+  const showOttDataArea = document.querySelector(".ott-list");
+
+  ottList.slice(0, 6).forEach((ott)=>{
+    const ottLogo = ott.logo_path;
+    const listItem = document.createElement("li");
+    listItem.innerHTML = 
+    `
+        <divstyle="background-size: cover;">
+        <img class="profileImage" src="https://image.tmdb.org/t/p/w300${ottLogo}" alt="이미지"
+        onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'"
+        >
+        </divstyle=> 
+        <div>
+          <div>${ott.provider_name}</div>
+          <div></div>
+        </div>
+    `;
+    showOttDataArea.appendChild(listItem);
+  })
 }
