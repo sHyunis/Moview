@@ -32,7 +32,7 @@ async function fetchUrl() {
     .then((response) => response.json())
     .then((data) => {
       const movies = data.results;
-      changeMovieLang("en")
+      changeMovieLang("en");
       // [김민규] like 기능 적용을 위해 세션에 저장
       sessionStorage.removeItem("language");
       sessionStorage.setItem("language", LANG_EN);
