@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // api 요청 함수 
 
 function fetchMovieDetails(id) {
-    // API 요청하기 위해서 apiKey랑 apiUrl 가져오기 일단 전체 영화가 담긴 apiURL로 가져오자
-    const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
+  // API 요청하기 위해서 apiKey랑 apiUrl 가져오기 일단 전체 영화가 담긴 apiURL로 가져오자
+  const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
+  const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -38,13 +38,13 @@ function fetchMovieDetails(id) {
 }
 
 function showMovieDetails(movie) {
-    if(movie) {
-        showImages(movie);
-        showMovieInfo(movie);
-        showCastInfo(movie);
-    } else {
-        console.error("전달받은 영화데이터 없음.");
-    }
+  if (movie) {
+    showImages(movie);
+    showMovieInfo(movie);
+    showCastInfo(movie);
+  } else {
+    console.error("전달받은 영화데이터 없음.");
+  }
 }
 
 //영화 포스터 및 백 그라운드(백드롭)이미지 붙여주는 함수
@@ -64,17 +64,17 @@ function showImages(movie) {
 }
 
 //영화 정보들 (제목, 장르, 개봉일, 등등) 보여주는 함수
-function showMovieInfo(movie){
+function showMovieInfo(movie) {
 
-    //영화 소개 데이터를 붙여줄 div의 클래스를 지정
-    const movieInfoArea = document.querySelector(".movie-info-middle");
+  //영화 소개 데이터를 붙여줄 div의 클래스를 지정
+  const movieInfoArea = document.querySelector(".movie-info-middle");
 
-    //장르는 배열에 객체들이 담겨 있어서 map으로 장르 이름을 가져와서 join 메소드로 / 슬래시를 붙여줌
-    const genres = movie.genres.map(genre => genre.name).join('/');
+  //장르는 배열에 객체들이 담겨 있어서 map으로 장르 이름을 가져와서 join 메소드로 / 슬래시를 붙여줌
+  const genres = movie.genres.map(genre => genre.name).join('/');
 
-    //런타임은 나중에 시간과 분으로 표기할 예정
+  //런타임은 나중에 시간과 분으로 표기할 예정
 
-    movieInfoArea.innerHTML = `
+  movieInfoArea.innerHTML = `
         <div class="movie-summary">
             <h1>${movie.title}</h1>
             <div>${movie.original_title}</div>
@@ -82,12 +82,12 @@ function showMovieInfo(movie){
             <div>${movie.runtime}Min · ${movie.origin_country}</div>
             <div>평점 : ${movie.vote_average}</div>
           </div>
-    `; 
+    `;
 }
-function showCastInfo(movie){
-    console.log("캐스트인포 실행")
-    const showCastInfoArea = document.querySelector(".cast-list");
-    showCastInfoArea.innerHTML = `
+function showCastInfo(movie) {
+  console.log("캐스트인포 실행")
+  const showCastInfoArea = document.querySelector(".cast-list");
+  showCastInfoArea.innerHTML = `
             <li class="cast-Card">
               <div class="cast-profileImage">프로필</div> 
               <div class="cast-info">
