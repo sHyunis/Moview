@@ -89,6 +89,16 @@ document.querySelector(".search").addEventListener("submit", (e) => {
 });
 
 
+document.querySelector('#movie-container').addEventListener('click', (e) => {
+
+  debugger;
+
+  const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
+  recentMovies.unshift(movie);
+
+  localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
+})
+
 document.addEventListener('mouseover', function (event) {
   const targetElement = event.target;
 
