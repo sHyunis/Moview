@@ -270,14 +270,15 @@ header h1 {
 .movie-title {
   font-family: 'Pretendard-Regular';
   width: 100%;
+  height: 65%;
   padding: 5px;
-  font-size: 20px;
+  font-size: 1.3rem;
   font-weight: 500;
   padding-bottom: 10px;
   margin-bottom: 3px;
   color: rgb(255, 250, 235);
   border-bottom: 1px solid rgb(255, 250, 235);
-  white-space: nowrap
+  /* white-space: nowrap */
 }
 
 .movie-overview {
