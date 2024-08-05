@@ -9,22 +9,44 @@ const options = {
 const API_KEY = "fbf16579bff5b8c3f6664841d9dd0613";
 const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 const BASE_URL = `https://api.themoviedb.org/3/movie`;
-const LANG_KR = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_origin_country=KR&with_genres=16&without_genres=10749}&page=1`;
-const LANG_EN = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&with_origin_country=US&with_genres=16&without_genres=10749}&page=1`;
 
+function getUrl(language) {
+  let countryCode = language.toUpperCase();
+
+  return `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_origin_country=${countryCode}&without_genres=10749,18&page=1`;
+}
 
 /*
  * 언어 변경 API 함수 입니다.
  * 언어가 추가될 경우 if문 추가, language.js 이벤트 리스너 추가하시면 됩니다.
 */
 async function changeMovieLang(language) {
-  let url;
-  if (language === 'kr') url = LANG_KR;
-  else if (language === 'en') url = LANG_EN;
+  const url = getUrl(language);;
+
   try {
     const res = await fetch(url);
     const data = await res.json();
     handleMovieRender(data.results, url);
+
+    data.results.forEach(movie => {
+      document.querySelectorAll(".movie-card").forEach(card => {
+        const cardID = card.querySelector(".card-id").innerText;
+        card.addEventListener("click", (e) => {
+          if (!e.target.classList.contains("movie-like")) { // 좋아요 제외 
+            console.log("testtest => ", movie.id);
+            (window.location.href = `./view/detail.html?id=${cardID}`)
+
+            /** 최근 본 목록  localStorage에 저장 * */
+            const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
+            recentMovies.push(movie);
+
+            localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
+            /** 최근 본 목록  localStorage에 저장 끝 * */
+          }
+        });
+      })
+    })
+
   } catch (e) {
     console.log("language api error =>", e);
   }
@@ -54,4 +76,6 @@ async function getMovieLike(movieTitle) {
     }
   }
 }
+
+
 
