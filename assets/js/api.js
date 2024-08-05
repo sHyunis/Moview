@@ -25,6 +25,26 @@ async function changeMovieLang(language) {
     const res = await fetch(url);
     const data = await res.json();
     handleMovieRender(data.results, url);
+
+    data.results.forEach(movie => {
+      console.log(movie, movie.id)
+      document.querySelectorAll(".movie-card").forEach(card => {
+        card.addEventListener("click", (e) => {
+          console.log("a");
+          if (!e.target.classList.contains("movie-like")) { // 좋아요 제외 
+            (window.location.href = `./view/detail.html?id=${movie.id}`)
+
+            /** 최근 본 목록  localStorage에 저장 * */
+            const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
+            recentMovies.push(movie);
+
+            localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
+            /** 최근 본 목록  localStorage에 저장 끝 * */
+          }
+        });
+      })
+    })
+
   } catch (e) {
     console.log("language api error =>", e);
   }
@@ -54,4 +74,6 @@ async function getMovieLike(movieTitle) {
     }
   }
 }
+
+
 
