@@ -54,7 +54,7 @@ function handleMovieRender(movies, language) {
   const movieContainer = document.getElementById("movie-container");
 
   // [이준열] : movie-card에 이벤트를 넣으려면 innerHTML이 아닌 HTML'객체' 로 반환되어야 해서 수정했습니다.
-  // movieContainer.innerHTML = "";
+  movieContainer.innerHTML = "";
   // movieContainer.innerHTML = movies.map(handleMovieCreate).join('');
   movies.forEach(movie => {
     movieContainer.appendChild(handleMovieCreate(movie));
