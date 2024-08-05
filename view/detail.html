@@ -54,12 +54,9 @@
           <!-- 슬라이드 2 관람평 -->
           <div class="slide">
             <div class="movie-castReviews-reviews">
-              <div class="progress-bar-circle">
-                <div class="progress-bar-inner">
-                </div>
-              </div>
-              <div class="reviews-header">
-                <h2>Make a Review</h2>
+              <div class="make-review-movie-review">
+                <h2 id="make-review-button">Make Review</h2>
+                <h2 id="see-review-button">Movie Review</h2>
               </div>
               <div class="review-list">
                 <form id="review-form">
@@ -69,10 +66,7 @@
                   <button class="review-button" type="submit">Upload</button>
                 </form>
 
-                <div class="reviews-header-2">
-                  <h4>MovieReview</h4>
-                </div>
-                <div id="review-cards">
+                <div id="review-cards" style="display: none;">
                   <!-- <li class="review-card">
                   <div class="review-card-id">
                     ${name}
@@ -85,7 +79,9 @@
                   </li> -->
                 </div>
               </div>
+
             </div>
+
           </div>
 
           <!-- 슬라이드 3 추가 정보 -->
