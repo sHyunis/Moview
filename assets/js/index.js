@@ -4,12 +4,17 @@ export function createMovieCard(movie) {
   card.className = "movie-card";
   card.innerHTML = `
     <div class = "card-img"><img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}"></div>
-    <div class = "movie-content">
-    <h3>${movie.title}</h3>
-    <p>${movie.overview}</p>
-    <span>Rating: ${movie.vote_average}</span>
+      <div class = "movie-content">
+      <h3>${movie.title}</h3>
+      <div class="movie-overview">
+      <p>${movie.overview.slice(0, 200)}</p>  
+      <span>Rating: ${movie.vote_average}</span> 
+      </div>
     </div>
-  `;
+    `;
+  // <span>Rating: ${movie.vote_average}</span> 
+  // <p>${movie.overview}</p>
+
   card.addEventListener("click", () => {
     (window.location.href = `./view/detail.html?id=${movie.id}`)
 
@@ -103,3 +108,28 @@ export async function countryFetchEng() {
 export async function setLanguage() {
   const movieContainer = document.getElementById("movie-container");
 }
+
+document.addEventListener('mouseover', function (event) {
+  const targetElement = event.target;
+
+  if (targetElement.closest('.movie-card')) {
+    const movieCard = targetElement.closest('.movie-card');
+    movieCard.style.filter = `brightness(50%)`;
+
+    const overView = movieCard.querySelector('.movie-overview');
+    overView.style.opacity = '1';
+  }
+}, { passive: false });
+
+
+document.addEventListener('mouseout', function (event) {
+  const targetElement = event.target;
+
+  if (targetElement.closest('.movie-card')) {
+    const movieCard = targetElement.closest('.movie-card');
+    movieCard.style.filter = `brightness(100%)`;
+
+    const overView = movieCard.querySelector('.movie-overview');
+    overView.style.opacity = '0';
+  }
+}, { passive: false });
