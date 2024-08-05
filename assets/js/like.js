@@ -44,11 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const sessionChk = await sessionStorage.getItem("loginState");
         const getId = e.target.closest(".movie-card").querySelector(".card-id").innerText;
+        const getTitle = e.target.closest(".movie-card").querySelector("h3").innerText;
+        const getOverView = e.target.closest(".movie-card").querySelector(".movie-overview").innerText;
+        const getImg = e.target.closest(".movie-card").querySelector("img").src;
         // console.log(getTitle);
         if (sessionChk) {
           // api 값 중 타이틀을 비교하기위해 파라미터로 값을 전달함
           // console.log("getTItle =>", getTitle);
-          getMovieLike(getId);
+          getMovieLike(getId, getImg, getTitle, getOverView);
           if (e.target.classList.contains("curr")) {
             e.target.classList.remove("curr")
             // localStorage.removeItem(getTitle);
@@ -85,9 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
  *    - 값이없다면, user_id,movie_id,like값을 전달할 newDoc객체에 저장함
  *      - 이후 새로 추가될 데이터를 db에 저장함
 */
-async function handleLikeAdd(id) {
+async function handleLikeAdd(id, likeImg, likeTitle, likeOverView) {
   const loginId = sessionStorage.getItem("userLoginId");
   const movieId = id;
+  const movieImg = likeImg;
+  const movieTitle = likeTitle;
+  const movieOverView = likeOverView;
 
   try {
     const likeQuery = query(
@@ -111,6 +117,9 @@ async function handleLikeAdd(id) {
       const newDoc = {
         user_id: loginId,
         movie_id: movieId,
+        movie_img: movieImg,
+        movie_title: movieTitle,
+        movie_over_view: movieOverView,
         like: true
       };
       await addDoc(collection(db, "like"), newDoc);
