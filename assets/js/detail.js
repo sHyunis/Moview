@@ -99,8 +99,8 @@ function showMovieInfo(movie) {
             <div>${movie.original_title}</div>
             <div>${movie.release_date} </div>
             <div>${genres}</div>
-            <div>${movie.runtime}Min · ${movie.origin_country}</div>
-            <div>평점 : ${movie.vote_average}</div>
+            <div>${movie.runtime}분 · ${movie.origin_country}</div>
+            <div>★ ${movie.vote_average}</div>
           </div>
     `;
 }
@@ -155,11 +155,11 @@ function showOttData(ottData) {
       const listItem = document.createElement("li");
       listItem.innerHTML = 
       `
-          <divstyle="background-size: cover;">
+          <div style="background-size: cover;">
           <img class="profileImage" src="https://image.tmdb.org/t/p/w300${ottLogo}" alt="이미지"
           onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'"
           >
-          </divstyle=> 
+          </div>
           <div>
             <div>${ott.provider_name}</div>
             <div></div>
@@ -172,7 +172,7 @@ function showOttData(ottData) {
 
     listItem.innerHTML = 
     `
-      <div>
+      <div class="">
         OTT 정보가 없습니다.
       </div>
     `;
