@@ -90,4 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 저장되어있던 댓글 표시
   uploadComment();
+
+  // 버튼누르면 후기쓰기, 후기보기
+  const makeReviewButton = document.getElementById("make-review-button");
+  const seeReviewButton = document.getElementById("see-review-button");
+
+  makeReviewButton.addEventListener("click", () => {
+    reviewCards.style.display = "none";
+    reviewForm.style.display = "block";
+  });
+  seeReviewButton.addEventListener("click", () => {
+    reviewCards.style.display = "block";
+    reviewForm.style.display = "none";
+  });
 });
