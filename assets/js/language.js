@@ -16,7 +16,7 @@ function handleMovieCreate(movie) {
       </div>
       <div class = "movie-content">
       <h3>${movie.title}</h3>
-      <p>${movie.overview.slice(0, 200)}</p> 
+      <p class="movie-overview">${movie.overview.slice(0, 200)}</p> 
       <span>Rating: ${movie.vote_average}</span>
       <em class="card-id" style="display:none;">${movie.id}</em>
       </div>    
@@ -40,3 +40,4 @@ function handleMovieRender(movies, language) {
 // 클릭 이벤트
 btnLanguageKr.addEventListener("click", () => changeMovieLang('kr'));
 btnLanguageEn.addEventListener("click", () => changeMovieLang('en'));
+
