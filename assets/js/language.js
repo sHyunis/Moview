@@ -38,6 +38,6 @@ function handleMovieRender(movies, language) {
 
 
 // 클릭 이벤트
-btnLanguageKr.addEventListener("click", () => changeMovieLang('kr'));
-btnLanguageEn.addEventListener("click", () => changeMovieLang('en'));
+btnLanguageKr.addEventListener("click", () => changeMovieLang('KR'));
+btnLanguageEn.addEventListener("click", () => changeMovieLang('US'));
 
