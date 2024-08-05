@@ -6,26 +6,18 @@
 const btnLanguageKr = document.getElementById("btn-lang-kr");
 const btnLanguageEn = document.getElementById("btn-lang-en");
 
+function getSlicedOverview(overview) {
+  if (!overview) return "줄거리가 없습니다."
 
+  if (overview.length >= 120) {
+    return `${overview.slice(0, 80)} . . .`
+  }
+
+  return overview;
+
+}
 // 리스트 생성
 function handleMovieCreate(movie) {
-  // [이준열] : movie-card에 이벤트를 넣으려면 innerHTML이 아닌 HTML'객체' 로 반환되어야 해서 수정했습니다.
-  // 확인 전 까지 우선 코드 놔두겠습니다!
-  // return `
-  //   <div class="movie-card">
-  //     <div class = "card-img">
-  //       <span class="movie-like">☆</span>
-  //       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-  //     </div>
-  //     <div class = "movie-content">
-  //     <h3>${movie.title}</h3>
-  //     <p class="movie-overview">${movie.overview.slice(0, 200)}</p> 
-  //     <span>Rating: ${movie.vote_average}</span>
-  //     <em class="card-id" style="display:none;">${movie.id}</em>
-  //     </div>    
-  //   </div>
-  // `
-
   /** 최근 본 목록  localStorage에 저장 * */
   const card = document.createElement("div");
   card.className = "movie-card";
@@ -36,7 +28,7 @@ function handleMovieCreate(movie) {
     </div>
     <div class="movie-content">
       <h3>${movie.title}</h3>
-      <p class="movie-overview">${movie.overview.slice(0, 200)}</p>
+      <p class="movie-overview">${getSlicedOverview(movie.overview)}</p>
       <span>Rating: ${movie.vote_average}</span>
       <em class="card-id" style="display:none;">${movie.id}</em>
     </div>
@@ -74,4 +66,3 @@ function handleMovieRender(movies, language) {
 // 클릭 이벤트
 btnLanguageKr.addEventListener("click", () => changeMovieLang('KR'));
 btnLanguageEn.addEventListener("click", () => changeMovieLang('US'));
-
