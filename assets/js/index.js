@@ -28,6 +28,7 @@ const db = getFirestore(app);
 
 
 async function fetchUrl() {
+  const url = getUrl("US");
   const makeCardFetchUrl = fetch(URL)
     .then((response) => response.json())
     .then((data) => {
@@ -35,7 +36,7 @@ async function fetchUrl() {
       changeMovieLang("US");
       // [김민규] like 기능 적용을 위해 세션에 저장
       sessionStorage.removeItem("language");
-      sessionStorage.setItem("language", LANG_EN);
+      sessionStorage.setItem("language", url);
       movieLikeChk();
     })
     .catch((error) => console.error("Error:", error));

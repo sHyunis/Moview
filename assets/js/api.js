@@ -21,7 +21,7 @@ function getUrl(language) {
  * 언어가 추가될 경우 if문 추가, language.js 이벤트 리스너 추가하시면 됩니다.
 */
 async function changeMovieLang(language) {
-  const url = getUrl(language);;
+  const url = getUrl(language);
 
   try {
     const res = await fetch(url);
@@ -54,15 +54,15 @@ async function changeMovieLang(language) {
  * 4. 해당 언어 api 데이터 중 title이 있는 데이터를 찾음
  * 5. 그 데이터의 id 값을 like.js의 handleLikeAdd()함수에 전달해줘야함
 */
-async function getMovieLike(movieTitle) {
-  let url = sessionStorage.getItem("language");
-  let title = movieTitle;
-  if (title) {
+async function getMovieLike(movieId) {
+  const url = getUrl("us");
+  let getMovieId = movieId;
+  if (getMovieId) {
     try {
       const res = await fetch(url);
       const data = await res.json();
       const movies = data.results;
-      const targetMovie = movies.filter(item => item.original_title === title);
+      const targetMovie = movies.filter(item => item.id === Number(getMovieId));
       handleLikeAdd(targetMovie[0].id);
     } catch (e) {
       console.log("getMovieLike Error =>", e);
