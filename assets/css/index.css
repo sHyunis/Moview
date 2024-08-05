@@ -232,6 +232,7 @@ header h1 {
 }
 
 .card-img {
+  position: relative;
   width: 100%;
   height: 300px;
   cursor: grab;
@@ -290,4 +291,18 @@ header h1 {
 .topButton,
 .homeButton {
   cursor: grab;
+}
+
+.movie-like {
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:30px;
+  height:30px;
+  z-index:1;
+  cursor:pointer;
+  font-size:30px;
+}
+.movie-like.curr {
+  color:yellow;
 }
