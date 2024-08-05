@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("영화 ID를 찾을 수 없어요.");
   }
 });
+
 const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
 
 // 영화 데이터 요청
@@ -80,7 +81,7 @@ function showMovieInfo(movie) {
     <div class="movie-summary">
         <h1>${movie.title}</h1>
         <div>${movie.original_title}</div>
-        <div>${movie.release_date} </div>
+        <div>${movie.release_date}</div>
         <div>${genres}</div>
         <div>${movie.runtime}분 · ${movie.origin_country}</div>
         <div>★ ${movie.vote_average}</div>
@@ -121,6 +122,11 @@ function showCastInfo(credit) {
       </div>`;
 
     showCastInfoArea.appendChild(listItem);
+
+    // 추가된 부분: 배우 이름을 클릭하면 해당 배우의 상세 페이지로 이동
+    listItem.querySelector(".cast-info").addEventListener("click", () => {
+      window.location.href = `actorDetail.html?id=${cast.id}`;
+    });
   });
 }
 
@@ -186,5 +192,10 @@ function similarMovie(similarData) {
       </div>`;
 
     similarGenreList.appendChild(similarLi);
+
+    // 추가된 부분: 비슷한 영화를 클릭하면 해당 영화의 상세 페이지로 이동
+    similarLi.querySelector(".similar-poster").addEventListener("click", () => {
+      window.location.href = `detail.html?id=${movie.id}`;
+    });
   });
 }

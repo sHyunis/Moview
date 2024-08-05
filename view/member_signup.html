@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원가입 테스트 페이지</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="../assets/css/signUp.css">
   <script type="module" src="../assets/js/join.js"></script>
 </head>
+
 <body>
-  <form id="join-box">
-    <input type="text" id="join-id" placeholder="아이디를 입력해주세요.">    
-    <input type="text" id="join-pw" placeholder="비밀번호를 입력해주세요.">
-    <button type="button" id="join-btn">회원가입</button>
-    <a type="button" href="./member_login.html">로그인</a>
-  </form>
+  <div class="wrapper">
+    <div class="header">
+      <div class="header-home-container">
+        <h1>THISISMOVIE</h1>
+        <a href="/index.html">
+          <h3>Moview</h3>
+        </a>
+      </div>
+    </div>
+    <div class="logo">
+      <img src="../assets/img/logo.png" alt="logo">
+    </div>
+    <div class="login-wrapper">
+      <header id="header-example">
+        <div class="inner">
+          <a id="header-btn-login" href="../index.html">HOME</a>
+          <a id="header-btn-login" href="./member_login.html">LOGIN</a>
+          <a id="header-btn-mypage" href="./myPage.html">MYPAGE</a>
+          <a href="./member_signup.html">SIGNUP</a>
+        </div>
+      </header>
+
+      <div id="login-wrap">
+        <h4 class="login-logo">SIGNUP</h4>
+        <form id="join-box">
+          <span class="id-inner">
+            <label for="join-id">ID</label>
+            <input type="text" id="join-id" placeholder="아이디를 입력해주세요.">
+          </span>
+          <span class="pw-inner">
+            <label for="join-pw">PW</label>
+            <input type="text" id="join-pw" placeholder="비밀번호를 입력해주세요.">
+          </span>
+          <button type="button" id="join-btn">회원가입</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
