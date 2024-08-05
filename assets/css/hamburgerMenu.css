@@ -10,7 +10,7 @@
   cursor: grab;
 }
 .hamburger-menu {
-  width: 200px;
+  width: 300px;
   height: 100%;
   margin: 0 auto;
   background-color: rgb(24, 24, 24);
@@ -41,14 +41,13 @@
   color: white;
   font-size: 20px;
   font-family: "main";
-
-  line-height: 80px;
+  line-height: 100px;
 }
 #menu-close-button {
   width: 40px;
   height: 40px;
   position: fixed;
-  left: 150px;
+  left: 240px;
   top: 20px;
 }
 #menu-close-button img {
