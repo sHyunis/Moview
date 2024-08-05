@@ -275,7 +275,7 @@ header h1 {
   position: absolute;
   position: sticky;
   bottom: 50%;
-  margin-left: 110%;
+  margin-left: 100%;
   border-radius: 5px;
 
   display: flex;
