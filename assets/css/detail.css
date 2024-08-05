@@ -9,7 +9,7 @@ ul {
   margin: 0;
 }
 .inner {
- position: relative;
+  position: relative;
   min-width: 1200px;
   max-width: 1600px;
   max-height: 800px;
@@ -236,3 +236,14 @@ ul {
 .reviews-header-2 h4 {
   font-size: 30px;
 }
+
+/* input, textarea 클릭시 테두리영역 없애기 */
+input:focus {
+  outline: none;
+}
+textarea:focus {
+  outline: none;
+}
+
+/* 프로그래스바 서클 */
+.progress-bar-circle
