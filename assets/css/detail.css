@@ -9,7 +9,7 @@ ul {
   margin: 0;
 }
 .inner {
- position: relative;
+  position: relative;
   min-width: 1200px;
   max-width: 1600px;
   max-height: 800px;
@@ -127,19 +127,26 @@ ul {
   flex-direction: column;
   height: 100%; /* 높이 설정 */
   overflow-y: auto;
+  position: relative;
+  -ms-overflow-style: none;
+  background-color: black;
+  padding: 30px;
 }
 .reviews-header {
   margin-bottom: 10px;
 }
 .reviews-header h2 {
   font-size: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  background-color: rgb(33, 33, 33);
+  text-align: center;
+  padding: 1rem;
 }
 /* movie- */
 
 /* comment */
 
-.review-ist {
+.review-list {
   width: 100%;
 }
 #review-form {
@@ -150,6 +157,7 @@ ul {
   flex-direction: column;
   position: relative;
   border-radius: 5px;
+  border: 1px solid gray;
 }
 
 #user-name {
@@ -157,6 +165,7 @@ ul {
   width: 100%;
   height: 20px;
   border: none;
+  border-bottom: 1px solid gray;
   color: white;
   font-size: 20px;
   padding: 20px;
@@ -191,6 +200,7 @@ ul {
   position: relative;
   margin-bottom: 30px;
   border-radius: 5px;
+  border: 1px solid gray;
 }
 .review-card-id {
   background-color: transparent;
@@ -200,6 +210,8 @@ ul {
   color: white;
   font-size: 20px;
   padding: 20px;
+  border-bottom: 1px solid gray;
+  line-height: 20px;
 }
 .review-card-content {
   width: 100%;
@@ -232,9 +244,82 @@ ul {
 .reviews-header-2 {
   margin-top: 30px;
   margin-bottom: 30px;
+
+  padding-top: 30px;
 }
 .reviews-header-2 h4 {
   font-size: 30px;
+  background-color: rgb(33, 33, 33);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* input, textarea 클릭시 테두리영역 없애기 */
+input:focus {
+  outline: none;
+}
+textarea:focus {
+  outline: none;
+}
+
+.movie-castReviews-reviews::-webkit-scrollbar {
+  display: none;
+}
+
+.make-review-movie-review {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  border: 1px solid gray;
+  padding: 1rem;
+  font-family: "main";
+}
+.make-review-movie-review h2:nth-of-type(1) {
+  color: rgb(255, 166, 181);
+  text-align: center;
+  width: 50%;
+  border-right: 1px solid gray;
+  cursor: grab;
+}
+.make-review-movie-review h2:nth-of-type(2) {
+  color: rgb(255, 215, 174);
+  text-align: center;
+  width: 50%;
+  cursor: grab;
+}
+.movie-similar-genre {
+  width: 100%;
+  height: 100%;
+}
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.genre-header h2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.similar-poster {
+  width: 150px;
+  height: 200px;
+  margin-right: 1rem;
+}
+.similar-poster img {
+  width: 100%;
+  height: 100%;
+}
+.similar-movie-data {
+  text-align: center;
+  margin-top: 1rem;
+}
+.movie-similar-genre {
+  overflow: scroll;
+}
+.movie-similar-genre::-webkit-scrollbar {
+  display: none;
 }
 .ott-list{
   margin-top: 30px;

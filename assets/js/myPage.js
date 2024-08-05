@@ -6,6 +6,13 @@ let parentList;
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * 데이터 가져오기 (임시 더미) * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/**
+ * fetch.... 로 되어 있는 함수에서 데이터 불러와서 넘겨주면 됩니다. 
+ * 일단은 레이아웃 테스트 용도로 더미 데이터를 넣어놓았고, 편하신대로 수정, 삭제 하셔도 괜찮습니다.
+ * 
+ */
+
+// 별점 더미데이터
 async function fetchRating(userId) {
     const ratingDummy = [
         { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", rating: 5 },
@@ -14,7 +21,7 @@ async function fetchRating(userId) {
     return ratingDummy;
 }
 
-
+// 리뷰 더미데이터
 async function fetchReview(userId) {
     const reviewDummy = [
         { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", content: "ㅋㅋ 쿠퍼 레전드" },
@@ -41,7 +48,7 @@ async function fetchLike(userId) {
     return likeDummy;
 }
 
-// 최근 본 영화 목록
+// 최근 본 영화 목록 (localStorage 실제 데이터)
 async function fetchRecent() {
     const tempRecent = JSON.parse(localStorage.getItem('recentMovies'));
 
@@ -49,7 +56,7 @@ async function fetchRecent() {
     const unique = new Set();
     const recentMovies = tempRecent.filter(item => {
         const duplicate = unique.has(item.id);
-        item.backdrop_path = `https://image.tmdb.org/t/p/w500${item.backdrop_path}`
+        item.backdrop_path = `https://image.tmdb.org/t/p/original${item.backdrop_path}`
         item.rating = item.vote_average;
         unique.add(item.id);
         return !duplicate;
@@ -63,7 +70,7 @@ async function fetchRecent() {
 /* * * * * * * * * * * * * 탭 전환 이벤트 처리  * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-// 새로 탭 누르면 이전 탭 초기화
+// 탭 클릭하면 색상 변경 (`.selected`)
 function resetTab(targetElement) {
     activity.removeChild(activity.lastChild);
 
@@ -78,7 +85,7 @@ function resetTab(targetElement) {
 /**
  * (탭 전환 이벤트)
  * class 생성 규칙
- * ${type}-list: 탭에 따라 class 생성 ex) rating-list, review-list ...  (당장은 안쓰는데 혹시 모르니..)
+ * ${type}-list: 탭에 따라 class 생성 ex) rating-list, review-list ...  (당장은 안쓰는데 구분 용도로 혹시 모르니 넣었습니다.)
  * common-list: 모든 탭에 공통으로 적용되는 css 클래스
  * row-list: 평점, 최근 본목록은 flex-row 레이아웃
  * column-list: 리뷰, 좋아요는 flex-column 레이아웃
@@ -98,7 +105,11 @@ document.querySelector('.activity').addEventListener('click', async function (ev
         fetchDataByType(type);
     }
 });
-// 탭 클릭시 분기 나누기
+
+/**
+ * (탭 클릭시 분기 나누기)
+ * 클릭한 탭에 따라 (rating, review.. 등) fetch함수와 다음 작업 함수(callback)을 지정해주게 됩니다.
+ */
 async function fetchDataByType(type) {
     let data = null;
     let callback = null;
@@ -133,14 +144,14 @@ async function fetchDataByType(type) {
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
-// 평점, 최근본
+// 평점, 최근 본 영화 목록 HTML 생성
 const processRowData = (results, type) => {
     results.forEach((data) => {
         renderRowList(data, type);
     })
 }
 
-// 리뷰, 좋아요
+// 리뷰, 좋아요 목록 HTML 생성
 const processColumnData = (results, type) => {
     results.forEach((data) => {
         renderColumnList(data, type);
@@ -148,7 +159,7 @@ const processColumnData = (results, type) => {
 }
 
 
-// 부모 HTML 생성 
+// 부모 HTML 생성 (공통)
 function createParentList(classList) {
     parentList = document.createElement('ul');
 
@@ -160,7 +171,11 @@ function createParentList(classList) {
 }
 
 
-// flex-row list 생성 (평점, 최근 본 영화 목록)
+/** 
+ * 평점, 최근 본 영화 목록 생성 (flex-row)
+ * 데이터 가공할때 평점, vote_average를 rating이나 그 외 편하신걸로 통일해주시면 될 것 같습니다. (다른 방식도 좋아요.)
+ * 
+*/
 function renderRowList(data, type) {
     const htmlContent = `
         <li class="${type}-container row-container">
@@ -179,7 +194,10 @@ function renderRowList(data, type) {
     parentList.innerHTML += htmlContent;
 }
 
-// flex-column list 생성 (리뷰, 좋아요)
+/**
+ * 리뷰, 좋아요 생성 (flex-column) 
+ * 데이터 가공할 때 리뷰나, 줄거리 등을 content로 통일해주면 될 것 같습니다. (다른 방식도 좋아요.)
+*/
 function renderColumnList(data, type) {
     const htmlContent = `
         <li class="${type} column-container">

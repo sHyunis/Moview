@@ -21,8 +21,6 @@
         <button class="slide-button left">←</button>
         <button class="slide-button right">→</button>
 
-        <div class="Header"></div>
-
         <div class="movie-info">
           <div class="movie-info-left">
             <div class="movie-poster">
@@ -95,10 +93,7 @@
                     <button class="review-button" type="submit">Upload</button>
                   </form>
 
-                  <div class="reviews-header-2">
-                    <h4>MovieReview</h4>
-                  </div>
-                  <div id="review-cards">
+                  <div id="review-cards" style="display: none">
                     <!-- <li class="review-card">
                   <div class="review-card-id">
                     ${name}
@@ -113,6 +108,7 @@
                 </div>
               </div>
             </div>
+
             <!-- 슬라이드 3 추가 정보 -->
             <div class="slide">
               <div class="movie-castReviewsOtt-ott">
@@ -122,13 +118,30 @@
                 <ul class="ott-list"></ul>
               </div>
             </div>
+
+            <div class="slide">
+              <div class="movie-similar-genre">
+                <div class="genre-header">
+                  <h2>비슷한 장르</h2>
+                </div>
+                <ul class="genre-list">
+                  <!-- `<div class="similar-poster">
+                  <img src="" alt="${movie.title}">
+                </div>
+                <div class="similar-movie-data">
+                  <div class="similar-title">${movie.title}</div>
+                 
+                </div>` -->
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <script src="../assets/js/detail.js"></script>
     <script src="../assets/js/detailSlide.js"></script>
     <script src="../assets/js/comment.js"></script>
-    <script src="../assets/js/score.js"></script>
   </body>
 </html>

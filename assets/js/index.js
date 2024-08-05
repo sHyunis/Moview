@@ -32,7 +32,7 @@ async function fetchUrl() {
     .then((response) => response.json())
     .then((data) => {
       const movies = data.results;
-      changeMovieLang("en");
+      changeMovieLang("US");
       // [김민규] like 기능 적용을 위해 세션에 저장
       sessionStorage.removeItem("language");
       sessionStorage.setItem("language", LANG_EN);
@@ -88,6 +88,16 @@ document.querySelector(".search").addEventListener("submit", (e) => {
   });
 });
 
+
+document.querySelector('#movie-container').addEventListener('click', (e) => {
+
+  debugger;
+
+  const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
+  recentMovies.unshift(movie);
+
+  localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
+})
 
 document.addEventListener('mouseover', function (event) {
   const targetElement = event.target;
