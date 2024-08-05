@@ -162,9 +162,6 @@ export async function countryFetchEng() {
       });
     })
     .catch((error) => console.error("Error:", error));
-<<<<<<< HEAD
-}
-=======
 }
 
 export async function setLanguage() {
@@ -195,4 +192,3 @@ document.addEventListener('mouseout', function (event) {
     overView.style.opacity = '0';
   }
 }, { passive: false });
->>>>>>> c097ddc227818c50d0c579756d82dc96ef4e92ee
