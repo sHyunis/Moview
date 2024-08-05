@@ -9,8 +9,6 @@ const options = {
 const API_KEY = "fbf16579bff5b8c3f6664841d9dd0613";
 const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 const BASE_URL = `https://api.themoviedb.org/3/movie`;
-const LANG_KR = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_origin_country=${'KR'}&without_genres=10749,18&page=1`;
-const LANG_EN = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_origin_country=${'US'}&without_genres=10749,18&page=1`;
 
 function getUrl(language) {
   let countryCode = language.toUpperCase();
@@ -24,10 +22,6 @@ function getUrl(language) {
 */
 async function changeMovieLang(language) {
   const url = getUrl(language);;
-
-
-
-
 
   try {
     const res = await fetch(url);
