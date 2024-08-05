@@ -43,11 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.classList.contains("movie-like")) {
       try {
         const sessionChk = await sessionStorage.getItem("loginState");
-        const getTitle = e.target.closest(".movie-card").querySelector("h3").innerText;
+        const getId = e.target.closest(".movie-card").querySelector(".card-id").innerText;
         // console.log(getTitle);
         if (sessionChk) {
           // api 값 중 타이틀을 비교하기위해 파라미터로 값을 전달함
-          getMovieLike(getTitle);
+          // console.log("getTItle =>", getTitle);
+          getMovieLike(getId);
           if (e.target.classList.contains("curr")) {
             e.target.classList.remove("curr")
             // localStorage.removeItem(getTitle);

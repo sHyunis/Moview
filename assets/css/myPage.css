@@ -140,7 +140,6 @@ li {
 /* * * * * * * * * * * * * * * * 리뷰 & 좋아요 * * * * * * * * * * * * * * * * */
 .column-list {
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
     justify-content: start;
     width: 100%;

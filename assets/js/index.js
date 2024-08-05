@@ -26,8 +26,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
 async function fetchUrl() {
+  const url = getUrl("US");
   const makeCardFetchUrl = fetch(URL)
     .then((response) => response.json())
     .then((data) => {
@@ -35,7 +35,7 @@ async function fetchUrl() {
       changeMovieLang("US");
       // [김민규] like 기능 적용을 위해 세션에 저장
       sessionStorage.removeItem("language");
-      sessionStorage.setItem("language", LANG_EN);
+      sessionStorage.setItem("language", url);
       movieLikeChk();
     })
     .catch((error) => console.error("Error:", error));
@@ -89,12 +89,18 @@ document.querySelector(".search").addEventListener("submit", (e) => {
 });
 
 
+document.querySelector('#movie-container').addEventListener('click', (e) => {
+  const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
+  recentMovies.unshift(movie);
+
+  localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
+})
+
 document.addEventListener('mouseover', function (event) {
   const targetElement = event.target;
 
   if (targetElement.closest('.movie-card')) {
     const movieCard = targetElement.closest('.movie-card');
-    movieCard.style.filter = `brightness(50%)`;
 
     const overView = movieCard.querySelector('.movie-overview');
     overView.style.opacity = '1';
@@ -107,7 +113,6 @@ document.addEventListener('mouseout', function (event) {
 
   if (targetElement.closest('.movie-card')) {
     const movieCard = targetElement.closest('.movie-card');
-    movieCard.style.filter = `brightness(100%)`;
 
     const overView = movieCard.querySelector('.movie-overview');
     overView.style.opacity = '0';
