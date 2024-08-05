@@ -35,13 +35,6 @@ async function changeMovieLang(language) {
           if (!e.target.classList.contains("movie-like")) { // 좋아요 제외 
             console.log("testtest => ", movie.id);
             (window.location.href = `./view/detail.html?id=${cardID}`)
-
-            /** 최근 본 목록  localStorage에 저장 * */
-            const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
-            recentMovies.push(movie);
-
-            localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
-            /** 최근 본 목록  localStorage에 저장 끝 * */
           }
         });
       })
@@ -76,6 +69,3 @@ async function getMovieLike(movieTitle) {
     }
   }
 }
-
-
-
