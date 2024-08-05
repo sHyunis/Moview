@@ -145,34 +145,38 @@ function showCastInfo(credit) {
 
 function showOttData(ottData) {
   const showOttDataArea = document.querySelector(".ott-list");
-  if (ottData.results.KR !== undefined) {
-    const ottList = ottData.results.KR.flatrate;
+
+  if (
+    ottData.results.US.buy === undefined ||
+    ottData.results.KR.buy === undefined
+  ) {
+    const listItem = document.createElement("li");
+
+    listItem.innerHTML = `
+        <div class="">
+          OTT 정보가 없습니다.
+        </div>
+      `;
+    showOttDataArea.appendChild(listItem);
+  } else {
+    const ottList = [...ottData.results.US.buy, ...ottData.results.KR.buy];
     console.log("ott=>", ottList);
 
     ottList.slice(0, 6).forEach((ott) => {
       const ottLogo = ott.logo_path;
       const listItem = document.createElement("li");
+      listItem.className = "ott-card";
       listItem.innerHTML = `
-          <div style="background-size: cover;">
-          <img class="profileImage" src="https://image.tmdb.org/t/p/w300${ottLogo}" alt="이미지"
-          onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'"
-          >
-          </div>
-          <div>
-            <div>${ott.provider_name}</div>
-            <div></div>
-          </div>
-      `;
+            <div class="ott-card-providerImage" style="background-size: cover;">
+            <img class="providerImage" src="https://image.tmdb.org/t/p/w300${ottLogo}" alt="이미지"
+            onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'"
+            >
+            </div>
+            <div class="ott-card-provider">
+              <div>${ott.provider_name}</div>
+            </div>
+        `;
       showOttDataArea.appendChild(listItem);
     });
-  } else if (ottData.results.KR === undefined) {
-    const listItem = document.createElement("li");
-
-    listItem.innerHTML = `
-      <div class="">
-        OTT 정보가 없습니다.
-      </div>
-    `;
-    showOttDataArea.appendChild(listItem);
   }
 }
