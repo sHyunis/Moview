@@ -3,6 +3,13 @@
   src: url(../font/sugarmagicpersonaluseonly-jemyo.otf);
 }
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   background-color: rgb(5, 5, 5);
   overflow-x: hidden;
@@ -203,6 +210,7 @@ header h1 {
   gap: 70px;
 }
 
+
 .movie-card {
   width: 250px;
   height: 400px;
@@ -211,17 +219,33 @@ header h1 {
   border-radius: 4px;
   /* border-bottom: 1px solid rgb(255, 250, 235); */
   position: relative;
-  transition: filter 0.3s ease;
+}
+
+.movie-card::before {
+  content: "";
+  /* 반드시 content 속성 지정 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .75);
+  z-index: -1;
+}
+
+.movie-card:hover::before {
+  z-index: 1;
 }
 
 .movie-overview {
+  font-family: 'Pretendard-Regular';
   position: absolute;
-  top: 3%;
-  padding: 10px;
+  top: 20%;
+  padding: 20px;
   opacity: 0;
   filter: none;
-  /* display: none; */
   transition: opacity 0.6s ease;
+  z-index: 2;
 }
 
 .movie-content {
@@ -243,20 +267,21 @@ header h1 {
   object-fit: fill;
 }
 
-.movie-card h3 {
+.movie-title {
+  font-family: 'Pretendard-Regular';
   width: 100%;
-
+  height: 65%;
   padding: 5px;
-  font-size: 20px;
+  font-size: 1.3rem;
   font-weight: 500;
   padding-bottom: 10px;
   margin-bottom: 3px;
   color: rgb(255, 250, 235);
   border-bottom: 1px solid rgb(255, 250, 235);
+  /* white-space: nowrap */
 }
 
-.movie-card p,
-.movie-card span {
+.movie-overview {
   color: rgb(255, 250, 235);
 }
 
@@ -301,11 +326,28 @@ header h1 {
   z-index: 1;
   cursor: pointer;
   font-size: 30px;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: grey;
 }
+
 .movie-like.curr {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: yellow;
   color: yellow;
 }
+
 .main-homepage-section1 {
   width: 100vw;
   height: 100vh;
+}
+
+
+.movie-card .movie-rating {
+  /* color: rgb(255, 141, 232); */
+  /* font-family: 'Pretendard-Regular'; */
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(255, 191, 0);
 }
