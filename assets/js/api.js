@@ -27,12 +27,12 @@ async function changeMovieLang(language) {
     handleMovieRender(data.results, url);
 
     data.results.forEach(movie => {
-      console.log(movie, movie.id)
       document.querySelectorAll(".movie-card").forEach(card => {
+        const cardID = card.querySelector(".card-id").innerText;
         card.addEventListener("click", (e) => {
-          console.log("a");
           if (!e.target.classList.contains("movie-like")) { // 좋아요 제외 
-            (window.location.href = `./view/detail.html?id=${movie.id}`)
+            console.log("testtest => ", movie.id);
+            (window.location.href = `./view/detail.html?id=${cardID}`)
 
             /** 최근 본 목록  localStorage에 저장 * */
             const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
