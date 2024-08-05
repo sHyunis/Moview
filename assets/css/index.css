@@ -2,6 +2,7 @@
   font-family: "main";
   src: url(../font/sugarmagicpersonaluseonly-jemyo.otf);
 }
+
 body {
   background-color: rgb(5, 5, 5);
   overflow-x: hidden;
@@ -14,17 +15,20 @@ header {
   margin: 0 auto;
   padding-top: 10px;
 }
+
 header h1 {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 500;
   color: white;
 }
+
 section {
   width: 100%;
   margin: 0 auto;
   margin-top: 1em;
 }
+
 .search {
   display: flex;
   margin-top: 30px;
@@ -32,12 +36,14 @@ section {
   justify-content: center;
   margin-bottom: 30px;
 }
+
 .search input {
   width: 200px;
   border: none;
   text-align: center;
   background-color: rgb(255, 250, 235);
 }
+
 .search input::placeholder {
   color: rgb(20, 19, 19);
   font-weight: 600;
@@ -46,18 +52,23 @@ section {
   font-weight: 300;
   font-style: normal;
 }
+
 #searchButton {
   width: 30px;
   height: 30px;
   border: none;
   cursor: grab;
 }
+
 .search img {
   width: 100%;
   height: 100%;
 }
+
 .section2 {
   width: 100%;
+  max-width: 1600px;
+  margin: 50px auto;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -65,6 +76,7 @@ section {
   padding-top: 30px;
   position: relative;
 }
+
 .down-arrow {
   cursor: grab;
   position: relative;
@@ -72,6 +84,7 @@ section {
   left: 18rem;
   bottom: 5rem;
 }
+
 .down-arrow::before {
   content: "click and Search the Movie";
   width: 500px;
@@ -90,9 +103,11 @@ section {
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -103,6 +118,7 @@ section {
     width: 0;
   }
 }
+
 .container1 {
   width: 100vw;
   height: 100vh;
@@ -124,9 +140,11 @@ header h1 {
   font-weight: 900;
   color: rgb(142, 226, 208);
 }
+
 .containerP-3 span {
   color: rgb(255, 230, 160);
 }
+
 .containerP-2 {
   font-size: 17rem;
   font-weight: 900;
@@ -135,9 +153,11 @@ header h1 {
   margin-bottom: 1rem;
   line-height: 9rem;
 }
+
 .containerP-2 span {
   color: rgb(212, 192, 255);
 }
+
 .containerP-1 {
   font-size: 24rem;
   font-weight: 900;
@@ -159,13 +179,16 @@ header h1 {
   margin-bottom: 3.4rem;
   color: cornsilk;
 }
+
 .comment span:nth-child(1) {
   font-size: 2rem;
 }
+
 .comment span:nth-child(3) {
   font-size: 1.2rem;
   line-height: 2rem;
 }
+
 .comment span:nth-child(5) {
   font-size: 0.8rem;
 }
@@ -179,14 +202,28 @@ header h1 {
   flex-wrap: wrap;
   gap: 70px;
 }
+
 .movie-card {
   width: 250px;
   height: 400px;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
-  border-bottom: 1px solid rgb(255, 250, 235);
+  /* border-bottom: 1px solid rgb(255, 250, 235); */
+  position: relative;
+  transition: filter 0.3s ease;
 }
+
+.movie-overview {
+  position: absolute;
+  top: 3%;
+  padding: 10px;
+  opacity: 0;
+  filter: none;
+  /* display: none; */
+  transition: opacity 0.6s ease;
+}
+
 
 .movie-content {
   height: 100px;
@@ -200,6 +237,7 @@ header h1 {
   height: 300px;
   cursor: grab;
 }
+
 .card-img img {
   width: 100%;
   height: 100%;
@@ -217,10 +255,12 @@ header h1 {
   color: rgb(255, 250, 235);
   border-bottom: 1px solid rgb(255, 250, 235);
 }
+
 .movie-card p,
 .movie-card span {
   color: rgb(255, 250, 235);
 }
+
 .movie-content::-webkit-scrollbar {
   display: none;
 }
@@ -246,6 +286,7 @@ header h1 {
   font-size: 40px;
   text-align: center;
 }
+
 .beforeButton,
 .topButton,
 .homeButton {

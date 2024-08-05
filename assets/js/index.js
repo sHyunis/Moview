@@ -38,7 +38,7 @@ export function createMovieCard(movie) {
     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}"></div>
     <div class = "movie-content">
     <h3>${movie.title}</h3>
-    <p>${movie.overview}</p>
+    <p>${movie.overview.slice(0, 200)}</p> 
     <span>Rating: ${movie.vote_average}</span>
     <em class="card-id" style="display:none;">${movie.id}</em>
     </div>
@@ -162,4 +162,37 @@ export async function countryFetchEng() {
       });
     })
     .catch((error) => console.error("Error:", error));
+<<<<<<< HEAD
 }
+=======
+}
+
+export async function setLanguage() {
+  const movieContainer = document.getElementById("movie-container");
+}
+
+document.addEventListener('mouseover', function (event) {
+  const targetElement = event.target;
+
+  if (targetElement.closest('.movie-card')) {
+    const movieCard = targetElement.closest('.movie-card');
+    movieCard.style.filter = `brightness(50%)`;
+
+    const overView = movieCard.querySelector('.movie-overview');
+    overView.style.opacity = '1';
+  }
+}, { passive: false });
+
+
+document.addEventListener('mouseout', function (event) {
+  const targetElement = event.target;
+
+  if (targetElement.closest('.movie-card')) {
+    const movieCard = targetElement.closest('.movie-card');
+    movieCard.style.filter = `brightness(100%)`;
+
+    const overView = movieCard.querySelector('.movie-overview');
+    overView.style.opacity = '0';
+  }
+}, { passive: false });
+>>>>>>> c097ddc227818c50d0c579756d82dc96ef4e92ee
