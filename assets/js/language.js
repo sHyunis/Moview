@@ -14,8 +14,12 @@ function getSlicedOverview(overview) {
   }
 
   return overview;
-
 }
+
+function formatRating(rating) {
+  return Math.round(rating * 10) / 10;
+}
+
 // 리스트 생성
 function handleMovieCreate(movie) {
   /** 최근 본 목록  localStorage에 저장 * */
@@ -27,9 +31,9 @@ function handleMovieCreate(movie) {
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
     </div>
     <div class="movie-content">
-      <h3>${movie.title}</h3>
+      <h3 class="movie-title">${movie.title}</h3>
       <p class="movie-overview">${getSlicedOverview(movie.overview)}</p>
-      <span>Rating: ${movie.vote_average}</span>
+      <span class="movie-rating">★ ${formatRating(movie.vote_average)}</span>
       <em class="card-id" style="display:none;">${movie.id}</em>
     </div>
   `;

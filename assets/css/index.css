@@ -3,6 +3,13 @@
   src: url(../font/sugarmagicpersonaluseonly-jemyo.otf);
 }
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   background-color: rgb(5, 5, 5);
   overflow-x: hidden;
@@ -231,9 +238,10 @@ header h1 {
 }
 
 .movie-overview {
+  font-family: 'Pretendard-Regular';
   position: absolute;
   top: 20%;
-  padding: 10px;
+  padding: 20px;
   opacity: 0;
   filter: none;
   transition: opacity 0.6s ease;
@@ -259,9 +267,9 @@ header h1 {
   object-fit: fill;
 }
 
-.movie-card h3 {
+.movie-title {
+  font-family: 'Pretendard-Regular';
   width: 100%;
-
   padding: 5px;
   font-size: 20px;
   font-weight: 500;
@@ -269,10 +277,10 @@ header h1 {
   margin-bottom: 3px;
   color: rgb(255, 250, 235);
   border-bottom: 1px solid rgb(255, 250, 235);
+  white-space: nowrap
 }
 
-.movie-card p,
-.movie-card span {
+.movie-overview {
   color: rgb(255, 250, 235);
 }
 
@@ -331,4 +339,14 @@ header h1 {
 .main-homepage-section1 {
   width: 100vw;
   height: 100vh;
+}
+
+
+.movie-card .movie-rating {
+  /* color: rgb(255, 141, 232); */
+  /* font-family: 'Pretendard-Regular'; */
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(255, 191, 0);
 }
