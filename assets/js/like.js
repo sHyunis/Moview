@@ -99,10 +99,7 @@ async function handleLikeAdd(id, likeImg, likeTitle, likeOverView) {
     const likeQuery = query(
       collection(db, "like"),
       where("user_id", "==", loginId),
-      where("movie_id", "==", movieId),
-      where("movie_img", "==", movieImg),
-      where("movie_title", "==", movieTitle),
-      where("movie_overview", "==", movieOverView),
+      where("movie_id", "==", movieId)
     );
 
     const likeQueryStart = await getDocs(likeQuery);

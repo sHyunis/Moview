@@ -1,4 +1,4 @@
-
+import { db, collection, getDocs } from "./fireBaseConfig.js";
 
 const activity = document.querySelector('.activity');
 const activityHeader = document.querySelector('.activity-header');
@@ -36,18 +36,23 @@ async function fetchReview(userId) {
 
 // 좋아요 더미 데이터
 async function fetchLike(userId) {
-    const likeDummy = [
-        { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
-        { title: "조커", backdrop_path: "/assets/img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
-        { title: "나루토", backdrop_path: "/assets/img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
-        { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
-        { title: "조커", backdrop_path: "/assets/img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
-        { title: "나루토", backdrop_path: "/assets/img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
-        { title: "인터스텔라", backdrop_path: "/assets/img/test_img/인터스텔라.jpg", content: "지구의 식량이 어쩌구 저쩌구.. 부족해져서 인류를 구원하기 위해 쿠퍼가 모험을 어쩌구 .." },
-        { title: "조커", backdrop_path: "/assets/img/test_img/조커.jpg", content: "놀림 받고 흑화한 조커! 계단에서 춤춘다!" },
-        { title: "나루토", backdrop_path: "/assets/img/test_img/나루토.jpg", content: "대충 닌자 나오는 내용!" },
-    ]
-    return likeDummy;
+    let likeDataArr = [];
+    try {
+        const loginSession = sessionStorage.getItem("userLoginId");
+        const likeData = await getDocs(collection(db, "like"));
+
+        likeData.forEach(item => {
+            const data = item.data();
+            if (data.user_id === loginSession) {
+                likeDataArr.push(data);
+            }
+        })
+        console.log(likeDataArr);
+    } catch (e) {
+        console.log("fetchLike Error =>", e);
+    }
+
+    return likeDataArr;
 }
 
 // 최근 본 영화 목록 (localStorage 실제 데이터)
@@ -201,24 +206,47 @@ function renderRowList(data, type) {
  * 데이터 가공할 때 리뷰나, 줄거리 등을 content로 통일해주면 될 것 같습니다. (다른 방식도 좋아요.)
 */
 function renderColumnList(data, type) {
-    const htmlContent = `
-        <li class="${type} column-container">
-            <div class="${type} column-img">
-                <a href="../index.html"><img src="${data.backdrop_path}"></a>
-            </div>
-            <div class="${type} column-contents">
-                <h4>${data.title}</h4>
-                <p>${data.content}</p>
-                <div class="feed-box">
-                    <p>좋아요(3)</p>
-                    <p>댓글(323)</p>
+    let htmlContent;
+    if (type === "like") {
+        htmlContent = `
+            <li class="${type} column-container">
+                <div class="${type} column-img">
+                    <a href="../index.html"><img src="https://image.tmdb.org/t/p/w500/${data.movie_img}"></a>
                 </div>
-            </div>
-            <div class="${type} column-date">
-                <p>24분 전</p>
-            </div>
-        </li>
-    `
+                <div class="${type} column-contents">
+                    <h4>${data.movie_title}</h4>
+                    <p>${data.movie_over_view}</p>
+                    <div class="feed-box">
+                        <p>좋아요(3)</p>
+                        <p>댓글(323)</p>
+                    </div>
+                </div>
+                <div class="${type} column-date">
+                    <p>24분 전</p>
+                </div>
+            </li>
+        `
+    } else {
+        htmlContent = `
+            <li class="${type} column-container">
+                <div class="${type} column-img">
+                    <a href="../index.html"><img src="${data.backdrop_path}"></a>
+                </div>
+                <div class="${type} column-contents">
+                    <h4>${data.title}</h4>
+                    <p>${data.content}</p>
+                    <div class="feed-box">
+                        <p>좋아요(3)</p>
+                        <p>댓글(323)</p>
+                    </div>
+                </div>
+                <div class="${type} column-date">
+                    <p>24분 전</p>
+                </div>
+            </li>
+        `
+    }
+
     parentList.innerHTML += htmlContent;
 }
 
