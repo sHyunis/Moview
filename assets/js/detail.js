@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get("id");
   console.log(movieId);
-
+ 
   if (movieId) {
     fetchMovieDetails(movieId);
     fetchMovieCredits(movieId);
@@ -145,11 +145,8 @@ function showCastInfo(credit) {
 
 function showOttData(ottData) {
   const showOttDataArea = document.querySelector(".ott-list");
-
-  if (
-    ottData.results.US.buy === undefined ||
-    ottData.results.KR.buy === undefined
-  ) {
+  console.log("오티티결과",ottData.results)
+  if (ottData.results.US === undefined || ottData.results.US.buy === undefined){
     const listItem = document.createElement("li");
 
     listItem.innerHTML = `
@@ -159,9 +156,9 @@ function showOttData(ottData) {
       `;
     showOttDataArea.appendChild(listItem);
   } else {
-    const ottList = [...ottData.results.US.buy, ...ottData.results.KR.buy];
+    const ottList = ottData.results.US.buy;
     console.log("ott=>", ottList);
-
+    
     ottList.slice(0, 6).forEach((ott) => {
       const ottLogo = ott.logo_path;
       const listItem = document.createElement("li");

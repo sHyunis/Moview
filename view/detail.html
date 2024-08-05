@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="../assets/css/detailSlide.css" />
   </head>
   <body>
+    <div class="header">
+      <div class="header-home-container">
+        <a href="/Moview/index.html">
+          <h3>Mo<span>view</span></h3>
+        </a>
+      </div>
+    </div>
     <div id="detail">
       <div class="inner">
         <button class="slide-button left">←</button>
@@ -30,15 +37,31 @@
           <div class="movie-info-right">
             <!-- 좋아요 버튼, 리뷰 기능 -->
             <div class="movie-options">
-              <button>하트이미지</button>
+              <button>⭐️</button>
               <button>관람평작성</button>
               <button>더보기이미지</button>
             </div>
           </div>
         </div>
-
         <div class="movie-castReviews">
           <div class="slider">
+            <!-- 별점 기능 구현하기 -->
+            <div class="slide">
+              <div class="movie-castReviewsOtt-ott">
+                <div class="ott-header">
+                  <h2>별점기능구현하기</h2>
+                </div>
+                <div>
+                  <div class="star-rating">
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="1">&#9733;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- 슬라이드 1 영화 출연진/감독 -->
             <div class="slide">
               <div class="movie-castReviews-cast">
@@ -48,7 +71,6 @@
                 <ul class="cast-list"></ul>
               </div>
             </div>
-
             <!-- 슬라이드 2 관람평 -->
             <div class="slide">
               <div class="movie-castReviews-reviews">
@@ -91,25 +113,22 @@
                 </div>
               </div>
             </div>
-
             <!-- 슬라이드 3 추가 정보 -->
             <div class="slide">
               <div class="movie-castReviewsOtt-ott">
                 <div class="ott-header">
                   <h2>상영 OTT 정보</h2>
-                </div >
-                <ul class="ott-list">
-
-                </ul>
+                </div>
+                <ul class="ott-list"></ul>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <script src="../assets/js/detail.js"></script>
     <script src="../assets/js/detailSlide.js"></script>
     <script src="../assets/js/comment.js"></script>
+    <script src="../assets/js/score.js"></script>
   </body>
 </html>

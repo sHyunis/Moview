@@ -14,8 +14,8 @@ ul {
   max-width: 1600px;
   max-height: 800px;
   color: white;
-  margin: 100px auto;
-  background-color: rgba(0, 0, 0, 0.743);
+  margin: 25px auto;
+  background-color: rgba(29, 29, 29, 0.705);
   width: 75%;
   width: 75%;
   display: flex;
@@ -278,4 +278,26 @@ ul {
 }
 .movie-like.curr {
   color:yellow;
+}
+/* 헤더 */
+.header {
+  max-width: 1600px;
+  min-width: 1100px;
+  font-family: "main";
+  margin: 25px auto;
+  font-size: 3.5rem;
+  /* color: rgb(160, 177, 255); */
+  display: flex;
+}
+
+.header-home-container {
+  width: 100px;
+}
+
+.header-home-container h3 {
+  color: rgb(255, 161, 177);
+}
+
+.header-home-container h3 span {
+  color: rgb(255, 81, 220);
 }
