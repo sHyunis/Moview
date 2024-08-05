@@ -8,6 +8,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 /* 임시 버튼 스타일 */
 .slide-button {

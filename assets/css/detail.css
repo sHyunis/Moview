@@ -386,3 +386,20 @@ textarea:focus {
 .header-home-container h3 span {
   color: rgb(255, 81, 220);
 }
+/* 별점 */
+.star-area{
+  display: flex;
+  flex-direction: column;
+}
+.star-rating{
+  user-select: none;
+}
+.star{
+  font-size: 3rem;
+  color: #ff9800;
+  background-color: unset;
+  border: none;
+}
+.star:hover {
+  cursor: pointer;
+}
