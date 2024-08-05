@@ -91,7 +91,6 @@ document.querySelector(".search").addEventListener("submit", (e) => {
 
 document.querySelector('#movie-container').addEventListener('click', (e) => {
 
-  debugger;
 
   const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
   recentMovies.unshift(movie);
@@ -104,7 +103,6 @@ document.addEventListener('mouseover', function (event) {
 
   if (targetElement.closest('.movie-card')) {
     const movieCard = targetElement.closest('.movie-card');
-    movieCard.style.filter = `brightness(50%)`;
 
     const overView = movieCard.querySelector('.movie-overview');
     overView.style.opacity = '1';
@@ -117,7 +115,6 @@ document.addEventListener('mouseout', function (event) {
 
   if (targetElement.closest('.movie-card')) {
     const movieCard = targetElement.closest('.movie-card');
-    movieCard.style.filter = `brightness(100%)`;
 
     const overView = movieCard.querySelector('.movie-overview');
     overView.style.opacity = '0';
