@@ -32,16 +32,16 @@ homeButton.addEventListener("click", () => {
   window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
 });
 
-import { countryFetch, countryFetchEng } from "./index.js";
+// import { countryFetch, countryFetchEng } from "./index.js";
 // 버튼 클릭시 한국영화로 변경
-const koreaMovie = document.querySelector(".koreaMovie");
-koreaMovie.addEventListener("click", (e) => {
-  countryFetch();
-  e.preventDefault();
-});
-// 버튼 클릭시 외국영화로 변경
-const englishMovie = document.querySelector(".englishMovie");
-englishMovie.addEventListener("click", (e) => {
-  countryFetchEng();
-  e.preventDefault();
-});
+// const koreaMovie = document.querySelector(".koreaMovie");
+// koreaMovie.addEventListener("click", (e) => {
+//   countryFetch();
+//   e.preventDefault();
+// });
+// // 버튼 클릭시 외국영화로 변경
+// const englishMovie = document.querySelector(".englishMovie");
+// englishMovie.addEventListener("click", (e) => {
+//   countryFetchEng();
+//   e.preventDefault();
+// });

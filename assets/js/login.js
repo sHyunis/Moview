@@ -21,7 +21,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const btnLogin = document.getElementById("login-btn");
-const btnLogout = document.getElementById("header-btn-logout");
 
 
 btnLogin.addEventListener("click", async () => {
@@ -65,8 +64,9 @@ btnLogin.addEventListener("click", async () => {
     if (idChk && pwChk) {
       alert("로그인이 완료되었습니다.");
       sessionStorage.setItem("loginState", "true"); // 로그인 상태 저장
+      sessionStorage.setItem("loginId", "userLoginId"); // 로그인 상태 저장
       sessionStorage.setItem("userLoginId", userLoginId); // 로그인 아이디 저장
-      window.location.href = "/Moview/index.html";
+      window.location.href = "/";
     } else if (!idChk && pwChk) {
       alert("아이디를 확인해 주세요.");
     } else if (idChk && !pwChk) {
@@ -79,11 +79,4 @@ btnLogin.addEventListener("click", async () => {
   } catch (e) {
     console.log('error =>', e)
   }
-})
-
-
-btnLogout.addEventListener("click", async () => {
-  await sessionStorage.removeItem("loginState");
-  alert("로그아웃 되었습니다.");
-  window.location.href = "/Moview/index.html";
 })

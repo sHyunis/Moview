@@ -23,15 +23,39 @@ body {
     background-color: black;
 }
 
+a {
+    text-decoration: none;
+    /* 링크의 색상 제거 */
+}
 
 li {
     list-style: none;
 }
 
+/*  pink  */
+/* rgb(255, 141, 232) */
 .header {
-    height: 100px;
-    background-color: black;
-    color: red;
+    width: 100vw;
+    max-width: 1600px;
+    min-width: 1100px;
+    height: 200px;
+    font-family: "main";
+    margin: 0 auto;
+    font-size: 3.5rem;
+    /* color: rgb(160, 177, 255); */
+    display: flex;
+}
+
+.header-home-container {
+    width: 100px;
+}
+
+.header-home-container h3 {
+    color: pink;
+}
+
+.header-home-container h3 span {
+    color: rgb(255, 141, 232);
 }
 
 .activity {
@@ -46,18 +70,20 @@ li {
     border-bottom: 1px solid rgb(255, 230, 160);
 }
 
+.activity-header-title {
+    font-size: 2rem;
+}
+
 .activity-header-title h3 {
-    font-size: 6rem;
     color: rgb(160, 177, 255);
 }
 
 .activity-header-title span {
-    font-size: 6rem;
     color: rgb(212, 192, 255);
 }
 
 .activity-tab {
-    font-size: 3rem;
+    font-size: 1.2rem;
     color: rgb(255, 230, 160);
 }
 
