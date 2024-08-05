@@ -12,7 +12,6 @@ const BASE_URL = `https://api.themoviedb.org/3/movie`;
 
 function getUrl(language) {
   let countryCode = language.toUpperCase();
-
   return `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_origin_country=${countryCode}&without_genres=10749,18&page=1`;
 }
 
@@ -39,12 +38,10 @@ async function changeMovieLang(language) {
         });
       })
     })
-
   } catch (e) {
     console.log("language api error =>", e);
   }
 }
-
 
 /*
  * [좋아요 버튼 기능 2]
@@ -69,3 +66,4 @@ async function getMovieLike(movieTitle) {
     }
   }
 }
+

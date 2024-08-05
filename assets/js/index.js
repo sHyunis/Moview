@@ -26,7 +26,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
 async function fetchUrl() {
   const makeCardFetchUrl = fetch(URL)
     .then((response) => response.json())
