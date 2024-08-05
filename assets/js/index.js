@@ -43,6 +43,26 @@ async function fetchUrl() {
 fetchUrl();
 // 검색기능
 
+async function movieLikeChk() {
+  try {
+    const likeDb = await getDocs(collection(db, "like"));
+    const movieCard = document.querySelectorAll(".movie-card");
+    movieCard.forEach(cards => {
+      const cardsTarget = cards.querySelector('.card-id').innerText;
+      likeDb.forEach(el => {
+        const likeDb = el.data();
+        if (Number(cardsTarget) == Number(likeDb.movie_id)) {
+          cards.querySelector(".movie-like").classList.add("curr");
+        }
+      })
+    })
+
+  } catch (e) {
+    console.log("movieLikeChk =>", e);
+  }
+}
+window.movieLikeChk = movieLikeChk;
+
 document.querySelector(".search").addEventListener("submit", (e) => {
   // input 에 넣은 값 소문자로 변환
   e.preventDefault();
