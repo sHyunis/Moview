@@ -28,7 +28,7 @@ const db = getFirestore(app);
 
 
 async function fetchUrl() {
-  const makeCardFetchUrl = fetch(LANG_EN)
+  const makeCardFetchUrl = fetch(URL)
     .then((response) => response.json())
     .then((data) => {
       const movies = data.results;
@@ -42,31 +42,6 @@ async function fetchUrl() {
 }
 fetchUrl();
 // 검색기능
-
-/*
- * [좋아요 버튼 기능 5]
- * 처음 로딩했을 때, 좋아요 표시를 주기 위해 각 게시물의 Id값과 db의 id값을 비교해서 일치할 경우
- * 해당 게시물에 curr클래스를 적용해줌
-*/
-async function movieLikeChk() {
-  try {
-    const likeDb = await getDocs(collection(db, "like"));
-    const movieCard = document.querySelectorAll(".movie-card");
-    movieCard.forEach(cards => {
-      const cardsTarget = cards.querySelector('.card-id').innerText;
-      likeDb.forEach(el => {
-        const likeDb = el.data();
-        if (Number(cardsTarget) == Number(likeDb.movie_id)) {
-          cards.querySelector(".movie-like").classList.add("curr");
-        }
-      })
-    })
-
-  } catch (e) {
-    console.log("movieLikeChk =>", e);
-  }
-}
-window.movieLikeChk = movieLikeChk;
 
 document.querySelector(".search").addEventListener("submit", (e) => {
   // input 에 넣은 값 소문자로 변환
