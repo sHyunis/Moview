@@ -48,7 +48,7 @@ function handleMovieCreate(movie) {
 
     localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
   });
-  /** 최근 본 목록  localStorage에 저장 끝 * */
+  /** 최근 본 목록  localStorage에 저장 끝 **/
 
   return card;
 }

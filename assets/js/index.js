@@ -26,7 +26,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
 async function fetchUrl() {
   const url = getUrl("US");
   const makeCardFetchUrl = fetch(URL)
