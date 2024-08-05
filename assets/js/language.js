@@ -16,7 +16,7 @@ function handleMovieCreate(movie) {
       </div>
       <div class = "movie-content">
       <h3>${movie.title}</h3>
-      <p>${movie.overview}</p>
+      <p>${movie.overview.slice(0, 200)}</p> 
       <span>Rating: ${movie.vote_average}</span>
       <em class="card-id" style="display:none;">${movie.id}</em>
       </div>    
