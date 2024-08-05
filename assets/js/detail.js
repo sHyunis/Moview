@@ -31,9 +31,10 @@ async function fetchMovieDetails(id) {
   }
 }
 
-// 크레딧 데이터 요청 방식은 fetchMovieDetails()와 똑같음
-async function fetchMovieCredits(id) {
-  const apiUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=ko`;
+function fetchMovieDetails(id) {
+  // API 요청하기 위해서 apiKey랑 apiUrl 가져오기 일단 전체 영화가 담긴 apiURL로 가져오자
+  const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
+  const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
 
   try {
     const response = await fetch(apiUrl);
@@ -62,6 +63,7 @@ function showMovieDetails(movie) {
   if (movie) {
     showImages(movie);
     showMovieInfo(movie);
+    showCastInfo(movie);
   } else {
     console.error("전달받은 영화데이터 없음.");
   }
@@ -85,11 +87,12 @@ function showImages(movie) {
 
 //영화 정보들 (제목, 장르, 개봉일, 등등) 보여주는 함수
 function showMovieInfo(movie) {
+
   //영화 소개 데이터를 붙여줄 div의 클래스를 지정
   const movieInfoArea = document.querySelector(".movie-info-middle");
 
   //장르는 배열에 객체들이 담겨 있어서 map으로 장르 이름을 가져와서 join 메소드로 / 슬래시를 붙여줌
-  const genres = movie.genres.map((genre) => genre.name).join(" · ");
+  const genres = movie.genres.map(genre => genre.name).join('/');
 
   //런타임은 나중에 시간과 분으로 표기할 예정
 
@@ -102,6 +105,19 @@ function showMovieInfo(movie) {
             <div>${movie.runtime}Min · ${movie.origin_country}</div>
             <div>평점 : ${movie.vote_average}</div>
           </div>
+    `;
+}
+function showCastInfo(movie) {
+  console.log("캐스트인포 실행")
+  const showCastInfoArea = document.querySelector(".cast-list");
+  showCastInfoArea.innerHTML = `
+            <li class="cast-Card">
+              <div class="cast-profileImage">프로필</div> 
+              <div class="cast-info">
+                <div>이름</div>
+                <div>직무</div>
+              </div>
+            </li>
     `;
 }
 // 직무가 감독인 스텝 가지고 와서 html 붙여주기
