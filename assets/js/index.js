@@ -91,7 +91,7 @@ document.querySelector(".search").addEventListener("submit", (e) => {
 
 document.querySelector('#movie-container').addEventListener('click', (e) => {
 
-  debugger;
+  // debugger;
 
   const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
   recentMovies.unshift(movie);
