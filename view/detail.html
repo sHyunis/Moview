@@ -1,90 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail page</title>
-    <link rel="stylesheet" href="../assets/css/detail.css" />
-    <link rel="stylesheet" href="../assets/css/common.css" />
-    <link rel="stylesheet" href="../assets/css/detailSlide.css" />
-  </head>
-  <body>
-    <div class="header">
-      <div class="header-home-container">
-        <a href="/Moview/index.html">
-          <h3>Mo<span>view</span></h3>
-        </a>
-      </div>
-    </div>
-    <div id="detail">
-      <div class="inner">
-        <button class="slide-button left">←</button>
-        <button class="slide-button right">→</button>
 
-        <div class="movie-info">
-          <div class="movie-info-left">
-            <div class="movie-poster">
-              <!-- 영화 포스터 -->
-            </div>
-          </div>
-          <div class="movie-info-middle">
-            <div class="movie-summary">
-              <!-- 영화 정보 -->
-            </div>
-          </div>
-          <div class="movie-info-right">
-            <!-- 좋아요 버튼, 리뷰 기능 -->
-            <div class="movie-options">
-              <button>⭐️</button>
-              <button>관람평작성</button>
-              <button>더보기이미지</button>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail page</title>
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+  <link rel="stylesheet" href="../assets/css/common.css" />
+  <link rel="stylesheet" href="../assets/css/detailSlide.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-home-container">
+      <a href="/Moview/index.html">
+        <h3>Mo<span>view</span></h3>
+      </a>
+    </div>
+  </div>
+  <div id="detail">
+    <div class="inner">
+      <button class="slide-button left">←</button>
+      <button class="slide-button right">→</button>
+
+      <div class="movie-info">
+        <div class="movie-info-left">
+          <div class="movie-poster">
+            <!-- 영화 포스터 -->
           </div>
         </div>
-        <div class="movie-castReviews">
-          <div class="slider">
-            <!-- 슬라이드 1 영화 출연진/감독 -->
-            <div class="slide">
-              <div class="movie-castReviews-cast">
-                <div class="cast-header">
-                  <h2>감독/출연</h2>
-                </div>
-                <ul class="cast-list"></ul>
+        <div class="movie-info-middle">
+          <div class="movie-summary">
+            <!-- 영화 정보 -->
+          </div>
+        </div>
+        <div class="movie-info-right">
+          <!-- 좋아요 버튼, 리뷰 기능 -->
+          <div class="movie-options">
+            <button>⭐️</button>
+            <button>관람평작성</button>
+            <button>더보기이미지</button>
+          </div>
+        </div>
+      </div>
+      <div class="movie-castReviews">
+        <div class="slider">
+          <!-- 슬라이드 1 영화 출연진/감독 -->
+          <div class="slide">
+            <div class="movie-castReviews-cast">
+              <div class="cast-header">
+                <h2>감독/출연</h2>
               </div>
+              <ul class="cast-list"></ul>
             </div>
-            <!-- 슬라이드 2 관람평 -->
-            <div class="slide">
-              <div class="movie-castReviews-reviews">
-                <div class="reviews-header">
-                  <h2>Make a Review</h2>
-                </div>
-                <div class="star-rating">
-                  <button class="star">&#9734;</button>
-                  <button class="star">&#9734;</button>
-                  <button class="star">&#9734;</button>
-                  <button class="star">&#9734;</button>
-                  <button class="star">&#9734;</button>
-                </div>
-                <div class="review-list">
-                  <form id="review-form">
-                    <input
-                      id="user-name"
-                      placeholder="Id"
-                      type="text"
-                      required
-                    />
-                    <label class="comment-label" for="review-comment"></label>
-                    <textarea
-                      id="review-comment"
-                      type="text"
-                      required
-                      placeholder="Movie review!"
-                    ></textarea>
-                    <button class="review-button" type="submit">Upload</button>
-                  </form>
+          </div>
+          <!-- 슬라이드 2 관람평 -->
+          <div class="slide">
+            <div class="movie-castReviews-reviews">
+              <div class="reviews-header">
+                <h2 id="make-review-button">Make a Review</h2>
+                <h2 id="see-review-button">Movie Review</h2>
+              </div>
+              <div class="star-rating">
+                <button class="star">&#9734;</button>
+                <button class="star">&#9734;</button>
+                <button class="star">&#9734;</button>
+                <button class="star">&#9734;</button>
+                <button class="star">&#9734;</button>
+              </div>
+              <div class="review-list">
+                <form id="review-form">
+                  <input id="user-name" placeholder="Id" type="text" required />
+                  <label class="comment-label" for="review-comment"></label>
+                  <textarea id="review-comment" type="text" required placeholder="Movie review!"></textarea>
+                  <button class="review-button" type="submit">Upload</button>
+                </form>
 
-                  <div id="review-cards" style="display: none">
-                    <!-- <li class="review-card">
+                <div id="review-cards" style="display: none">
+                  <!-- <li class="review-card">
                   <div class="review-card-id">
                     ${name}
                   </div>
@@ -94,45 +87,46 @@
                   <button class="review-modify-button">수정</button>
                   <button class="review-delete-button">삭제</button>
                   </li> -->
-                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- 슬라이드 3 추가 정보 -->
-            <div class="slide">
-              <div class="movie-castReviewsOtt-ott">
-                <div class="ott-header">
-                  <h2>상영 OTT 정보</h2>
-                </div>
-                <ul class="ott-list"></ul>
+          <!-- 슬라이드 3 추가 정보 -->
+          <div class="slide">
+            <div class="movie-castReviewsOtt-ott">
+              <div class="ott-header">
+                <h2>상영 OTT 정보</h2>
               </div>
+              <ul class="ott-list"></ul>
             </div>
+          </div>
 
-            <div class="slide">
-              <div class="movie-similar-genre">
-                <div class="genre-header">
-                  <h2>비슷한 장르</h2>
-                </div>
-                <ul class="genre-list">
-                  <!-- `<div class="similar-poster">
+          <div class="slide">
+            <div class="movie-similar-genre">
+              <div class="genre-header">
+                <h2>비슷한 장르</h2>
+              </div>
+              <ul class="genre-list">
+                <!-- `<div class="similar-poster">
                   <img src="" alt="${movie.title}">
                 </div>
                 <div class="similar-movie-data">
                   <div class="similar-title">${movie.title}</div>
                  
                 </div>` -->
-                </ul>
-              </div>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="../assets/js/detail.js" type="module"></script>
-    <script src="../assets/js/detailSlide.js"></script>
-    <script src="../assets/js/comment.js"></script>
-    <script src="../assets/js/score.js" type="module"></script>
-  </body>
+  <script src="../assets/js/detail.js" type="module"></script>
+  <script src="../assets/js/detailSlide.js"></script>
+  <script src="../assets/js/comment.js"></script>
+  <script src="../assets/js/score.js" type="module"></script>
+</body>
+
 </html>
