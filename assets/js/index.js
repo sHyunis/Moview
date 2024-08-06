@@ -3,12 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import {
   collection,
-  addDoc,
-  query,
-  where,
   getDocs,
-  updateDoc,
-  doc
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
