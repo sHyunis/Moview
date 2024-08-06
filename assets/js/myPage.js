@@ -1,7 +1,6 @@
 import { db, collection, getDocs, query, where } from "./fireBaseConfig.js";
 
 const activity = document.querySelector('.activity');
-const activityHeader = document.querySelector('.activity-header');
 let parentList;
 
 
@@ -187,7 +186,7 @@ function renderColumnList(data, type) {
         htmlContent = `
             <li class="${type} column-container">
                 <div class="${type} column-img">
-                    <a href="../index.html"><img src="https://image.tmdb.org/t/p/w500/${data.movie_img}"></a>
+                    <a href="/view/detail.html?id=${data.movie_id}"><img src="https://image.tmdb.org/t/p/w500/${data.movie_img}"></a>
                 </div>
                 <div class="${type} column-contents">
                     <h4>${data.movie_title}</h4>
@@ -197,7 +196,7 @@ function renderColumnList(data, type) {
                     </div>
                 </div>
                 <div class="${type} column-date">
-                    <p>${handleTimeCalculate(data.movie_like_time)}</p>
+                    <p>24분 전</p>
                 </div>
             </li>
         `
@@ -226,32 +225,6 @@ function renderColumnList(data, type) {
 }
 
 
-function handleTimeCalculate(time) {
-    const getDate = new Date(time);
-
-    // 현재 날짜와 시간 가져오기
-    const nowDate = new Date();
-
-    // 두 날짜 간의 차이를 밀리초 단위로 계산
-    const CalculateDate = nowDate - getDate;
-
-    // 밀리초를 초, 분, 시간, 일 단위로 변환
-    const calcSeconds = Math.floor(CalculateDate / 1000);
-    const calcMinutes = Math.floor(calcSeconds / 60);
-    const calcHours = Math.floor(calcMinutes / 60);
-    const calcDays = Math.floor(calcHours / 24);
-
-    // 적절한 시간 단위로 차이 출력
-    if (calcSeconds < 60) {
-        return '방금';
-    } else if (calcMinutes < 60) {
-        return `${calcMinutes}분 전`;
-    } else if (calcHours < 24) {
-        return `${calcHours}시간 전`;
-    } else {
-        return `${calcDays}일 전`;
-    }
-}
 
 (function () {
     const ratingBox = document.querySelector('.rating-box p');
