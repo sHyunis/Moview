@@ -62,21 +62,20 @@
                 <h2 id="make-review-button">Make a Review</h2>
                 <h2 id="see-review-button">Movie Review</h2>
               </div>
-              <div class="star-rating">
-                <button class="star">&#9734;</button>
-                <button class="star">&#9734;</button>
-                <button class="star">&#9734;</button>
-                <button class="star">&#9734;</button>
-                <button class="star">&#9734;</button>
-              </div>
               <div class="review-list">
                 <form id="review-form">
+                  <div class="star-rating">
+                    <p class="star">&#9734;</p>
+                    <p class="star">&#9734;</p>
+                    <p class="star">&#9734;</p>
+                    <p class="star">&#9734;</;>
+                    <p class="star">&#9734;</p>
+                  </div>
                   <input id="user-name" placeholder="Id" type="text" required />
                   <label class="comment-label" for="review-comment"></label>
-                  <textarea id="review-comment" type="text" required placeholder="Movie review!"></textarea>
+                  <textarea id="review-comment" class="review-textarea" type="text" required placeholder="Movie review!"></textarea>
                   <button class="review-button" type="submit">Upload</button>
                 </form>
-
                 <div id="review-cards" style="display: none">
                   <!-- <li class="review-card">
                   <div class="review-card-id">

@@ -84,7 +84,7 @@ function showMovieInfo(movie) {
         <div>${movie.release_date}</div>
         <div>${genres}</div>
         <div>${movie.runtime}분 · ${movie.origin_country}</div>
-        <div>TMDB ★ ${(movie.vote_average).toFixed(1)}</div>
+        <div class="tmdb-average">TMDB ★ ${(movie.vote_average).toFixed(1)}</div>
         <div class="moview-average">Moview ★ 평가 없음 </div>
       </div>
   `;
