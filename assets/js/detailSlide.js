@@ -28,9 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentSlide === 0) {
       // 첫 번째 슬라이드일 때 왼쪽 버튼 숨기기
       leftButton.style.display = "none";
+      rightButton.style.display = "block";
     } else if (currentSlide === slides.length - 1) {
       // 마지막 슬라이드일 때 오른쪽 버튼 숨기기
       rightButton.style.display = "none";
+      leftButton.style.display = "block";
     } else {
       // 중간 슬라이드일 때 두 버튼 모두 보이기
       leftButton.style.display = "block";
