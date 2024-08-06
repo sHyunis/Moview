@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get("id");
   console.log(movieId);
- 
+
   if (movieId) {
     fetchMovieDetails(movieId);
     fetchMovieCredits(movieId);
@@ -75,6 +75,7 @@ async function fetchMovieOTT(id) {
   try {
     const response = await fetch(apiUrl);
     const ottData = await response.json();
+
     console.log("무비 오티티 =>", ottData);
     showOttData(ottData);
   } catch (error) {
@@ -104,7 +105,7 @@ function showImages(movie) {
 function showMovieInfo(movie) {
   const movieInfoArea = document.querySelector(".movie-info-middle");
   const genres = movie.genres.map((genre) => genre.name).join(" · ");
-  
+
   movieInfoArea.innerHTML = `
     <div class="movie-summary">
         <h1>${movie.title}</h1>
@@ -161,8 +162,14 @@ function showCastInfo(credit) {
 
 function showOttData(ottData) {
   const showOttDataArea = document.querySelector(".ott-list");
-  console.log("오티티결과",ottData.results)
-  if (ottData.results.US === undefined || ottData.results.US.buy === undefined){
+
+  const ottKrData = ottData.results.KR;
+  const ottFlatrate = ottKrData.flatrate.filter(ott => ott.provider_id !== 1796);
+
+
+  console.log("오티티결과", ottKrData)
+  // if (ottData.results.US === undefined || ottData.results.US.buy === undefined) {
+  if (ottKrData === undefined || ottFlatrate === undefined) {
     const listItem = document.createElement("li");
 
     listItem.innerHTML = `
@@ -172,9 +179,9 @@ function showOttData(ottData) {
       `;
     showOttDataArea.appendChild(listItem);
   } else {
-    const ottList = ottData.results.US.buy;
+    const ottList = ottFlatrate;
     console.log("ott=>", ottList);
-    
+
     ottList.slice(0, 6).forEach((ott) => {
       const ottLogo = ott.logo_path;
       const listItem = document.createElement("li");
