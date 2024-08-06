@@ -211,11 +211,13 @@ header h1 {
   font-size: 2rem;
 }
 
-.comment span:nth-child(3) {
+.comment span:nth-child(2) {
   font-size: 1.2rem;
   line-height: 2rem;
 }
-
+.comment span:nth-child(3) {
+  font-size: 0.8rem;
+}
 .comment span:nth-child(5) {
   font-size: 0.8rem;
 }
@@ -408,4 +410,90 @@ header h1 {
   align-items: center;
   justify-content: center;
   border-bottom-right-radius: 15px;
+}
+
+
+
+/*** interaction ***/
+.containerP-1 span, .containerP-2 span, .containerP-3 span,
+.containerP-1 span em, .containerP-2 span em, .containerP-3 span em {
+  position:relative;
+  overflow: hidden;
+  font-style: normal;
+  font-size:100%;
+  font-weight:inherit;
+}
+.containerP-1 span, .containerP-2 span, .containerP-3 span {
+  color: rgba(0,0,0,0);
+}
+.containerP-1 span em,
+.containerP-2 span em,
+.containerP-3 span em {
+  position: absolute;
+  top:0;
+  left:0;
+  display:inline-block;  
+  width:100%;
+  height:100%;
+}
+
+.containerP-1 span em:before {
+  content:'vie';
+  transform:translateX(-100%);
+  color:rgb(255, 141, 232);
+} 
+.containerP-2 span em:before {
+  content:'Ma';
+  transform:translateY(100%);
+  color: rgb(255, 230, 160);
+}
+.containerP-3 span em:before {
+  content:'eam';
+  transform:translateX(100%);
+  color: rgb(142, 226, 208);
+}
+.containerP-1 span em:before, 
+.containerP-2 span em:before,
+.containerP-3 span em:before {
+  position:absolute;
+  top:0;
+  left:0;
+  font-style: inherit;
+  font-size:100%;
+  font-weight:inherit;
+  line-height:1.1;  
+  opacity: 0;
+}
+
+.containerP-1 span.ani-load em:before, 
+.containerP-2 span.ani-load em:before,
+.containerP-3 span.ani-load em:before {
+  transform:translate(0);
+  transition:all .35s ease .05s;
+  opacity: 1;
+}
+.containerP-2 span em:before {
+  transition-delay: .15s;
+}
+.containerP-3 span em:before {
+  transition-delay: .35s;
+}
+
+
+.comment span {
+  position: relative;
+  display: block;
+  transform:translateY(20px);
+  opacity: 0;
+}
+.comment span:nth-of-type(2) {
+  transition-delay: .15s !important;
+}
+.comment span:nth-of-type(3) {
+  transition-delay: .25s !important;
+}
+.comment span.ani-load {
+  transform:translate(0);
+  transition:all .35s ease;
+  opacity: 1;
 }

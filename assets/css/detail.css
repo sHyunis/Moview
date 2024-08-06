@@ -225,6 +225,9 @@ ul {
   cursor: pointer;
   border-radius: 10px;
 }
+.reviews-header h2.curr {
+  background-color: rgb(255, 255, 255, .4);
+}
 /* movie- */
 
 /* comment */

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get("id");
   const movieTab = document.querySelectorAll(".movie-options > button");
+  const movieReviewTab = document.querySelectorAll(".reviews-header > h2");
   console.log(movieId);
 
   if (movieId) {
@@ -16,6 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
   movieTab.forEach(btns => {
     btns.addEventListener("click", () => {
       movieTab.forEach(btn => btn.classList.remove("curr"));
+      btns.classList.add("curr");
+    })
+  })
+
+  movieReviewTab.forEach(btns => {
+    btns.addEventListener("click", () => {
+      movieReviewTab.forEach(btn => btn.classList.remove("curr"));
       btns.classList.add("curr");
     })
   })
