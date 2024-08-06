@@ -1,12 +1,8 @@
 //document.addEventListener("DOMContentLoaded", ...)는 웹 페이지의 DOM이 완전히 로드된 후에 특정 코드를 실행
 document.addEventListener("DOMContentLoaded", () => {
-  // 전체 슬라이더 컨테이너
   const slider = document.querySelector(".slider");
-  // 슬라이드 요소들의 리스트
   const slides = document.querySelectorAll(".slide");
-  // 왼쪽 이동 버튼
   const leftButton = document.querySelector(".slide-button.left");
-  // 오른쪽 이동 버튼
   const rightButton = document.querySelector(".slide-button.right");
 
   // 현재 슬라이드 위치인데 0은 1번째 슬라이드
