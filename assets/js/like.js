@@ -28,39 +28,20 @@ const db = getFirestore(app);
 
 
 
-/*
- * [좋아요 버튼 기능 1]
- * 1. 버튼 클릭하면 세션 스토리지 값을 판별함 (로그인 여부)
- * 2. 클릭한 리스트의 타이틀을 가져옴 (api 값 중 타이틀이 있는 데이터의 값을 저장하기 위함)
- * 3. if문을 통해 로그인 여부 판별 후 getMovieLike()의 매개변수에 타이틀을 전달함
- * 4. api.js의 getMovieLike() 함수 실행
-*/
+
 document.addEventListener("DOMContentLoaded", () => {
-  // 클릭할 때 DB 의 user id 값을 가져와야함 && 세션이 트루인지 확인
-  // 클릭이 성공되면 DB에 like 와 Movie_id 값이 저장되어야함
-  // 근데 모든 사람들의 좋아요 된 갯수를 확인하기 위해선 회원의 like 와 전체 movie의 like 를 저장해야함
   document.body.addEventListener("click", async (e) => {
     if (e.target.classList.contains("movie-like")) {
       try {
         const sessionChk = await sessionStorage.getItem("loginState");
         const getId = e.target.closest(".movie-card").querySelector(".card-id").innerText;
-        const getTitle = e.target.closest(".movie-card").querySelector("h3").innerText;
-        const getOverView = e.target.closest(".movie-card").querySelector(".movie-overview").innerText;
-        const getImg = e.target.closest(".movie-card").querySelector("img").src;
-        // console.log(getTitle);
         if (sessionChk) {
-          // api 값 중 타이틀을 비교하기위해 파라미터로 값을 전달함
-          // console.log("getTItle =>", getTitle);
-          getMovieLike(getId, getImg, getTitle, getOverView);
+          getMovieLike(getId);
           if (e.target.classList.contains("curr")) {
-            e.target.classList.remove("curr")
-            // localStorage.removeItem(getTitle);
+            e.target.classList.remove("curr");
           } else {
             e.target.classList.add("curr");
-            // localStorage.setItem(getTitle, getTitle);
           }
-
-
         } else {
           alert("회원만 가능합니다.");
         }

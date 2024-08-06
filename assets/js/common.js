@@ -29,6 +29,7 @@ async function handleLoginChk() {
 const btnLogout = document.getElementById("header-btn-logout");
 btnLogout.addEventListener("click", async () => {
   await sessionStorage.removeItem("loginState");
+  await sessionStorage.removeItem("userLoginId");
   alert("로그아웃 되었습니다.");
   window.location.href = "/";
 })
