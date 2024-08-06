@@ -3,7 +3,6 @@ import { db, collection, getDocs, query, where } from "./fireBaseConfig.js";
 const activity = document.querySelector('.activity');
 let parentList;
 
-
 async function fetchLike(userId) {
     try {
         const loginSession = sessionStorage.getItem("userLoginId");
@@ -32,9 +31,7 @@ async function fetchLike(userId) {
     } catch (e) {
         console.log("fetchLike Error =>", e);
     }
-
 }
-
 
 async function fetchRecent() {
     const tempRecent = JSON.parse(localStorage.getItem('recentMovies'));
@@ -103,11 +100,13 @@ const processRowData = (results, type) => {
         renderRowList(data, type);
     })
 }
+
 const processColumnData = (results, type) => {
     results.forEach((data) => {
         renderColumnList(data, type);
     })
 }
+
 
 function createParentList(classList) {
     parentList = document.createElement('ul');
