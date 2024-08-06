@@ -21,22 +21,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function fetchUrl() {
-  const url = getUrl("US");
-  const makeCardFetchUrl = fetch(URL)
-    .then((response) => response.json())
-    .then((data) => {
-      const movies = data.results;
-      changeMovieLang("US");
-      // [김민규] like 기능 적용을 위해 세션에 저장
-      sessionStorage.removeItem("language");
-      sessionStorage.setItem("language", url);
-      movieLikeChk();
-    })
-    .catch((error) => console.error("Error:", error));
-}
 fetchUrl();
-// 검색기능
+
 
 async function movieLikeChk() {
   try {
@@ -53,8 +39,6 @@ async function movieLikeChk() {
         }
       })
     })
-
-
   } catch (e) {
     console.log("movieLikeChk =>", e);
   }
@@ -87,12 +71,6 @@ document.querySelector(".search").addEventListener("submit", (e) => {
 });
 
 
-document.querySelector('#movie-container').addEventListener('click', (e) => {
-  const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
-  recentMovies.unshift(movie);
-
-  localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
-})
 
 document.addEventListener('mouseover', function (event) {
   const targetElement = event.target;

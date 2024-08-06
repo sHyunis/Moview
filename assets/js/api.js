@@ -42,6 +42,22 @@ async function changeMovieLang(language) {
   }
 }
 
+async function fetchUrl() {
+  const url = getUrl("US");
+  const makeCardFetchUrl = fetch(URL)
+    .then((response) => response.json())
+    .then((data) => {
+      const movies = data.results;
+      changeMovieLang("US");
+      // [김민규] like 기능 적용을 위해 세션에 저장
+      sessionStorage.removeItem("language");
+      sessionStorage.setItem("language", url);
+      movieLikeChk();
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+
 /*
  * [좋아요 버튼 기능 2]
  * 1. url 변수를 통해 현재 언어의 api 값을 전닯 받음 (이 값은 language.js에서 handleMovieRend함수를 통해 세션 값을 저장함)

@@ -122,7 +122,7 @@ function renderRowList(data, type) {
     const htmlContent = `
         <li class="${type}-container row-container">
             <div class="${type}-img row-img">
-                <a href="../index.html"> <img src="${data.backdrop_path}" alt="${data.title}"></a>
+                <a href="/view/detail.html?id=${data.id}"> <img src="${data.backdrop_path}" alt="${data.title}"></a>
             </div>
             <div class="${type}-title row-title">
                 <p>${data.title}</p>
