@@ -7,10 +7,12 @@ const btnLanguageKr = document.getElementById("btn-lang-kr");
 const btnLanguageEn = document.getElementById("btn-lang-en");
 
 function getSlicedOverview(overview) {
+  const MAX_OVERVIEW_LENGTH = 80;
+
   if (!overview) return "줄거리가 없습니다."
 
-  if (overview.length >= 120) {
-    return `${overview.slice(0, 80)} . . .`
+  if (overview.length >= MAX_OVERVIEW_LENGTH) {
+    return `${overview.slice(0, MAX_OVERVIEW_LENGTH)} . . .`
   }
 
   return overview;
