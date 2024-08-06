@@ -47,15 +47,19 @@ async function movieLikeChk() {
   try {
     const likeDb = await getDocs(collection(db, "like"));
     const movieCard = document.querySelectorAll(".movie-card");
+    const sessionChk = sessionStorage.getItem("userLoginId");
+
     movieCard.forEach(cards => {
       const cardsTarget = cards.querySelector('.card-id').innerText;
       likeDb.forEach(el => {
         const likeDb = el.data();
-        if (Number(cardsTarget) == Number(likeDb.movie_id)) {
+        console.log(sessionChk);
+        if (Number(cardsTarget) == Number(likeDb.movie_id) && likeDb.user_id === sessionChk && likeDb.like) {
           cards.querySelector(".movie-like").classList.add("curr");
         }
       })
     })
+
 
   } catch (e) {
     console.log("movieLikeChk =>", e);
