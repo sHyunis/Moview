@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let reviewComment = document.getElementById("review-comment"); // 댓글내용
   const reviewForm = document.getElementById("review-form"); // 댓글다는곳
 
+  let currentEditIndex = null; // 현재 수정 중인 댓글의 인덱스
+
   // 저장되어있던 댓글 가져오기
   function uploadComment() {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 수정 버튼에 이벤트 리스너 추가
     document.querySelectorAll(".review-modify-button").forEach((button) => {
-      button.addEventListener("click", modifyReview);
+      button.addEventListener("click", fetchModalHtml);
     });
   }
 
@@ -67,25 +69,59 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("삭제가 완료되었습니다.");
   }
 
+  // modal html 불러오기
+  async function fetchModalHtml(event) {
+    const reviewLi = event.target.closest(".review-card");
+    currentEditIndex = reviewLi.dataset.index;
+    const comments = JSON.parse(localStorage.getItem("comments")) || [];
+    const comment = comments[currentEditIndex];
+
+    try {
+      const response = await fetch("/view/modal.html");
+      const modalData = await response.text();
+      document.body.insertAdjacentHTML("beforeend", modalData);
+
+      const closeModalButton = document.getElementById("modal-close-button");
+      const modal = document.getElementById("modal");
+      const modalId = document.getElementById("modify-id");
+      const modalComment = document.getElementById("modify-comment");
+      const modalSaveButton = document.getElementById("modify-save-button");
+
+      modalId.value = comment.name;
+      modalComment.value = comment.review;
+
+      // 모달 닫기
+      closeModalButton.addEventListener("click", () => {
+        modal.remove();
+      });
+
+      window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.remove();
+        }
+      });
+
+      // 모달 저장 버튼
+      modalSaveButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const newReview = modalComment.value.trim();
+        if (newReview !== "") {
+          correctionComments(currentEditIndex, comment.name, newReview);
+          uploadComment();
+          modal.remove();
+          alert("수정이 완료되었습니다.");
+        }
+      });
+    } catch (error) {
+      console.log("수정을 할 수 없습니다.", error);
+    }
+  }
+
   // 댓글 수정 저장
   function correctionComments(index, name, review) {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments[index] = { name, review };
     localStorage.setItem("comments", JSON.stringify(comments));
-  }
-
-  // 댓글 수정
-  function modifyReview(event) {
-    const reviewLi = event.target.closest(".review-card");
-    const index = reviewLi.dataset.index;
-    const comments = JSON.parse(localStorage.getItem("comments")) || [];
-    const comment = comments[index];
-    const newReview = prompt("댓글을 수정하세요:", comment.review);
-    if (newReview !== null && newReview.trim() !== "") {
-      correctionComments(index, comment.name, newReview.trim());
-      uploadComment();
-      alert("수정되었습니다");
-    }
   }
 
   // 저장되어있던 댓글 표시
