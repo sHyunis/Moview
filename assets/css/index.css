@@ -325,16 +325,11 @@ header h1 {
   height: 30px;
   z-index: 1;
   cursor: pointer;
-  font-size: 30px;
-  color: white;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: grey;
+  background:url("../img/ico-like.png") no-repeat center center;
 }
 
 .movie-like.curr {
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: yellow;
-  color: yellow;
+  background:url("../img/ico-like-on.png") no-repeat center center;
 }
 
 .main-homepage-section1 {

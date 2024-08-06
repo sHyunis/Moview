@@ -27,7 +27,7 @@ function handleMovieCreate(movie) {
   card.className = "movie-card";
   card.innerHTML = `
     <div class="card-img">
-      <span class="movie-like">☆</span>
+      <span class="movie-like"></span>
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
     </div>
     <div class="movie-content">
