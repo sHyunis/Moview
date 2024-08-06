@@ -164,7 +164,8 @@ function showOttData(ottData) {
   const showOttDataArea = document.querySelector(".ott-list");
 
   const ottKrData = ottData.results.KR;
-  const ottFlatrate = ottKrData.flatrate.filter(ott => ott.provider_id !== 1796);
+  // netflix 광고 버전 제거
+  const ottFlatrate = ottKrData.flatrate?.filter(ott => ott.provider_id !== 1796);
 
 
   console.log("오티티결과", ottKrData)
