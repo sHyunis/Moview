@@ -32,7 +32,6 @@ async function changeMovieLang(language) {
         const cardID = card.querySelector(".card-id").innerText;
         card.addEventListener("click", (e) => {
           if (!e.target.classList.contains("movie-like")) { // 좋아요 제외 
-            console.log("testtest => ", movie.id);
             (window.location.href = `./view/detail.html?id=${cardID}`)
           }
         });
