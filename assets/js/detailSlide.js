@@ -59,6 +59,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // 버튼 클릭시 슬라이드 이동
+  const moveButtons = document.querySelectorAll('.move-button');
+  moveButtons.forEach(moveButton => {
+    moveButton.addEventListener('click', (e) => {
+      const clickedButton = e.target;
+      const classes = clickedButton.classList;
+
+      if (classes.contains('credit')) {
+        currentSlide = 0;
+        updateSliderPosition();
+      } else if (classes.contains('review')) {
+        currentSlide = 1;
+        updateSliderPosition();
+      } else if (classes.contains('ott')) {
+        currentSlide = 2;
+        updateSliderPosition();
+      } else if (classes.contains('genre')) {
+        currentSlide = 3;
+        updateSliderPosition();
+      }
+    })
+  })
+
   // 초기 버튼 상태 업데이트
   updateButton();
 });
+
+
