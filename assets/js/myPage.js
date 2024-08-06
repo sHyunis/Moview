@@ -196,7 +196,7 @@ function renderColumnList(data, type) {
                     </div>
                 </div>
                 <div class="${type} column-date">
-                    <p>${handleTimeCalculate(data.movie_like_time)} 전</p>
+                    <p>${handleTimeCalculate(data.movie_like_time)}</p>
                 </div>
             </li>
         `
