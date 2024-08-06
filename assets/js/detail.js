@@ -1,8 +1,36 @@
+// Firebase SDK 라이브러리 가져오기
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyC3OuNZBprr2iRYKTB6C83s4ciXXOTDROA",
+  authDomain: "sparta-movie-project.firebaseapp.com",
+  projectId: "sparta-movie-project",
+  storageBucket: "sparta-movie-project.appspot.com",
+  messagingSenderId: "29347735133",
+  appId: "1:29347735133:web:19ff5afb5e7e61d4644fb4"
+};
+
+// Firebase 인스턴스 초기화
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get("id");
   console.log(movieId);
-
+ 
   if (movieId) {
     fetchMovieDetails(movieId);
     fetchMovieCredits(movieId);
@@ -76,7 +104,7 @@ function showImages(movie) {
 function showMovieInfo(movie) {
   const movieInfoArea = document.querySelector(".movie-info-middle");
   const genres = movie.genres.map((genre) => genre.name).join(" · ");
-
+  
   movieInfoArea.innerHTML = `
     <div class="movie-summary">
         <h1>${movie.title}</h1>
@@ -84,7 +112,8 @@ function showMovieInfo(movie) {
         <div>${movie.release_date}</div>
         <div>${genres}</div>
         <div>${movie.runtime}분 · ${movie.origin_country}</div>
-        <div>★ ${movie.vote_average}</div>
+        <div>TMDB ★ ${(movie.vote_average).toFixed(1)}</div>
+        <div class="moview-average">Moview ★ 평가 없음 </div>
       </div>
   `;
 }
@@ -132,33 +161,36 @@ function showCastInfo(credit) {
 
 function showOttData(ottData) {
   const showOttDataArea = document.querySelector(".ott-list");
-  if (ottData.results.KR !== undefined) {
-    const ottList = ottData.results.KR.flatrate;
-    console.log("ott=>", ottList);
+  console.log("오티티결과",ottData.results)
+  if (ottData.results.US === undefined || ottData.results.US.buy === undefined){
+    const listItem = document.createElement("li");
 
+    listItem.innerHTML = `
+        <div class="">
+          OTT 정보가 없습니다.
+        </div>
+      `;
+    showOttDataArea.appendChild(listItem);
+  } else {
+    const ottList = ottData.results.US.buy;
+    console.log("ott=>", ottList);
+    
     ottList.slice(0, 6).forEach((ott) => {
       const ottLogo = ott.logo_path;
       const listItem = document.createElement("li");
+      listItem.className = "ott-card";
       listItem.innerHTML = `
-        <div style="background-size: cover;">
-        <img class="profileImage" src="https://image.tmdb.org/t/p/w300${ottLogo}" alt="이미지"
-        onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'">
-        </div>
-        <div>
-          <div>${ott.provider_name}</div>
-          <div></div>
-        </div>`;
-
+            <div class="ott-card-providerImage" style="background-size: cover;">
+            <img class="providerImage" src="https://image.tmdb.org/t/p/w300${ottLogo}" alt="이미지"
+            onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'"
+            >
+            </div>
+            <div class="ott-card-provider">
+              <div>${ott.provider_name}</div>
+            </div>
+        `;
       showOttDataArea.appendChild(listItem);
     });
-  } else if (ottData.results.KR === undefined) {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `
-      <div class="">
-        OTT 정보가 없습니다.
-      </div>`;
-
-    showOttDataArea.appendChild(listItem);
   }
 }
 

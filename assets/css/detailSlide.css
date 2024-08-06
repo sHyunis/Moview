@@ -8,6 +8,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 /* 임시 버튼 스타일 */
 .slide-button {
@@ -22,9 +24,9 @@
 }
 .slide-button.left {
     margin-top: 13%;
-    margin-left: -593px;
+    margin-left: -600px;
 }
 .slide-button.right {
-    margin-left: 560px;
+    margin-left: 565px;
     margin-top: 13%;
 }

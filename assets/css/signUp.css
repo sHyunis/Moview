@@ -48,8 +48,7 @@ body {
   width: 80%;
   display: flex;
   color: white;
-  margin-top: 8rem;
-  margin-left: 3rem;
+  padding-top: 8rem;
 }
 .inner {
   display: flex;
