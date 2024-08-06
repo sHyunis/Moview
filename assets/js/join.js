@@ -40,9 +40,6 @@ btnJoinUp.addEventListener("click", async () => {
     // 중복 계정 확인
     userDb.forEach((userDoc) => {
       let userData = userDoc.data();
-      // console.log("userData.user_id =>", userData.user_id);
-      // console.log("userJoinId =>", userJoinId);
-      // console.log("userChk =>", userChk);
       if (userData.user_id === userJoinId) userChk = true; // 중복 계정 없을 경우 true 할당
     });
 

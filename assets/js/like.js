@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", async (e) => {
     if (e.target.classList.contains("movie-like")) {
       try {
-        const sessionChk = await sessionStorage.getItem("loginState");
+        const sessionChk = sessionStorage.getItem("loginState");
         const getId = e.target.closest(".movie-card").querySelector(".card-id").innerText;
         if (sessionChk) {
           getMovieLike(getId);
