@@ -2,7 +2,6 @@
   display: flex;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 20px;
   border-radius: 10px;
 }
 .slide {
@@ -14,6 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding:30px;
 }
 /* 임시 버튼 스타일 */
 .slide-button {
@@ -24,13 +24,20 @@
   padding: 10px;
   cursor: pointer;
   top: 50%;
-  left: 50%;
+  -webkit-transform:translateY(-50%);
+  -moz-transform:translateY(-50%);
+  -ms-transform:translateY(-50%);
+  -o-transform:translateY(-50%);
+  transform:translateY(-50%);
+  /* left: 50%; */
 }
 .slide-button.left {
-    margin-top: 13%;
-    margin-left: -600px;
+    /* margin-top: 13%;
+    margin-left: -600px; */
+    left: -25px;
 }
 .slide-button.right {
-    margin-left: 565px;
-    margin-top: 13%;
+    /* margin-left: 565px;
+    margin-top: 13%; */
+    right: -25px;
 }

@@ -133,10 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   makeReviewButton.addEventListener("click", () => {
     reviewCards.style.display = "none";
-    reviewForm.style.display = "block";
+    reviewForm.style.display = "flex";
   });
   seeReviewButton.addEventListener("click", () => {
-    reviewCards.style.display = "block";
+    reviewCards.style.display = "flex";
     reviewForm.style.display = "none";
   });
 });
