@@ -44,10 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-// 파이어 베이스에 점수 저장
-// 테이블 및 컬럼 생성하고 쿼리문 작성해서 변수에 담음
-// 테이블 있으면 업데이트 해줌 ( 민규님꺼 참조 )
+/*
+    파이어 베이스에 점수 저장
+    테이블 및 컬럼 생성하고 쿼리문 작성해서 변수에 담음
+    테이블 있으면 업데이트 해줌 ( 민규님꺼 참조 )
+*/
 async function saveScore(loginId, movieId, score) {
     try {
         const userRef = collection(db, 'userScores');
@@ -173,6 +174,6 @@ function initializeStars(loginId, movieId){
     allStars.forEach((star, i)=>{
         star.onclick = () => clickStars(loginId, movieId, i);
         star.onmouseover = () => showStars(i+1);
-        star.onmouseout = starMouseOut();
+        star.onmouseout = starMouseOut;
     })
 }
