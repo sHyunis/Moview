@@ -63,7 +63,7 @@ async function getMovieLike(movieId) {
       const targetImg = targetMovie.backdrop_path;
       const targetTitle = targetMovie.title;
       const targetOverView = targetMovie.overview;
-      console.log(targetId, targetTitle, targetOverView, targetImg);
+
       handleLikeAdd(targetId, targetImg, targetTitle, targetOverView);
     } catch (e) {
       console.log("getMovieLike Error =>", e);

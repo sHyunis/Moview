@@ -10,7 +10,6 @@ async function handleLoginChk() {
   const headerBtnMypage = document.getElementById("header-btn-mypage");
   const headerBtnLogout = document.getElementById("header-btn-logout");
   const headerBtnSignup = document.getElementById("header-btn-signup");
-  console.log(session);
   if (session === "true") {
     headerBtnLogin.style.display = "none";
     headerBtnSignup.style.display = "none";
