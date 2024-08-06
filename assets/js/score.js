@@ -82,7 +82,7 @@ async function getUserScore(loginId, movieId) {
             const scoreQuery = query(userRef, where('loginId', '==', loginId), where('movieId', '==', movieId));
             const scoreQuerySnapshot = await getDocs(scoreQuery);
             lastSaveScore = scoreQuerySnapshot.docs[0].data().score - 1;
-        }
+        }   
     }catch(error){
         console.log(error);
     }
@@ -109,12 +109,10 @@ async function getAverageScoreForMovie(movieId) {
     if (scores.length === 0) {
         return 0;
     }
-
     const totalScore = scores.reduce((sum, score) => sum + score, 0);
     const averageScore = (totalScore / scores.length)*2;
     const resultScore = "Moview ★ " + parseFloat(averageScore.toFixed(1));
     moviewAverage.innerHTML = resultScore
-
 }
 
 

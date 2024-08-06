@@ -37,7 +37,7 @@ ul {
 .movie-poster {
   width: 100%;
   max-width: 200px;
-  margin: 50px 80px 0 auto;
+  margin: 50px 60px 0 auto;
   display: flex;
 }
 
@@ -129,7 +129,6 @@ ul {
   overflow-y: auto;
   position: relative;
   -ms-overflow-style: none;
-  background-color: black;
   padding: 30px;
 }
 .reviews-header {
@@ -157,16 +156,17 @@ ul {
   width: 100%;
 }
 #review-form {
-  width: 100%;
+  margin: auto;
+  width: 91%;
   height: 250px;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.329);
   position: relative;
   border-radius: 5px;
   border: 1px solid gray;
 }
-
+textarea{
+  resize: none;
+}
 #user-name {
   background-color: transparent;
   width: 100%;
@@ -203,12 +203,19 @@ ul {
 .review-card {
   width: 100%;
   height: 250px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.329);
   position: relative;
   margin-bottom: 30px;
   border-radius: 5px;
   border: 1px solid gray;
 }
+/* .review-card-score{
+  height: 20px;
+  border-bottom: 1px solid gray;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+} */
 .review-card-id {
   background-color: transparent;
   width: 100%;
@@ -311,9 +318,9 @@ textarea:focus {
   margin-bottom: 2rem;
 }
 .similar-poster {
-  width: 150px;
+  width: 145px;
   height: 200px;
-  margin-right: 1rem;
+  margin-left: 1.15rem;
 }
 .similar-poster img {
   width: 100%;
@@ -347,7 +354,7 @@ textarea:focus {
   justify-content: flex-start;
 }
 .ott-card {
-  width: calc(100% / 3.2);
+  width: calc(100% / 3.3);
   height: 120px;
   display: flex;
   flex-direction: row;
@@ -355,6 +362,7 @@ textarea:focus {
   border-bottom: 1px solid rgba(90, 89, 89, 0.644);
   white-space: nowrap;
   overflow: hidden;
+  margin-left: 10px;
 }
 .ott-card-provider {
   margin: auto auto auto 10px;
@@ -403,14 +411,26 @@ textarea:focus {
   color: rgb(255, 81, 220);
 }
 .star-rating {
+  display: flex;
+  flex-direction: row;
   user-select: none;
+  border-bottom: 1px solid gray;
+  padding: 0px 0px 4px 17px;
 }
 .star {
-  font-size: 3rem;
-  color: #ff9800;
+  font-size: 25px;
+  color: rgb(212, 192, 255);
   background-color: unset;
-  border: none;
 }
 .star:hover {
   cursor: pointer;
+}
+.star:active {
+  color: rgba(186, 156, 252, 0.849);
+}
+.tmdb-average{
+  color: rgb(220, 204, 255);
+}
+.moview-average{
+  color: rgb(255, 211, 218);
 }
