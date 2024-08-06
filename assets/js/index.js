@@ -1,25 +1,4 @@
-// Firebase SDK 라이브러리 가져오기
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-import {
-  collection,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyC3OuNZBprr2iRYKTB6C83s4ciXXOTDROA",
-  authDomain: "sparta-movie-project.firebaseapp.com",
-  projectId: "sparta-movie-project",
-  storageBucket: "sparta-movie-project.appspot.com",
-  messagingSenderId: "29347735133",
-  appId: "1:29347735133:web:19ff5afb5e7e61d4644fb4"
-};
-
-// Firebase 인스턴스 초기화
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { db, collection, getDocs } from "./fireBaseConfig.js";
 
 fetchUrl();
 
@@ -46,14 +25,10 @@ async function movieLikeChk() {
 window.movieLikeChk = movieLikeChk;
 
 document.querySelector(".search").addEventListener("submit", (e) => {
-  // input 에 넣은 값 소문자로 변환
   e.preventDefault();
-  const searchInput = document
-    .getElementById("searchInput")
-    .value.toLowerCase();
+  const searchInput = document.getElementById("searchInput").value.toLowerCase();
   const movieCards = document.querySelectorAll(".movie-card");
-  // 모든 카드들의 제목과 input값 포함시 조건에 따라 display 변화주기
-  // 아무것도 입력하지 않았을 시 검색어 입력요청 alert창
+
   movieCards.forEach((card) => {
     const title = card.querySelector("h3").textContent.toLowerCase();
 
