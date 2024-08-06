@@ -40,20 +40,19 @@ async function fetchLike(userId) {
     try {
         const loginSession = sessionStorage.getItem("userLoginId");
         const likeData = await getDocs(collection(db, "like"));
-
         likeData.forEach(item => {
             const data = item.data();
             if (data.user_id === loginSession) {
                 likeDataArr.push(data);
             }
         })
-        console.log(likeDataArr);
     } catch (e) {
         console.log("fetchLike Error =>", e);
     }
 
     return likeDataArr;
 }
+
 
 // 최근 본 영화 목록 (localStorage 실제 데이터)
 async function fetchRecent() {
@@ -207,6 +206,7 @@ function renderRowList(data, type) {
 */
 function renderColumnList(data, type) {
     let htmlContent;
+
     if (type === "like") {
         htmlContent = `
             <li class="${type} column-container">
@@ -217,8 +217,7 @@ function renderColumnList(data, type) {
                     <h4>${data.movie_title}</h4>
                     <p>${data.movie_over_view}</p>
                     <div class="feed-box">
-                        <p>좋아요(3)</p>
-                        <p>댓글(323)</p>
+                        <p>좋아요(1)</p>
                     </div>
                 </div>
                 <div class="${type} column-date">
