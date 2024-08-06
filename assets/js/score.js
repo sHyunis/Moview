@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 /*
 파이어 베이스에 점수 저장
 테이블 및 컬럼 생성하고 쿼리문 작성해서 변수에 담음
-테이블 있으면 업데이트 해줌 ( 민규님꺼 참조 )
+테이블 있으면 업데이트 해줌 ( index.js )
 */
 async function saveScore(loginId, movieId, score) {
     try {
@@ -82,11 +82,6 @@ async function getUserScore(loginId, movieId) {
             const scoreQuery = query(userRef, where('loginId', '==', loginId), where('movieId', '==', movieId));
             const scoreQuerySnapshot = await getDocs(scoreQuery);
             lastSaveScore = scoreQuerySnapshot.docs[0].data().score - 1;
-            if (!scoreQuerySnapshot.empty) {
-                return scoreQuerySnapshot.docs[0].data().score;
-            } else {
-                return null;
-            }
         }
     }catch(error){
         console.log(error);
@@ -114,6 +109,7 @@ async function getAverageScoreForMovie(movieId) {
     if (scores.length === 0) {
         return 0;
     }
+
     const totalScore = scores.reduce((sum, score) => sum + score, 0);
     const averageScore = (totalScore / scores.length)*2;
     const resultScore = "Moview ★ " + parseFloat(averageScore.toFixed(1));
