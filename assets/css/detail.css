@@ -211,7 +211,8 @@ ul {
   font-size: 20px;
   padding: 20px;
   border-bottom: 1px solid gray;
-  line-height: 20px;
+  display: flex;
+  align-items: center;
 }
 .review-card-content {
   width: 100%;
