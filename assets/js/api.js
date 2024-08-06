@@ -51,7 +51,7 @@ async function changeMovieLang(language) {
  * 4. 해당 언어 api 데이터 중 title이 있는 데이터를 찾음
  * 5. 그 데이터의 id 값을 like.js의 handleLikeAdd()함수에 전달해줘야함
 */
-async function getMovieLike(movieId) {
+async function getMovieLike(movieId, movieTitle, movieOverView, movieImg) {
   const url = getUrl("us");
   let getMovieId = movieId;
   if (getMovieId) {
@@ -59,8 +59,13 @@ async function getMovieLike(movieId) {
       const res = await fetch(url);
       const data = await res.json();
       const movies = data.results;
-      const targetMovie = movies.filter(item => item.id === Number(getMovieId));
-      handleLikeAdd(targetMovie[0].id);
+      const targetMovie = movies.filter(item => item.id === Number(getMovieId))[0];
+      const targetId = targetMovie.id;
+      const targetImg = targetMovie.backdrop_path;
+      const targetTitle = targetMovie.title;
+      const targetOverView = targetMovie.overview;
+      console.log(targetId, targetTitle, targetOverView, targetImg);
+      handleLikeAdd(targetId, targetImg, targetTitle, targetOverView);
     } catch (e) {
       console.log("getMovieLike Error =>", e);
     }
