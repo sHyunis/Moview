@@ -2,24 +2,24 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import {
-  collection,
-  addDoc,
-  query,
-  where,
-  getDocs,
-  updateDoc,
-  doc
+    collection,
+    addDoc,
+    query,
+    where,
+    getDocs,
+    updateDoc,
+    doc
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyC3OuNZBprr2iRYKTB6C83s4ciXXOTDROA",
-  authDomain: "sparta-movie-project.firebaseapp.com",
-  projectId: "sparta-movie-project",
-  storageBucket: "sparta-movie-project.appspot.com",
-  messagingSenderId: "29347735133",
-  appId: "1:29347735133:web:19ff5afb5e7e61d4644fb4"
+    apiKey: "AIzaSyC3OuNZBprr2iRYKTB6C83s4ciXXOTDROA",
+    authDomain: "sparta-movie-project.firebaseapp.com",
+    projectId: "sparta-movie-project",
+    storageBucket: "sparta-movie-project.appspot.com",
+    messagingSenderId: "29347735133",
+    appId: "1:29347735133:web:19ff5afb5e7e61d4644fb4"
 };
 
 // Firebase 인스턴스 초기화
@@ -76,14 +76,14 @@ async function saveScore(loginId, movieId, score) {
 
 //파이어 베이스에서 데이터 가져오기
 async function getUserScore(loginId, movieId) {
-    try{
-        if(loginId !== null){
+    try {
+        if (loginId !== null) {
             const userRef = collection(db, 'userScores');
             const scoreQuery = query(userRef, where('loginId', '==', loginId), where('movieId', '==', movieId));
             const scoreQuerySnapshot = await getDocs(scoreQuery);
             lastSaveScore = scoreQuerySnapshot.docs[0].data().score - 1;
-        }   
-    }catch(error){
+        }
+    } catch (error) {
         console.log(error);
     }
 
@@ -94,7 +94,7 @@ async function getMovieScores(movieId) {
     const userRef = collection(db, 'userScores');
     const scoreQuery = query(userRef, where('movieId', '==', movieId));
     const scoreQuerySnapshot = await getDocs(scoreQuery);
-    
+
     if (!scoreQuerySnapshot.empty) {
         return scoreQuerySnapshot.docs.map(doc => doc.data().score);
     } else {
@@ -110,8 +110,8 @@ async function getAverageScoreForMovie(movieId) {
         return 0;
     }
     const totalScore = scores.reduce((sum, score) => sum + score, 0);
-    const averageScore = (totalScore / scores.length)*2;
-    const resultScore = "Moview ★ " + parseFloat(averageScore.toFixed(1));
+    const averageScore = (totalScore / scores.length) * 2;
+    const resultScore = `<span>Moview</span><p>${parseFloat(averageScore.toFixed(1))}</p>`;
     moviewAverage.innerHTML = resultScore
 }
 
@@ -131,16 +131,16 @@ async function getAverageScoreForMovie(movieId) {
 
 */
 
-async function clickStars(loginId, movieId, index){
+async function clickStars(loginId, movieId, index) {
     if (loginId !== null) {
 
-        let currentStar = index + 1; 
+        let currentStar = index + 1;
         let score = null;
-        
-        if(lastClickedIndex === index){
+
+        if (lastClickedIndex === index) {
             resetStars();
             lastClickedIndex = null;
-        }else{
+        } else {
             showStars(currentStar);
             score = index + 1;
             lastClickedIndex = index;
@@ -150,7 +150,7 @@ async function clickStars(loginId, movieId, index){
     } else {
         resetStars();
         alert("로그인 해주세요");
-        window.location.href='/view/member_login.html';
+        window.location.href = '/view/member_login.html';
     }
 }
 
@@ -164,11 +164,11 @@ async function clickStars(loginId, movieId, index){
 
 */
 
-function showStars(score){
-    allStars.forEach((star,i)=>{
-        if(score> i){
+function showStars(score) {
+    allStars.forEach((star, i) => {
+        if (score > i) {
             star.innerHTML = '&#9733';
-        }else{
+        } else {
             star.innerHTML = '&#9734';
         }
     })
@@ -185,7 +185,7 @@ function showStars(score){
 
 */
 
-function starMouseOut(){
+function starMouseOut() {
     showStars(lastSaveScore !== null ? lastSaveScore + 1 : 0);
     getUserScore(loginId, movieId);
 }
@@ -199,8 +199,8 @@ function starMouseOut(){
     호출하는 함수 내부에서 조건문을 충족 시켜준 뒤 호출하는게 좋음
 */
 
-function resetStars(){
-    allStars.forEach((star)=>{
+function resetStars() {
+    allStars.forEach((star) => {
         star.innerHTML = "&#9734";
     })
 }
@@ -215,11 +215,11 @@ function resetStars(){
 
 
 */
-function initializeStars(loginId, movieId){
+function initializeStars(loginId, movieId) {
     const inner = document.querySelector('#detail');
-    allStars.forEach((star, i)=>{
+    allStars.forEach((star, i) => {
         star.onclick = () => clickStars(loginId, movieId, i);
-        star.onmouseover = () => showStars(i+1);
+        star.onmouseover = () => showStars(i + 1);
         inner.onmouseout = starMouseOut;
     })
 }

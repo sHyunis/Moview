@@ -38,34 +38,52 @@ section {
 }
 
 .search {
-  display: flex;
-  margin-top: 30px;
-  margin: 0 auto;
-  justify-content: center;
-  margin-bottom: 30px;
+  position:relative;
+  display: flex;  
+  margin: 60px 0 15px;
+  justify-content: center;  
+  width:100%;
+  max-width:600px;
+  overflow:hidden;
+  border-radius:20px;
 }
 
 .search input {
-  width: 200px;
+  position:relative;
+  width: 100%;
+  height: 60px;
   border: none;
-  text-align: center;
-  background-color: rgb(255, 250, 235);
+  text-align: left;
+  background: #161616;
+  padding:0 100px 0 30px;
+  font-size:18px;
+  color:#fff;
 }
 
 .search input::placeholder {
-  color: rgb(20, 19, 19);
-  font-weight: 600;
+  color: #515151;
+  font-weight: 500;
   font-family: "Noto Serif KR", serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
 }
+.search input:focus {outline: 2px solid rgb(255, 141, 232)}
 
 #searchButton {
-  width: 30px;
-  height: 30px;
+  font-family: "Courier New", Courier, monospace;
+  position:absolute;
+  top:0;
+  right:0;
+  width:100px;
+  height:60px;
   border: none;
   cursor: grab;
+  background:rgb(205, 80, 180);
+  color:#fff;
+  font-size:18px;
+  font-weight:bold;
+  letter-spacing: 0px;
 }
 
 .search img {
@@ -209,7 +227,7 @@ header h1 {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 70px;
+  gap: 20px;
 }
 
 .movie-card {
@@ -217,7 +235,6 @@ header h1 {
   height: 400px;
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
   /* border-bottom: 1px solid rgb(255, 250, 235); */
   position: relative;
 }
@@ -249,17 +266,13 @@ header h1 {
   z-index: 2;
 }
 
-.movie-content {
-  height: 100px;
-  border-top: 1px solid rgb(255, 250, 235);
-  overflow: scroll;
-}
-
 .card-img {
   position: relative;
   width: 100%;
   height: 300px;
   cursor: grab;
+  border-radius: 15px;
+  overflow:hidden;
 }
 
 .card-img img {
@@ -269,17 +282,25 @@ header h1 {
 }
 
 .movie-title {
+  display: flex;
+  align-items: center;
   font-family: "Pretendard-Regular";
   width: 100%;
-  height: 65%;
+  height: 65px;
   padding: 5px;
-  font-size: 1.3rem;
+  font-size: 16px;
   font-weight: 500;
   padding-bottom: 10px;
   margin-bottom: 3px;
   color: rgb(255, 250, 235);
-  border-bottom: 1px solid rgb(255, 250, 235);
-  /* white-space: nowrap */
+  word-break: keep-all;
+  /* white-space: nowrap; */
+  background: #000000;
+  color: #fff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 5px 15px;
+  box-shadow: .5px .5px 10px rgba(51, 51, 51, .5);
 }
 
 .movie-overview {
@@ -296,7 +317,7 @@ header h1 {
 
 /*  upHomeButtons*/
 .upHomeButtons {
-  width: 50px;
+  width: 75px;
   height: auto;
   position: absolute;
   position: sticky;
@@ -307,9 +328,38 @@ header h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: antiquewhite;
-  font-size: 30px;
+  background:#fff;
   text-align: center;
+  border-radius:15px;
+  overflow: hidden;
+}
+.upHomeButtons > ul > li {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:5px 0;
+}
+.upHomeButtons > ul > li:not(:last-child) {
+  border-bottom:1px solid #e1e1e1;
+}
+.upHomeButtons > ul > li > * {
+  cursor: pointer;
+  font-size:0;
+}
+.upHomeButtons button {
+  border:0px;
+  background:#fff;
+}
+.upHomeButtons h3 {
+  font-family: "Courier New", Courier, monospace;
+  background: rgb(160, 177, 255);
+  padding: 10px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.upHomeButtons img {
+  max-width:40px;
+  margin:0 auto;
 }
 
 .beforeButton,
@@ -320,17 +370,20 @@ header h1 {
 
 .movie-like {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 30px;
-  height: 30px;
+  top: 0px;
+  right: 0px;
+  width: 50px;
+  height: 35px;
   z-index: 1;
   cursor: pointer;
-  background:url("../img/ico-like.png") no-repeat center center;
+  background: #000 url(../img/ico-like.png) no-repeat center center;
+  border-bottom-left-radius: 15px;
+  background-size: 19px;
 }
 
 .movie-like.curr {
-  background:url("../img/ico-like-on.png") no-repeat center center;
+  background:#000 url("../img/ico-like-on.png") no-repeat center center;
+  background-size:19px;
 }
 
 .main-homepage-section1 {
@@ -345,4 +398,14 @@ header h1 {
   font-size: 1rem;
   font-weight: 700;
   color: rgb(255, 191, 0);
+  position: absolute;
+  top: 0px;
+  left:0;
+  width: 65px;
+  height: 35px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-right-radius: 15px;
 }
