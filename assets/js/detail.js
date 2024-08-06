@@ -103,7 +103,7 @@ function showImages(movie) {
 function showMovieInfo(movie) {
   const movieInfoArea = document.querySelector(".movie-info-middle");
   const genres = movie.genres.map((genre) => genre.name).join(" · ");
-
+  
   movieInfoArea.innerHTML = `
     <div class="movie-summary">
         <h1>${movie.title}</h1>
@@ -111,7 +111,8 @@ function showMovieInfo(movie) {
         <div>${movie.release_date} </div>
         <div>${genres}</div>
         <div>${movie.runtime}분 · ${movie.origin_country}</div>
-        <div>★ ${movie.vote_average}</div>
+        <div>TMDB ★ ${(movie.vote_average).toFixed(1)}</div>
+        <div class="moview-average">Moview ★ 평가 없음 </div>
       </div>
   `;
 }

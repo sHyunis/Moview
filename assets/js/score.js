@@ -30,25 +30,24 @@ const db = getFirestore(app);
 //별점 및 마지막으로 선택된 점수에 대한 변수를 선언!
 const allStars = document.querySelectorAll('.star');
 let lastClickedIndex = null;
-
+let userRating = null;
+const params = new URLSearchParams(window.location.search);
+const movieId = params.get("id");
 
 //로그인 인증 하고나서 로그인 아이디와 영화 아이디 담아줌 
 //아무래도 clickStars 함수에 뿌려줘야 할듯
 document.addEventListener("DOMContentLoaded", async () => {
+    const loginId = sessionStorage.getItem("userLoginId");
     if(sessionStorage.getItem("loginState") === "true"){
         console.log("로그인 인증 완료");
-        const loginId = sessionStorage.getItem("userLoginId");
-        const params = new URLSearchParams(window.location.search);
-        const movieId = params.get("id");
-        const score = await getUserScore(loginId, movieId); //요청이 완료될 때 까지 await 
-
-        showStars(score);
+        userRating = await getUserScore(loginId, movieId); //요청이 완료될 때 까지 await 
+        showStars(userRating);
+        getAverageScoreForMovie(movieId)
         initializeStars(loginId, movieId);
     } else{
         console.log("로그인 인증 실패");
     }
 });
-
 /*
 파이어 베이스에 점수 저장
 테이블 및 컬럼 생성하고 쿼리문 작성해서 변수에 담음
@@ -90,6 +89,35 @@ async function getUserScore(loginId, movieId) {
         return null;
     }
 }
+
+// 영화 id 값에 해당하는 모든 점수 가져오기
+async function getMovieScores(movieId) {
+    const userRef = collection(db, 'userScores');
+    const scoreQuery = query(userRef, where('movieId', '==', movieId));
+    const scoreQuerySnapshot = await getDocs(scoreQuery);
+    
+    if (!scoreQuerySnapshot.empty) {
+        return scoreQuerySnapshot.docs.map(doc => doc.data().score);
+    } else {
+        return [];
+    }
+}
+
+// 받아온 점수 평균 구하기
+async function getAverageScoreForMovie(movieId) {
+    const scores = await getMovieScores(movieId);
+    const moviewAverage = document.querySelector(".moview-average");
+    if (scores.length === 0) {
+        return 0;
+    }
+    const totalScore = scores.reduce((sum, score) => sum + score, 0);
+    const averageScore = (totalScore / scores.length)*2;
+    const resultScore = "Moview ★ " + parseFloat(averageScore.toFixed(1));
+    moviewAverage.innerHTML = resultScore
+
+}
+
+
 /* 
     // 별 클릭 처리 함수
 
