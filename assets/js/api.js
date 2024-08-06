@@ -12,7 +12,6 @@ const BASE_URL = `https://api.themoviedb.org/3/movie`;
 
 function getUrl(language) {
   let countryCode = language.toUpperCase();
-
   return `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_origin_country=${countryCode}&without_genres=10749,18&page=1`;
 }
 
@@ -21,36 +20,28 @@ function getUrl(language) {
  * 언어가 추가될 경우 if문 추가, language.js 이벤트 리스너 추가하시면 됩니다.
 */
 async function changeMovieLang(language) {
-  const url = getUrl(language);;
+  const url = getUrl(language);
 
   try {
     const res = await fetch(url);
     const data = await res.json();
     handleMovieRender(data.results, url);
 
-    const movieCard = document.querySelectorAll(".movie-card")
-    data.results.forEach((movie, i) => {
-       const card = movieCard[i]
+    data.results.forEach(movie => {
+      document.querySelectorAll(".movie-card").forEach(card => {
+        const cardID = card.querySelector(".card-id").innerText;
         card.addEventListener("click", (e) => {
           if (!e.target.classList.contains("movie-like")) { // 좋아요 제외 
             console.log("testtest => ", movie.id);
-            (window.location.href = `./view/detail.html?id=${movie.id}`)
-
-            /** 최근 본 목록  localStorage에 저장 * */
-            const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
-            recentMovies.push(movie);
-
-            localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
-            /** 최근 본 목록  localStorage에 저장 끝 * */
+            (window.location.href = `./view/detail.html?id=${cardID}`)
           }
         });
+      })
     })
-
   } catch (e) {
     console.log("language api error =>", e);
   }
 }
-
 
 /*
  * [좋아요 버튼 기능 2]
@@ -60,16 +51,21 @@ async function changeMovieLang(language) {
  * 4. 해당 언어 api 데이터 중 title이 있는 데이터를 찾음
  * 5. 그 데이터의 id 값을 like.js의 handleLikeAdd()함수에 전달해줘야함
 */
-async function getMovieLike(movieTitle) {
-  let url = sessionStorage.getItem("language");
-  let title = movieTitle;
-  if (title) {
+async function getMovieLike(movieId, movieTitle, movieOverView, movieImg) {
+  const url = getUrl("us");
+  let getMovieId = movieId;
+  if (getMovieId) {
     try {
       const res = await fetch(url);
       const data = await res.json();
       const movies = data.results;
-      const targetMovie = movies.filter(item => item.original_title === title);
-      handleLikeAdd(targetMovie[0].id);
+      const targetMovie = movies.filter(item => item.id === Number(getMovieId))[0];
+      const targetId = targetMovie.id;
+      const targetImg = targetMovie.backdrop_path;
+      const targetTitle = targetMovie.title;
+      const targetOverView = targetMovie.overview;
+      console.log(targetId, targetTitle, targetOverView, targetImg);
+      handleLikeAdd(targetId, targetImg, targetTitle, targetOverView);
     } catch (e) {
       console.log("getMovieLike Error =>", e);
     }

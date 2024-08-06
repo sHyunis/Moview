@@ -11,12 +11,13 @@ import {
   doc
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyC3OuNZBprr2iRYKTB6C83s4ciXXOTDROA",
   authDomain: "sparta-movie-project.firebaseapp.com",
   projectId: "sparta-movie-project",
-  storageBucket: "sparta-movie-project",
+  storageBucket: "sparta-movie-project.appspot.com",
   messagingSenderId: "29347735133",
   appId: "1:29347735133:web:19ff5afb5e7e61d4644fb4"
 };
@@ -25,6 +26,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+
 //별점 및 마지막으로 선택된 점수에 대한 변수를 선언!
 const allStars = document.querySelectorAll('.star');
 let lastClickedIndex = null;
@@ -32,12 +34,15 @@ let lastClickedIndex = null;
 
 //로그인 인증 하고나서 로그인 아이디와 영화 아이디 담아줌 
 //아무래도 clickStars 함수에 뿌려줘야 할듯
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     if(sessionStorage.getItem("loginState") === "true"){
         console.log("로그인 인증 완료");
         const loginId = sessionStorage.getItem("userLoginId");
         const params = new URLSearchParams(window.location.search);
         const movieId = params.get("id");
+        const score = await getUserScore(loginId, movieId); //요청이 완료될 때 까지 await 
+
+        showStars(score);
         initializeStars(loginId, movieId);
     } else{
         console.log("로그인 인증 실패");
@@ -45,9 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /*
-    파이어 베이스에 점수 저장
-    테이블 및 컬럼 생성하고 쿼리문 작성해서 변수에 담음
-    테이블 있으면 업데이트 해줌 ( 민규님꺼 참조 )
+파이어 베이스에 점수 저장
+테이블 및 컬럼 생성하고 쿼리문 작성해서 변수에 담음
+테이블 있으면 업데이트 해줌 ( 민규님꺼 참조 )
 */
 async function saveScore(loginId, movieId, score) {
     try {
@@ -69,6 +74,20 @@ async function saveScore(loginId, movieId, score) {
         console.log("스코어 저장 완료!");
     } catch (e) {
         console.error("데이터 베이스 저장 오류: ", e);
+    }
+}
+
+
+//파이어 베이스에서 데이터 가져오기
+async function getUserScore(loginId, movieId) {
+    const userRef = collection(db, 'userScores');
+    const scoreQuery = query(userRef, where('loginId', '==', loginId), where('movieId', '==', movieId));
+    const scoreQuerySnapshot = await getDocs(scoreQuery);
+    
+    if (!scoreQuerySnapshot.empty) {
+        return scoreQuerySnapshot.docs[0].data().score;
+    } else {
+        return null;
     }
 }
 /* 
