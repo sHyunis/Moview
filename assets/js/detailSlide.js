@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 버튼 숨기기 및 나타내기
   const updateButton = () => {
-    debugger;
     if (currentSlide === 0) {
       // 첫 번째 슬라이드일 때 왼쪽 버튼 숨기기
       leftButton.style.display = "none";
