@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
+</head>
+
+<body>
+    <div id="modal" class="modal">
+        <h2>Review 수정</h2>
+        <form id="modal-modify-comment">
+            <button id="modal-close-button">X</button>
+            <span>
+                <label for="modify-id">ID</label>
+                <input id="modify-id" type="text" placeholder="ID수정" disabled>
+            </span>
+            <span>
+                <label for="modify-comment">REVIEW</label>
+                <textarea id="modify-comment" name="modal-comment" placeholder="수정할 내용을 입력해 주세요"></textarea>
+            </span>
+            <button id="modify-save-button">저장</button>
+        </form>
+    </div>
+    <script src="../assets/js/comment.js"></script>
+</body>
+
+</html>

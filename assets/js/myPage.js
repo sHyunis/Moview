@@ -1,18 +1,8 @@
-import { db, collection, getDocs } from "./fireBaseConfig.js";
+import { db, collection, getDocs, query, where } from "./fireBaseConfig.js";
 
 const activity = document.querySelector('.activity');
-const activityHeader = document.querySelector('.activity-header');
 let parentList;
 
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * 데이터 가져오기 (임시 더미) * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/**
- * fetch.... 로 되어 있는 함수에서 데이터 불러와서 넘겨주면 됩니다. 
- * 일단은 레이아웃 테스트 용도로 더미 데이터를 넣어놓았고, 편하신대로 수정, 삭제 하셔도 괜찮습니다.
- * 
- */
 
 // 별점 더미데이터
 async function fetchRating(userId) {
@@ -34,23 +24,35 @@ async function fetchReview(userId) {
     return reviewDummy;
 }
 
-// 좋아요 더미 데이터
 async function fetchLike(userId) {
-    let likeDataArr = [];
     try {
         const loginSession = sessionStorage.getItem("userLoginId");
         const likeData = await getDocs(collection(db, "like"));
-        likeData.forEach(item => {
+
+        const promises = likeData.docs.map(async (item) => {
             const data = item.data();
+
+            const q = query(
+                collection(db, 'like'),
+                where('movie_id', '==', data.movie_id),
+                where('like', '==', true)
+            );
+
+            const querySnapshot = await getDocs(q);
+            data.likeCount = querySnapshot.size;
+
             if (data.user_id === loginSession) {
-                likeDataArr.push(data);
+                return data;
             }
+            return null;
         })
+
+        const results = await Promise.all(promises);
+        return results.filter(data => data !== null);
     } catch (e) {
         console.log("fetchLike Error =>", e);
     }
 
-    return likeDataArr;
 }
 
 
@@ -72,9 +74,6 @@ async function fetchRecent() {
 }
 
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * 탭 전환 이벤트 처리  * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 // 탭 클릭하면 색상 변경 (`.selected`)
 function resetTab(targetElement) {
@@ -112,10 +111,6 @@ document.querySelector('.activity').addEventListener('click', async function (ev
     }
 });
 
-/**
- * (탭 클릭시 분기 나누기)
- * 클릭한 탭에 따라 (rating, review.. 등) fetch함수와 다음 작업 함수(callback)을 지정해주게 됩니다.
- */
 async function fetchDataByType(type) {
     let data = null;
     let callback = null;
@@ -145,27 +140,17 @@ async function fetchDataByType(type) {
 }
 
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * *  HTML 생성  * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-
-// 평점, 최근 본 영화 목록 HTML 생성
 const processRowData = (results, type) => {
     results.forEach((data) => {
         renderRowList(data, type);
     })
 }
-
-// 리뷰, 좋아요 목록 HTML 생성
 const processColumnData = (results, type) => {
     results.forEach((data) => {
         renderColumnList(data, type);
     })
 }
 
-
-// 부모 HTML 생성 (공통)
 function createParentList(classList) {
     parentList = document.createElement('ul');
 
@@ -176,12 +161,6 @@ function createParentList(classList) {
     activity.appendChild(parentList);
 }
 
-
-/** 
- * 평점, 최근 본 영화 목록 생성 (flex-row)
- * 데이터 가공할때 평점, vote_average를 rating이나 그 외 편하신걸로 통일해주시면 될 것 같습니다. (다른 방식도 좋아요.)
- * 
-*/
 function renderRowList(data, type) {
     const htmlContent = `
         <li class="${type}-container row-container">
@@ -200,10 +179,6 @@ function renderRowList(data, type) {
     parentList.innerHTML += htmlContent;
 }
 
-/**
- * 리뷰, 좋아요 생성 (flex-column) 
- * 데이터 가공할 때 리뷰나, 줄거리 등을 content로 통일해주면 될 것 같습니다. (다른 방식도 좋아요.)
-*/
 function renderColumnList(data, type) {
     let htmlContent;
 
@@ -211,17 +186,17 @@ function renderColumnList(data, type) {
         htmlContent = `
             <li class="${type} column-container">
                 <div class="${type} column-img">
-                    <a href="../index.html"><img src="https://image.tmdb.org/t/p/w500/${data.movie_img}"></a>
+                    <a href="/view/detail.html?id=${data.movie_id}"><img src="https://image.tmdb.org/t/p/w500/${data.movie_img}"></a>
                 </div>
                 <div class="${type} column-contents">
                     <h4>${data.movie_title}</h4>
                     <p>${data.movie_over_view}</p>
                     <div class="feed-box">
-                        <p>좋아요(1)</p>
+                        <p>좋아요(${data.likeCount})</p>
                     </div>
                 </div>
                 <div class="${type} column-date">
-                    <p>${handleTimeCalculate(data.movie_like_time)}</p>
+                    <p>24분 전</p>
                 </div>
             </li>
         `
@@ -250,32 +225,6 @@ function renderColumnList(data, type) {
 }
 
 
-function handleTimeCalculate(time) {
-    const getDate = new Date(time);
-
-    // 현재 날짜와 시간 가져오기
-    const nowDate = new Date();
-
-    // 두 날짜 간의 차이를 밀리초 단위로 계산
-    const CalculateDate = nowDate - getDate;
-
-    // 밀리초를 초, 분, 시간, 일 단위로 변환
-    const calcSeconds = Math.floor(CalculateDate / 1000);
-    const calcMinutes = Math.floor(calcSeconds / 60);
-    const calcHours = Math.floor(calcMinutes / 60);
-    const calcDays = Math.floor(calcHours / 24);
-
-    // 적절한 시간 단위로 차이 출력
-    if (calcSeconds < 60) {
-        return '방금';
-    } else if (calcMinutes < 60) {
-        return `${calcMinutes}분 전`;
-    } else if (calcHours < 24) {
-        return `${calcHours}시간 전`;
-    } else {
-        return `${calcDays}일 전`;
-    }
-}
 
 (function () {
     const ratingBox = document.querySelector('.rating-box p');
