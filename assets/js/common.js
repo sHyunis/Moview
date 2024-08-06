@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function handleLoginChk() {
-  const session = await sessionStorage.getItem("loginState");
+  const session = sessionStorage.getItem("loginState") === "true";
   const headerBtnLogin = document.getElementById("header-btn-login");
   const headerBtnMypage = document.getElementById("header-btn-mypage");
   const headerBtnLogout = document.getElementById("header-btn-logout");
   const headerBtnSignup = document.getElementById("header-btn-signup");
-  if (session === "true") {
+  if (session) {
     headerBtnLogin.style.display = "none";
     headerBtnSignup.style.display = "none";
     headerBtnMypage.style.display = "block";
@@ -27,8 +27,8 @@ async function handleLoginChk() {
 
 const btnLogout = document.getElementById("header-btn-logout");
 btnLogout.addEventListener("click", async () => {
-  await sessionStorage.removeItem("loginState");
-  await sessionStorage.removeItem("userLoginId");
+  sessionStorage.removeItem("loginState");
+  sessionStorage.removeItem("userLoginId");
   alert("로그아웃 되었습니다.");
   window.location.href = "/";
 })

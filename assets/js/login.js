@@ -40,26 +40,19 @@ btnLogin.addEventListener("click", async () => {
     // 중복 계정 확인
     for (const userDoc of userDb.docs) {
       let userData = userDoc.data();
-      console.log("| user ID => ", userData.user_id, "| user PW => ", userData.user_pw, "| userLoginId =>", userLoginId, "| userLoginPw =>", userLoginPw);
       if (userData.user_id === userLoginId && userData.user_pw === userLoginPw) {
-        console.log("둘다 맞아");
         idChk = true;
         pwChk = true;
         break;
       } else if (userData.user_id === userLoginId && userData.user_pw !== userLoginPw) {
-        console.log("비밀번호가 틀려");
         idChk = true;
         pwChk = false;
         break;
       } else if (userData.user_id !== userLoginId && userData.user_pw === userLoginPw) {
-        console.log("아이디가 틀려");
         idChk = false;
         pwChk = true;
       }
     }
-
-    console.log(idChk, pwChk);
-
     // 사용자 추가 또는 중복 메시지 출력
     if (idChk && pwChk) {
       alert("로그인이 완료되었습니다.");
