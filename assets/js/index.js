@@ -54,8 +54,7 @@ async function movieLikeChk() {
       likeDb.forEach(el => {
         const likeDb = el.data();
         console.log(sessionChk);
-        if (Number(cardsTarget) == Number(likeDb.movie_id) && likeDb.user_id === sessionChk) {
-
+        if (Number(cardsTarget) == Number(likeDb.movie_id) && likeDb.user_id === sessionChk && likeDb.like) {
           cards.querySelector(".movie-like").classList.add("curr");
         }
       })
