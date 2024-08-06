@@ -1,5 +1,6 @@
 import { db, collection, getDocs } from "./fireBaseConfig.js";
 
+window.countryCode = 'US';
 fetchUrl();
 
 
@@ -19,7 +20,7 @@ async function movieLikeChk() {
       })
     })
   } catch (e) {
-    console.log("movieLikeChk =>", e);
+    console.error("movieLikeChk =>", e);
   }
 }
 window.movieLikeChk = movieLikeChk;

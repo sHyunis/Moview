@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("회원만 가능합니다.");
         }
       } catch (e) {
-        console.log("좋아요 에러 =>", e);
+        console.error("좋아요 에러 =>", e);
       }
     }
   })
@@ -67,7 +67,7 @@ async function handleLikeAdd({ id, img, title, overview }) {
 
     });
   } catch (e) {
-    console.log("handleLikeAdd error =>", e);
+    console.error("handleLikeAdd error =>", e);
   }
 }
 

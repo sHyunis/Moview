@@ -70,6 +70,6 @@ btnLogin.addEventListener("click", async () => {
 
 
   } catch (e) {
-    console.log('error =>', e)
+    console.error('error =>', e)
   }
 })

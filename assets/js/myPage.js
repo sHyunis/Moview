@@ -29,7 +29,7 @@ async function fetchLike(userId) {
         const results = await Promise.all(promises);
         return results.filter(data => data !== null);
     } catch (e) {
-        console.log("fetchLike Error =>", e);
+        console.error("fetchLike Error =>", e);
     }
 }
 
@@ -61,7 +61,7 @@ function resetTab(targetElement) {
 document.querySelector('.activity').addEventListener('click', async function (event) {
     const targetElement = event.target;
     if (targetElement.closest('.activity-tab')) {
-        const type = targetElement.textContent.toLowerCase(); // Rating, Review, Like, Recent
+        const type = targetElement.textContent.toLowerCase();
 
         resetTab(targetElement);
         if (type === 'recent') {
