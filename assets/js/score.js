@@ -30,23 +30,20 @@ const db = getFirestore(app);
 //별점 및 마지막으로 선택된 점수에 대한 변수를 선언!
 const allStars = document.querySelectorAll('.star');
 let lastClickedIndex = null;
+let lastSaveScore = null;
 let userRating = null;
+
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get("id");
+const loginId = sessionStorage.getItem("userLoginId");
 
 //로그인 인증 하고나서 로그인 아이디와 영화 아이디 담아줌 
 //아무래도 clickStars 함수에 뿌려줘야 할듯
 document.addEventListener("DOMContentLoaded", async () => {
-    const loginId = sessionStorage.getItem("userLoginId");
-    if(sessionStorage.getItem("loginState") === "true"){
-        console.log("로그인 인증 완료");
-        userRating = await getUserScore(loginId, movieId); //요청이 완료될 때 까지 await 
-        showStars(userRating);
-        getAverageScoreForMovie(movieId)
-        initializeStars(loginId, movieId);
-    } else{
-        console.log("로그인 인증 실패");
-    }
+    userRating = await getUserScore(loginId, movieId); //요청이 완료될 때 까지 await 
+    showStars(userRating);
+    getAverageScoreForMovie(movieId)
+    initializeStars(loginId, movieId);
 });
 /*
 파이어 베이스에 점수 저장
@@ -79,15 +76,22 @@ async function saveScore(loginId, movieId, score) {
 
 //파이어 베이스에서 데이터 가져오기
 async function getUserScore(loginId, movieId) {
-    const userRef = collection(db, 'userScores');
-    const scoreQuery = query(userRef, where('loginId', '==', loginId), where('movieId', '==', movieId));
-    const scoreQuerySnapshot = await getDocs(scoreQuery);
-    
-    if (!scoreQuerySnapshot.empty) {
-        return scoreQuerySnapshot.docs[0].data().score;
-    } else {
-        return null;
+    try{
+        if(loginId !== null){
+            const userRef = collection(db, 'userScores');
+            const scoreQuery = query(userRef, where('loginId', '==', loginId), where('movieId', '==', movieId));
+            const scoreQuerySnapshot = await getDocs(scoreQuery);
+            lastSaveScore = scoreQuerySnapshot.docs[0].data().score - 1;
+            if (!scoreQuerySnapshot.empty) {
+                return scoreQuerySnapshot.docs[0].data().score;
+            } else {
+                return null;
+            }
+        }
+    }catch(error){
+        console.log(error);
     }
+
 }
 
 // 영화 id 값에 해당하는 모든 점수 가져오기
@@ -134,28 +138,27 @@ async function getAverageScoreForMovie(movieId) {
 */
 
 async function clickStars(loginId, movieId, index){
-    console.log("무비아디 =>",movieId)
-    console.log("로긴아디 =>",loginId)
+    if (loginId !== null) {
 
-    let currentStar = index + 1; 
-    let score = null;
-
-    if(lastClickedIndex === index){
-        resetStars();
-        lastClickedIndex = null;
-        console.log("점수 결과=>", score);
-    }else{
-        showStars(currentStar);
-        score = index + 1;
-        lastClickedIndex = index;
-        console.log("점수 결과=>", score);
-    }
-    if (loginId && movieId !== null) {
+        let currentStar = index + 1; 
+        let score = null;
+        
+        if(lastClickedIndex === index){
+            resetStars();
+            lastClickedIndex = null;
+        }else{
+            showStars(currentStar);
+            score = index + 1;
+            lastClickedIndex = index;
+        }
         await saveScore(loginId, movieId, score);
+        getUserScore(loginId, movieId);
+    } else {
+        resetStars();
+        alert("로그인 해주세요");
+        window.location.href='/view/member_login.html';
     }
 }
-
-
 
 /* 
     // 별 마우스 오버 처리 함수 및 별 상태 업데이트 함수
@@ -189,7 +192,8 @@ function showStars(score){
 */
 
 function starMouseOut(){
-    showStars(lastClickedIndex !== null ? lastClickedIndex + 1 : 0);
+    showStars(lastSaveScore !== null ? lastSaveScore + 1 : 0);
+    getUserScore(loginId, movieId);
 }
 
 
@@ -218,9 +222,10 @@ function resetStars(){
 
 */
 function initializeStars(loginId, movieId){
+    const inner = document.querySelector('#detail');
     allStars.forEach((star, i)=>{
         star.onclick = () => clickStars(loginId, movieId, i);
         star.onmouseover = () => showStars(i+1);
-        star.onmouseout = starMouseOut;
+        inner.onmouseout = starMouseOut;
     })
 }
