@@ -321,6 +321,14 @@ textarea:focus {
 .movie-similar-genre::-webkit-scrollbar {
   display: none;
 }
+.similar-title {
+  width: 150px;
+  height: 30px;
+  overflow: scroll;
+}
+.similar-title::-webkit-scrollbar {
+  display: none;
+}
 .ott-list{
   margin-top: 30px;
   width: 100%;
