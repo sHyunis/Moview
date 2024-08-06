@@ -68,17 +68,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (classes.contains('credit')) {
         currentSlide = 0;
-        updateSliderPosition();
       } else if (classes.contains('review')) {
         currentSlide = 1;
-        updateSliderPosition();
       } else if (classes.contains('ott')) {
         currentSlide = 2;
-        updateSliderPosition();
       } else if (classes.contains('genre')) {
         currentSlide = 3;
-        updateSliderPosition();
       }
+
+      updateSliderPosition();
     })
   })
 
