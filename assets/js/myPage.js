@@ -181,9 +181,28 @@ function handleTimeCalculate(time) {
 
 
 (function () {
-    const likeBox = document.querySelector('.like-box p');
-    likeBox.classList.add('selected')
+    const session = sessionStorage.getItem("loginState") === "true";
 
-    createParentList([`like-list`, "common-list", `column-list`]);
-    fetchDataByType('like');
+    if (session) {
+        const ulElement = document.querySelector('ul.activity-header-type');
+
+        const likeBox = document.createElement('li');
+        likeBox.className = 'activity-tab like-box';
+        likeBox.innerHTML = '<p>Like</p>';
+        const firstChild = ulElement.firstChild;
+        ulElement.insertBefore(likeBox, firstChild);
+
+        likeBox.classList.add('selected')
+
+        createParentList([`like-list`, "common-list", `column-list`]);
+        fetchDataByType('like');
+
+    } else {
+        const recentBox = document.querySelector('.recent-box p');
+        recentBox.classList.add('selected')
+
+        createParentList([`recent-list`, "common-list", `row-list`]);
+        fetchDataByType('recent');
+    }
+
 })()
