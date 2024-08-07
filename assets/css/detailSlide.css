@@ -17,9 +17,11 @@
 }
 /* 임시 버튼 스타일 */
 .slide-button {
+  width: 36px;
+  border-radius: 100px;
   position: absolute;
-  background: rgba(121, 121, 121, 0.5);
-  color: white;
+  background: rgb(255, 255, 255);
+  color: rgb(133, 133, 133);
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -34,8 +36,8 @@
 .slide-button.left {
     /* margin-top: 13%;
     margin-left: -600px; */
-    left: -25px;
     display: none;
+    left: -25px;
 }
 .slide-button.right {
     /* margin-left: 565px;
