@@ -35,6 +35,7 @@
     /* margin-top: 13%;
     margin-left: -600px; */
     left: -25px;
+    display: none;
 }
 .slide-button.right {
     /* margin-left: 565px;
