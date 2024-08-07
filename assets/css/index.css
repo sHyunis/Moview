@@ -234,7 +234,6 @@ header h1 {
 
 .movie-card {
   width: 250px;
-  height: 400px;
   display: flex;
   flex-direction: column;
   /* border-bottom: 1px solid rgb(255, 250, 235); */
