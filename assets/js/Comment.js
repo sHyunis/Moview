@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       userId.value = "";
       reviewComment.value = "";
       uploadComment();
+      window.location.href = `/movie-detail.html?movieId=${getMovieIdFromUrl()}`;
     }
   });
 
@@ -111,6 +112,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments[index] = { name, review };
     localStorage.setItem("comments", JSON.stringify(comments));
+  }
+
+  function getMovieIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("movieId");
   }
 
   uploadComment();
