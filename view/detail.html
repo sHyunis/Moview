@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail page</title>
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+  <link rel="stylesheet" href="../assets/css/common.css" />
+  <link rel="stylesheet" href="../assets/css/detailSlide.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-home-container">
+      <a href="../index.html">
+        <h3>Mo<span>view</span></h3>
+      </a>
+    </div>
+  </div>
+  <div id="detail">
+    <div class="inner">      
+
+      <div class="movie-info">
+        <div class="movie-info-left">
+          <div class="movie-poster">
+            <!-- 영화 포스터 -->
+          </div>
+        </div>
+        <div class="movie-info-middle">
+          <div class="movie-summary">
+            <!-- 영화 정보 -->
+          </div>
+        </div>
+      </div>
+      <div class="movie-info-right">
+        <!-- 좋아요 버튼, 리뷰 기능 -->
+        <div class="movie-options">
+          <button class="move-button credit curr" id="creditButton">감독/출연</button>
+          <button class="move-button review" id="reviewButton">리뷰/평점</button>
+          <button class="move-button ott" id="ottButton">OTT 정보</button>
+          <button class="move-button genre" id="genreButton">비슷한 장르</button>
+        </div>
+      </div>
+      <div class="movie-castReviews">
+        <button class="slide-button left">&#5176;</button>
+        <button class="slide-button right">&#5171;</button>
+        <div class="slider">
+          <!-- 슬라이드 1 영화 출연진/감독 -->
+          <div class="slide">
+            <div class="movie-castReviews-cast">
+              <div class="cast-header">
+                <h2>감독/출연</h2>
+              </div>
+              <ul class="cast-list"></ul>
+            </div>
+          </div>
+          <!-- 슬라이드 2 관람평 -->
+          <div class="slide">
+            <div class="movie-castReviews-reviews">
+              <div class="reviews-header">
+                <h2 id="make-review-button" class="curr">Make a Review</h2>
+                <h2 id="see-review-button">Movie Review</h2>
+              </div>
+              <div class="review-list">
+                <form id="review-form">
+                  <div class="form-top">
+                    <input id="user-name" placeholder="Id" type="text" required />
+                    <div class="star-rating">
+                      <p class="star">&#9734;</p>
+                      <p class="star">&#9734;</p>
+                      <p class="star">&#9734;</p>
+                      <p class="star">&#9734;</;>
+                      <p class="star">&#9734;</p>
+                    </div>                    
+                  </div>                  
+                  <label class="comment-label" for="review-comment"></label>
+                  <textarea id="review-comment" class="review-textarea" type="text" required placeholder="Movie review!"></textarea>
+                  <button class="review-button" type="submit">Upload</button>
+                </form>
+                <div id="review-cards" style="display: none">
+                  <!-- <li class="review-card">
+                  <div class="review-card-id">
+                    ${name}
+                  </div>
+                  <div class="review-card-content">
+                    ${review}
+                  </div>
+                  <button class="review-modify-button">수정</button>
+                  <button class="review-delete-button">삭제</button>
+                  </li> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 슬라이드 3 추가 정보 -->
+          <div class="slide">
+            <div class="movie-castReviewsOtt-ott">
+              <div class="ott-header">
+                <h2>상영 OTT 정보</h2>
+              </div>
+              <ul class="ott-list"></ul>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="movie-similar-genre">
+              <div class="genre-header">
+                <h2>비슷한 장르</h2>
+              </div>
+              <ul class="genre-list">
+                <!-- `<div class="similar-poster">
+                  <img src="" alt="${movie.title}">
+                </div>
+                <div class="similar-movie-data">
+                  <div class="similar-title">${movie.title}</div>
+                 
+                </div>` -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/detail.js" type="module"></script>
+  <script src="../assets/js/detailSlide.js"></script>
+  <script src="../assets/js/comment.js"></script>
+  <script src="../assets/js/score.js" type="module"></script>
+</body>
+
+</html>

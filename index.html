@@ -7,8 +7,9 @@
     <title>THISISMOVIE</title>
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./assets/css/common.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/hamburgerMenu.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,32 +18,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+    <script src="./assets/js/api.js"></script>
 </head>
 
 <body>
 
-    <header>
-        <h1>THISISMOVIE</h1>
-    </header>
-    <section>
-        <div class="container1">
-            <p class="containerP-1">Mo<span>vie</span></p>
-            <p class="containerP-2">Ma<span>ke</span></p>
-            <p class="containerP-3">Dr<span>eam</span></p>
-            <p class="comment"><span>Whatever you want</span><br /> <span>wherever you want</span><br /> it is all here
-            </p>
-            <box-icon class="down-arrow" name='movie' size="80px" color='#ffffff' animation="tada"></box-icon>
-        </div>
+    <div class="main-homepage-section1">
+        <header>
+            <div class="hamburger">
+                <img id="menu-button" src="/assets/img/menuIcon.png" alt="hamburger-icon">
+                <div id="hamburger-menu" class="hamburger-menu">
+                    <div id="menu-close-button"><img src="/assets/img/closeIcon.png" alt="closeIcon">
+                    </div>
+                    <a href="/index.html">
+                        <h2>MOVIEW</h2>
+                    </a>
+                    <ul class="hamburger-nav">
+                        <li><a id="header-btn-login" href="/view/member_login.html">LogIn</a></li>
+                        <li><a id="header-btn-logout" href="#">LogOut</a></li>
+                        <li><a id="header-btn-signup" href="/view/member_signup.html">SignUp</a></li>
+                        <li><a id="header-btn-mypage" href="/view/myPage.html">MyPage</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h1>THISISMOVIE</h1>
+        </header>
+        <section>
+            <div class="container1">
+                <p class="containerP-1">Mo<span class="ani">vie<em></em></span></p>
+                <p class="containerP-2"><span class="ani">Ma<em></em></span>ke</p>
+                <p class="containerP-3">Dr<span class="ani">eam<em></em></span></p>
+                <p class="comment"><span class="ani">Whatever you want</span><span class="ani">wherever you want</span><span class="ani">it is all here</span>
+                </p>
+                <box-icon class="down-arrow" name='movie' size="80px" color='#ffffff' animation="tada"></box-icon>
+            </div>
+    </div>
 
-        <!--장르메뉴바-->
-
-        <div class="section2">
-            <form class="search">
-                <input type="text" id="searchInput" placeholder="Search Movie">
-                <button id="searchButton"><img src="img/searchIcon.png" alt="search"></button>
-            </form>
-            <div id="movie-container">
-                <!-- <div class="card-img>
+    <!--장르메뉴바-->
+    <div class="section2">
+        <form class="search">
+            <input type="text" id="searchInput" placeholder="Search Movie">
+            <button id="searchButton">Search</button>
+        </form>
+        <div id="movie-container">
+            <!-- <div class="card-img>
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
                 </div>
                 <div class="card-content">
@@ -50,25 +69,47 @@
                     <p>${movie.overview}</p>
                     <p>Rating: ${movie.vote_average}</p>
                 </div>` -->
-            </div>
+        </div>
 
-            <div class="upHomeButtons">
-                <p class="koreaMovie">🇰🇷</p>
-                <p class="englishMovie">🇭🇲</p>
-                <img class="beforeButton" src="./img/beforeButton.png" alt="beforeButton">
-                <img class="topButton" src="img/searchIcon.png" alt="upArrow">
-                <img class="homeButton" src="img/HomeButton.png" alt="HomeButton">
-            </div>
+        <div class="upHomeButtons">
+            <h3>Quick</h3>
+            <ul>
+                <li>
+                    <button id="btn-lang-kr" class="btn-lang"><img src="https://cdn.icon-icons.com/icons2/107/PNG/512/south_korea_18282.png"></button>
+                </li>
+                <li>
+                    <button id="btn-lang-en" class="btn-lang"><img src="https://media.istockphoto.com/id/697849754/ko/%EC%82%AC%EC%A7%84/%EB%AF%B8%EA%B5%AD-%EA%B5%AD%EA%B8%B0-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9D%84-%EB%9D%BC%EC%9A%B4%EB%93%9C.jpg?s=612x612&w=0&k=20&c=eWao9rErM-O2p5YPUfJKyNQDUvcOchGj_S3narYhefw="></button>
+                </li>
+                <li>
+                    <img class="beforeButton" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeYKtVOaCFEGUxuYoG1Qcww3xQ9mEQXo9XQ&s" alt="beforeButton">
+                </li>
+                <li>
+                    <img class="topButton" src="https://www.shareicon.net/data/2015/10/31/664907_search_512x512.png" alt="upArrow">            
+                </li>
+                <li>
+                    <a href="./view/myPage.html">
+                        <img class="MyPageButton" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEYaE3CHZqLMyymuOsPt-S7MvF5bvx7jNd5g&s" alt="MyPageButton">
+                    </a>
+                </li>
+                <li>
+                    <img class="homeButton" src="https://cdn1.iconfinder.com/data/icons/arrows-diagrams/24/thick-arrow-up-circle-512.png" alt="HomeButton">
+                </li>
+                
+            </ul>
+        </div>
 
+    </div><!-- section 2 끝 -->
 
-        </div><!-- section 2 끝 -->
 
 
     </section>
 
-
-    <script src="index.js" type="module"></script>
-    <script src="event.js" type="module"></script>
+    <script src="./assets/js/index.js" type="module"></script>
+    <script src="./assets/js/event.js" type="module"></script>
+    <script src="./assets/js/common.js" type="module"></script>
+    <script src="./assets/js/menuToggle.js"></script>
+    <script src="./assets/js/language.js"></script>
+    <script src="./assets/js/like.js" type="module"></script>
 </body>
 
 </html>

@@ -1,0 +1,225 @@
+@font-face {
+    font-family: "main";
+    src: url(../font/sugarmagicpersonaluseonly-jemyo.otf);
+}
+
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 p,
+ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+body {
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    /* 링크의 색상 제거 */
+}
+
+li {
+    list-style: none;
+}
+
+/*  pink  */
+/* rgb(255, 141, 232) */
+.header {
+    width: 100vw;
+    max-width: 1300px;
+    min-width: 1100px;
+    height: 200px;
+    font-family: "main";
+    margin: 0 auto;
+    font-size: 3.5rem;
+    /* color: rgb(160, 177, 255); */
+    display: flex;
+}
+
+.header-home-container {
+    width: 100px;
+}
+
+.header-home-container h3 {
+    color: pink;
+}
+
+.header-home-container h3 span {
+    color: rgb(255, 141, 232);
+}
+
+.activity {
+    width: 100vw;
+    max-width: 1300px;
+    min-width: 1100px;
+    margin: 0 auto;
+}
+
+.activity-header {
+    font-family: "main";
+    border-bottom: 1px solid rgb(255, 230, 160);
+}
+
+.activity-header-title {
+    font-size: 2.5rem;
+    margin-bottom:15px;
+}
+
+.activity-header-title h3 {
+    color: rgb(160, 177, 255);
+}
+
+.activity-header-title span {
+    color: rgb(212, 192, 255);
+}
+
+.activity-tab {
+    font-size: 1.2rem;
+    color: rgb(255, 230, 160);
+}
+
+.activity-header-type {
+    display: flex;
+    gap: 20px;
+    padding-bottom:10px;
+}
+.activity-header-type li p {
+    font-size:22px;
+    cursor: pointer;
+}
+
+.selected {
+    color: rgb(255, 141, 232);
+}
+
+.common-list {
+    color: cornsilk;
+}
+
+/* * * * * * * * * * * * * * * * 평점 * * * * * * * * * * * * * * * * */
+.row-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 20px;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.row-list::-webkit-scrollbar {
+    display: none;
+}
+
+
+.row-container {
+    width: calc(33.3333% - 1rem);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.row-img {
+    width: 100%;
+}
+
+.row-img img {
+    width: 100%;
+    /* width: 384px; */
+    /* height: 216px; */
+    object-fit: cover;
+    display: block;
+    border-radius:10px;
+}
+
+
+/* * * * * * * * * * * * * * * * 리뷰 & 좋아요 * * * * * * * * * * * * * * * * */
+.column-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    height: 900px;
+    /* overflow-y: hidden; */
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.column-list::-webkit-scrollbar {
+    display: none;
+}
+
+.column-container {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.column-img {
+    width: 350px;
+}
+
+.column-img img {
+    /* width: 100%; */
+    width: 350px;
+    object-fit: cover;
+    border-radius:10px;
+}
+
+.column-contents {
+    display: flex;
+    flex-direction: column;
+    width: calc(90% - 350px);
+}
+.column-contents h4 {
+    font-size:24px;
+    color:#fff;
+    margin:0 0 10px;
+    padding:0 0 10px;
+    border-bottom:1px solid rgba(255,255,255,.3);
+}
+.column-contents p {
+    font-size:16px;
+    color:rgba(255,255,255,.5);
+    line-height:1.4;
+}
+
+.column-contents div {
+    display: flex;
+    gap: 5px;
+}
+.column-contents div.feed-box {
+    margin-top:20px;
+}
+.column-contents div.feed-box p {
+    background: rgba(51, 51, 51, .5);
+    padding: 10px;
+    border-radius: 10px;
+    font-size:14px;
+}
+
+.column-date {
+    display: flex;
+    justify-content: end;
+    width: 10%;
+}
+.recent-list li .recent-title {
+    margin-top:10px;
+    font-size:18px;
+    color:#fff;
+    margin-bottom:10px;
+}
