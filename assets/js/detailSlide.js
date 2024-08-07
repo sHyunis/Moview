@@ -40,12 +40,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  function setCurr(index) {
+    const buttons = document.querySelectorAll('.move-button');
+    buttons.forEach(btn => btn.classList.remove("curr"));
+    buttons[index].classList.add("curr");
+  }
+
   // 좌우측 버튼 클릭 이벤트 리스너
   leftButton.addEventListener("click", () => {
     if (currentSlide > 0) {
       // 0보다 크면 1씩 빼주고 업데이트 함수 호출해서 슬라이드 위치 변경
       currentSlide--;
       updateSliderPosition();
+      setCurr(currentSlide);
     }
   });
 
@@ -54,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // 슬라이드 길이보다 작으면 1씩 더해주고 업데이트 함수 호출해서 슬라이드 위치 변경
       currentSlide++;
       updateSliderPosition();
+      setCurr(currentSlide);
     }
   });
 

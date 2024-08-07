@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get("id");
+  const movieTab = document.querySelectorAll(".movie-options > button");
+  const movieReviewTab = document.querySelectorAll(".reviews-header > h2");
   console.log(movieId);
- 
+
   if (movieId) {
     fetchMovieDetails(movieId);
     fetchMovieCredits(movieId);
@@ -11,6 +13,21 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.error("영화 ID를 찾을 수 없어요.");
   }
+
+  movieTab.forEach(btns => {
+    btns.addEventListener("click", () => {
+      movieTab.forEach(btn => btn.classList.remove("curr"));
+      btns.classList.add("curr");
+    })
+  })
+
+  movieReviewTab.forEach(btns => {
+    btns.addEventListener("click", () => {
+      movieReviewTab.forEach(btn => btn.classList.remove("curr"));
+      btns.classList.add("curr");
+    })
+  })
+
 });
 
 const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
@@ -76,16 +93,20 @@ function showImages(movie) {
 function showMovieInfo(movie) {
   const movieInfoArea = document.querySelector(".movie-info-middle");
   const genres = movie.genres.map((genre) => genre.name).join(" · ");
-  
+
   movieInfoArea.innerHTML = `
-    <div class="movie-summary">
-        <h1>${movie.title}</h1>
-        <div>${movie.original_title}</div>
-        <div>${movie.release_date}</div>
-        <div>${genres}</div>
-        <div>${movie.runtime}분 · ${movie.origin_country}</div>
-        <div class="tmdb-average">TMDB ★ ${(movie.vote_average).toFixed(1)}</div>
-        <div class="moview-average">Moview ★ 평가 없음 </div>
+    <div class="movie-summary">        
+        <div class="tit-box">
+          <h1>${movie.title}</h1>
+          <div class="summary-en-title">${movie.original_title}</div>          
+        </div>
+        <div class="info-box">
+          <div class="summary-date"><span>개봉일</span>${movie.release_date}</div>
+          <div class="summary-genres"><span>장르</span>${genres}</div>
+          <div class="summary-runtime"><span>상영시간</span>${movie.runtime}분 · ${movie.origin_country}</div>
+        </div>
+        <div class="tmdb-average"><span>TMDB</span><p>${(movie.vote_average).toFixed(1)}</p></div>
+        <div class="moview-average"><span>Moview</span><p style="font-size:18px">평가 없음</p> </div>
       </div>
   `;
 }
@@ -133,8 +154,8 @@ function showCastInfo(credit) {
 
 function showOttData(ottData) {
   const showOttDataArea = document.querySelector(".ott-list");
-  console.log("오티티결과",ottData.results)
-  if (ottData.results.US === undefined || ottData.results.US.buy === undefined){
+  console.log("오티티결과", ottData.results)
+  if (ottData.results.US === undefined || ottData.results.US.buy === undefined) {
     const listItem = document.createElement("li");
 
     listItem.innerHTML = `
@@ -146,7 +167,7 @@ function showOttData(ottData) {
   } else {
     const ottList = ottData.results.US.buy;
     console.log("ott=>", ottList);
-    
+
     ottList.slice(0, 6).forEach((ott) => {
       const ottLogo = ott.logo_path;
       const listItem = document.createElement("li");

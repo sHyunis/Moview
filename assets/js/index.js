@@ -7,17 +7,17 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC3OuNZBprr2iRYKTB6C83s4ciXXOTDROA",
-  authDomain: "sparta-movie-project.firebaseapp.com",
-  projectId: "sparta-movie-project",
-  storageBucket: "sparta-movie-project.appspot.com",
-  messagingSenderId: "29347735133",
-  appId: "1:29347735133:web:19ff5afb5e7e61d4644fb4"
+  apiKey: "AIzaSyC9DrCeOJe4mB_suJXCxT0y_32w5eXNFP4",
+  authDomain: "sparata-project-movie.firebaseapp.com",
+  projectId: "sparata-project-movie",
+  storageBucket: "sparata-project-movie.appspot.com",
+  messagingSenderId: "567087462979",
+  appId: "1:567087462979:web:85904c34cb1c030c3c72f6"
 };
 
-// Firebase 인스턴스 초기화
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 

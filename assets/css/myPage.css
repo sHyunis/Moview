@@ -36,7 +36,7 @@ li {
 /* rgb(255, 141, 232) */
 .header {
     width: 100vw;
-    max-width: 1600px;
+    max-width: 1300px;
     min-width: 1100px;
     height: 200px;
     font-family: "main";
@@ -60,7 +60,7 @@ li {
 
 .activity {
     width: 100vw;
-    max-width: 1600px;
+    max-width: 1300px;
     min-width: 1100px;
     margin: 0 auto;
 }
@@ -71,7 +71,8 @@ li {
 }
 
 .activity-header-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-bottom:15px;
 }
 
 .activity-header-title h3 {
@@ -89,7 +90,12 @@ li {
 
 .activity-header-type {
     display: flex;
-    gap: 10px;
+    gap: 20px;
+    padding-bottom:10px;
+}
+.activity-header-type li p {
+    font-size:22px;
+    cursor: pointer;
 }
 
 .selected {
@@ -134,6 +140,7 @@ li {
     /* height: 216px; */
     object-fit: cover;
     display: block;
+    border-radius:10px;
 }
 
 
@@ -163,29 +170,56 @@ li {
 }
 
 .column-img {
-    width: calc(18%);
+    width: 350px;
 }
 
 .column-img img {
     /* width: 100%; */
-    width: 206px;
-    height: 116px;
+    width: 350px;
     object-fit: cover;
+    border-radius:10px;
 }
 
 .column-contents {
     display: flex;
     flex-direction: column;
-    width: calc(62%);
+    width: calc(90% - 350px);
+}
+.column-contents h4 {
+    font-size:24px;
+    color:#fff;
+    margin:0 0 10px;
+    padding:0 0 10px;
+    border-bottom:1px solid rgba(255,255,255,.3);
+}
+.column-contents p {
+    font-size:16px;
+    color:rgba(255,255,255,.5);
+    line-height:1.4;
 }
 
 .column-contents div {
     display: flex;
     gap: 5px;
 }
+.column-contents div.feed-box {
+    margin-top:20px;
+}
+.column-contents div.feed-box p {
+    background: rgba(51, 51, 51, .5);
+    padding: 10px;
+    border-radius: 10px;
+    font-size:14px;
+}
 
 .column-date {
     display: flex;
     justify-content: end;
-    width: calc(20%);
+    width: 10%;
+}
+.recent-list li .recent-title {
+    margin-top:10px;
+    font-size:18px;
+    color:#fff;
+    margin-bottom:10px;
 }

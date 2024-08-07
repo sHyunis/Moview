@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reviewForm.style.display = "block";
   });
   seeReviewButton.addEventListener("click", () => {
-    reviewCards.style.display = "block";
+    reviewCards.style.display = "flex";
     reviewForm.style.display = "none";
   });
 });
