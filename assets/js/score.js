@@ -81,7 +81,7 @@ async function getAverageScoreForMovie(movieId) {
     }
     const totalScore = scores.reduce((sum, score) => sum + score, 0);
     const averageScore = (totalScore / scores.length) * 2;
-    const resultScore = "Moview ★ " + parseFloat(averageScore.toFixed(1));
+    const resultScore = `<span>Moview</span><p>${parseFloat(averageScore.toFixed(1))}</p>`;
     moviewAverage.innerHTML = resultScore
 }
 
@@ -107,6 +107,7 @@ async function clickStars(loginId, movieId, index) {
         window.location.href = '/view/member_login.html';
     }
 }
+
 
 function showStars(score) {
     allStars.forEach((star, i) => {

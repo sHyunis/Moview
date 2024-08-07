@@ -29,10 +29,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  function setCurr(index) {
+    const buttons = document.querySelectorAll('.move-button');
+    buttons.forEach(btn => btn.classList.remove("curr"));
+    buttons[index].classList.add("curr");
+  }
+
   leftButton.addEventListener("click", () => {
     if (currentSlide > 0) {
       currentSlide--;
       updateSliderPosition();
+      setCurr(currentSlide);
     }
   });
 
@@ -40,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentSlide < slides.length - 1) {
       currentSlide++;
       updateSliderPosition();
+      setCurr(currentSlide);
     }
   });
 

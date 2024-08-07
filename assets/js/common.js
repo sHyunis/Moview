@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   handleLoginChk(); //로드 후 로그인 판별
+
+  const aniList = document.querySelectorAll(".ani");
+  setTimeout(() => {
+    aniList.forEach(anis => {
+      anis.classList.add("ani-load");
+    })
+  }, 500);
 });
 
 

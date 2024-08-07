@@ -3,6 +3,9 @@ let movieId = '';
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   movieId = params.get("id");
+  const movieTab = document.querySelectorAll(".movie-options > button");
+  const movieReviewTab = document.querySelectorAll(".reviews-header > h2");
+  console.log(movieId);
 
   if (movieId) {
     fetchMovieDetails();
@@ -12,6 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.error("영화 ID를 찾을 수 없어요.");
   }
+
+  movieTab.forEach(btns => {
+    btns.addEventListener("click", () => {
+      movieTab.forEach(btn => btn.classList.remove("curr"));
+      btns.classList.add("curr");
+    })
+  })
+  movieReviewTab.forEach(btns => {
+    btns.addEventListener("click", () => {
+      movieReviewTab.forEach(btn => btn.classList.remove("curr"));
+      btns.classList.add("curr");
+    })
+  })
 });
 
 const BASE_URL = "https://api.themoviedb.org/3/movie/"
@@ -30,7 +46,7 @@ function getUrl(type) {
 
 // 영화 데이터 요청
 async function fetchMovieDetails() {
-  const apiUrl = getUrl("movie");
+  const apiUrl = getUrl("movie")
   try {
     const response = await fetch(apiUrl);
     const movieData = await response.json();
@@ -42,7 +58,7 @@ async function fetchMovieDetails() {
 
 // 크레딧 데이터 요청
 async function fetchMovieCredits() {
-  const apiUrl = getUrl("credits");
+  const apiUrl = getUrl("credits")
   try {
     const response = await fetch(apiUrl);
     const creditdata = await response.json();
@@ -54,7 +70,7 @@ async function fetchMovieCredits() {
 
 // OTT 데이터 요청
 async function fetchMovieOTT() {
-  const apiUrl = getUrl("ott");
+  const apiUrl = getUrl("ott")
   try {
     const response = await fetch(apiUrl);
     const ottData = await response.json();
@@ -88,14 +104,18 @@ function showMovieInfo(movie) {
   const genres = movie.genres.map((genre) => genre.name).join(" · ");
 
   movieInfoArea.innerHTML = `
-    <div class="movie-summary">
-        <h1>${movie.title}</h1>
-        <div>${movie.original_title}</div>
-        <div>${movie.release_date}</div>
-        <div>${genres}</div>
-        <div>${movie.runtime}분 · ${movie.origin_country}</div>
-        <div class="tmdb-average">TMDB ★ ${(movie.vote_average).toFixed(1)}</div>
-        <div class="moview-average">Moview ★ 평가 없음 </div>
+    <div class="movie-summary">        
+        <div class="tit-box">
+          <h1>${movie.title}</h1>
+          <div class="summary-en-title">${movie.original_title}</div>          
+        </div>
+        <div class="info-box">
+          <div class="summary-date"><span>개봉일</span>${movie.release_date}</div>
+          <div class="summary-genres"><span>장르</span>${genres}</div>
+          <div class="summary-runtime"><span>상영시간</span>${movie.runtime}분 · ${movie.origin_country}</div>
+        </div>
+        <div class="tmdb-average"><span>TMDB</span><p>${(movie.vote_average).toFixed(1)}</p></div>
+        <div class="moview-average"><span>Moview</span><p style="font-size:18px">평가 없음</p> </div>
       </div>
   `;
 }
@@ -143,6 +163,7 @@ function showCastInfo(credit) {
 
 function showOttData(ottData) {
   const showOttDataArea = document.querySelector(".ott-list");
+  console.log("오티티결과", ottData.results)
   if (ottData.results.US === undefined || ottData.results.US.buy === undefined) {
     const listItem = document.createElement("li");
 
@@ -152,15 +173,15 @@ function showOttData(ottData) {
         </div>
       `;
     showOttDataArea.appendChild(listItem);
-    return;
-  }
-  const ottList = ottData.results.US.buy;
+  } else {
+    const ottList = ottData.results.US.buy;
+    console.log("ott=>", ottList);
 
-  ottList.slice(0, 6).forEach((ott) => {
-    const ottLogo = ott.logo_path;
-    const listItem = document.createElement("li");
-    listItem.className = "ott-card";
-    listItem.innerHTML = `
+    ottList.slice(0, 6).forEach((ott) => {
+      const ottLogo = ott.logo_path;
+      const listItem = document.createElement("li");
+      listItem.className = "ott-card";
+      listItem.innerHTML = `
             <div class="ott-card-providerImage" style="background-size: cover;">
             <img class="providerImage" src="https://image.tmdb.org/t/p/w300${ottLogo}" alt="이미지"
             onerror="this.onerror=null; this.src='../assets/img/pngwing.com.png'"
@@ -170,13 +191,14 @@ function showOttData(ottData) {
               <div>${ott.provider_name}</div>
             </div>
         `;
-    showOttDataArea.appendChild(listItem);
-  });
+      showOttDataArea.appendChild(listItem);
+    });
+  }
 }
 
 // 비슷한 장르의 영화 가져오기
 async function fetchSimilarMovies() {
-  const apiUrl = getUrl("similar");
+  const apiUrl = getUrl("similar")
   try {
     const response = await fetch(apiUrl);
     const similarData = await response.json();
