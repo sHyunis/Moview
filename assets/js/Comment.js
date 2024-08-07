@@ -1,20 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let reviewCards = document.getElementById("review-cards"); // 댓글내용담길곳
-  let userId = document.getElementById("user-name"); // 유저아이디
-  let reviewComment = document.getElementById("review-comment"); // 댓글내용
-  const reviewForm = document.getElementById("review-form"); // 댓글다는곳
+  let reviewCards = document.getElementById("review-cards");
+  let userId = document.getElementById("user-name");
+  let reviewComment = document.getElementById("review-comment");
+  const reviewForm = document.getElementById("review-form");
 
-  let currentEditIndex = null; // 현재 수정 중인 댓글의 인덱스
+  let currentEditIndex = null;
 
-  // 저장되어있던 댓글 가져오기
   function uploadComment() {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
-    reviewCards.innerHTML = ""; // 초기화
+    reviewCards.innerHTML = "";
     comments.forEach(({ name, review }, index) => {
-      // 카드목록, 제목, 내용 생성
       const reviewLi = document.createElement("li");
       reviewLi.className = "review-card";
       reviewLi.dataset.index = index;
+
       const reviewCardContent = `
       <div class="review-card-id">${name}</div>
       <div class="review-card-content">${review}</div>
@@ -25,40 +24,34 @@ document.addEventListener("DOMContentLoaded", () => {
       reviewCards.appendChild(reviewLi);
     });
 
-    // 삭제 버튼에 이벤트 리스너 추가
     document.querySelectorAll(".review-delete-button").forEach((button) => {
       button.addEventListener("click", deleteReview);
     });
 
-    // 수정 버튼에 이벤트 리스너 추가
     document.querySelectorAll(".review-modify-button").forEach((button) => {
       button.addEventListener("click", fetchModalHtml);
     });
   }
 
-  // 댓글내용 저장
   function addComment(name, review) {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments.push({ name, review });
     localStorage.setItem("comments", JSON.stringify(comments));
   }
 
-  // 제출 시 내용 업데이트 + 저장
   reviewForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const name = userId.value;
     const review = reviewComment.value;
-    // 기존 저장 배열 + 새로운 배열 로컬에 저장 (로컬 저장 시 문자열 반환)
+
     if (name && review) {
       addComment(name, review);
-      // 초기화
       userId.value = "";
       reviewComment.value = "";
       uploadComment();
     }
   });
 
-  // 댓글 삭제
   function deleteReview(event) {
     const reviewLi = event.target.closest(".review-card");
     const index = reviewLi.dataset.index;
@@ -69,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("삭제가 완료되었습니다.");
   }
 
-  // modal html 불러오기
   async function fetchModalHtml(event) {
     const reviewLi = event.target.closest(".review-card");
     currentEditIndex = reviewLi.dataset.index;
@@ -90,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
       modalId.value = comment.name;
       modalComment.value = comment.review;
 
-      // 모달 닫기
       closeModalButton.addEventListener("click", () => {
         modal.remove();
       });
@@ -101,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // 모달 저장 버튼
       modalSaveButton.addEventListener("click", (event) => {
         event.preventDefault();
         const newReview = modalComment.value.trim();
@@ -113,21 +103,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     } catch (error) {
-      console.log("수정을 할 수 없습니다.", error);
+      console.error("수정을 할 수 없습니다.", error);
     }
   }
 
-  // 댓글 수정 저장
   function correctionComments(index, name, review) {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments[index] = { name, review };
     localStorage.setItem("comments", JSON.stringify(comments));
   }
 
-  // 저장되어있던 댓글 표시
   uploadComment();
 
-  // 버튼누르면 후기쓰기, 후기보기
   const makeReviewButton = document.getElementById("make-review-button");
   const seeReviewButton = document.getElementById("see-review-button");
 

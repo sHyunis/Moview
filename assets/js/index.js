@@ -1,42 +1,8 @@
-// Firebase SDK 라이브러리 가져오기
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-import {
-  collection,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { db, collection, getDocs } from "./fireBaseConfig.js";
 
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyC9DrCeOJe4mB_suJXCxT0y_32w5eXNFP4",
-  authDomain: "sparata-project-movie.firebaseapp.com",
-  projectId: "sparata-project-movie",
-  storageBucket: "sparata-project-movie.appspot.com",
-  messagingSenderId: "567087462979",
-  appId: "1:567087462979:web:85904c34cb1c030c3c72f6"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-async function fetchUrl() {
-  const url = getUrl("US");
-  const makeCardFetchUrl = fetch(URL)
-    .then((response) => response.json())
-    .then((data) => {
-      const movies = data.results;
-      changeMovieLang("US");
-      // [김민규] like 기능 적용을 위해 세션에 저장
-      sessionStorage.removeItem("language");
-      sessionStorage.setItem("language", url);
-      movieLikeChk();
-    })
-    .catch((error) => console.error("Error:", error));
-}
+window.countryCode = 'US';
 fetchUrl();
-// 검색기능
+
 
 async function movieLikeChk() {
   try {
@@ -53,23 +19,17 @@ async function movieLikeChk() {
         }
       })
     })
-
-
   } catch (e) {
-    console.log("movieLikeChk =>", e);
+    console.error("movieLikeChk =>", e);
   }
 }
 window.movieLikeChk = movieLikeChk;
 
 document.querySelector(".search").addEventListener("submit", (e) => {
-  // input 에 넣은 값 소문자로 변환
   e.preventDefault();
-  const searchInput = document
-    .getElementById("searchInput")
-    .value.toLowerCase();
+  const searchInput = document.getElementById("searchInput").value.toLowerCase();
   const movieCards = document.querySelectorAll(".movie-card");
-  // 모든 카드들의 제목과 input값 포함시 조건에 따라 display 변화주기
-  // 아무것도 입력하지 않았을 시 검색어 입력요청 alert창
+
   movieCards.forEach((card) => {
     const title = card.querySelector("h3").textContent.toLowerCase();
 
@@ -87,12 +47,6 @@ document.querySelector(".search").addEventListener("submit", (e) => {
 });
 
 
-document.querySelector('#movie-container').addEventListener('click', (e) => {
-  const recentMovies = JSON.parse(localStorage.getItem('recentMovies')) || [];
-  recentMovies.unshift(movie);
-
-  localStorage.setItem('recentMovies', JSON.stringify(recentMovies));
-})
 
 document.addEventListener('mouseover', function (event) {
   const targetElement = event.target;

@@ -1,15 +1,17 @@
+let movieId = '';
+
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
-  const movieId = params.get("id");
+  movieId = params.get("id");
   const movieTab = document.querySelectorAll(".movie-options > button");
   const movieReviewTab = document.querySelectorAll(".reviews-header > h2");
   console.log(movieId);
 
   if (movieId) {
-    fetchMovieDetails(movieId);
-    fetchMovieCredits(movieId);
-    fetchMovieOTT(movieId);
-    fetchSimilarMovies(movieId);
+    fetchMovieDetails();
+    fetchMovieCredits();
+    fetchMovieOTT();
+    fetchSimilarMovies();
   } else {
     console.error("영화 ID를 찾을 수 없어요.");
   }
@@ -20,25 +22,34 @@ document.addEventListener("DOMContentLoaded", () => {
       btns.classList.add("curr");
     })
   })
-
   movieReviewTab.forEach(btns => {
     btns.addEventListener("click", () => {
       movieReviewTab.forEach(btn => btn.classList.remove("curr"));
       btns.classList.add("curr");
     })
   })
-
 });
 
-const apiKey = "fbf16579bff5b8c3f6664841d9dd0613";
+const BASE_URL = "https://api.themoviedb.org/3/movie/"
+const API_KEY = "fbf16579bff5b8c3f6664841d9dd0613";
+
+function getUrl(type) {
+  const endpoints = {
+    movie: `${BASE_URL}${movieId}?api_key=${API_KEY}&language=ko-KR`,
+    credits: `${BASE_URL}${movieId}/credits?api_key=${API_KEY}&language=ko`,
+    ott: `${BASE_URL}${movieId}/watch/providers?api_key=${API_KEY}`,
+    similar: `${BASE_URL}${movieId}/similar?api_key=${API_KEY}&language=ko-KR`,
+  };
+
+  return endpoints[type]
+}
 
 // 영화 데이터 요청
-async function fetchMovieDetails(id) {
-  const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=ko-KR`;
+async function fetchMovieDetails() {
+  const apiUrl = getUrl("movie")
   try {
     const response = await fetch(apiUrl);
     const movieData = await response.json();
-    console.log(movieData);
     showMovieDetails(movieData);
   } catch (error) {
     console.error("상세페이지 에러:", error);
@@ -46,12 +57,11 @@ async function fetchMovieDetails(id) {
 }
 
 // 크레딧 데이터 요청
-async function fetchMovieCredits(id) {
-  const apiUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=ko`;
+async function fetchMovieCredits() {
+  const apiUrl = getUrl("credits")
   try {
     const response = await fetch(apiUrl);
     const creditdata = await response.json();
-    console.log(creditdata);
     showCastInfo(creditdata);
   } catch (error) {
     console.error("크레딧 페이지 에러:", error);
@@ -59,12 +69,11 @@ async function fetchMovieCredits(id) {
 }
 
 // OTT 데이터 요청
-async function fetchMovieOTT(id) {
-  const apiUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiKey}`;
+async function fetchMovieOTT() {
+  const apiUrl = getUrl("ott")
   try {
     const response = await fetch(apiUrl);
     const ottData = await response.json();
-    console.log("무비 오티티 =>", ottData);
     showOttData(ottData);
   } catch (error) {
     console.error("OTT 정보 에러:", error);
@@ -188,12 +197,11 @@ function showOttData(ottData) {
 }
 
 // 비슷한 장르의 영화 가져오기
-async function fetchSimilarMovies(id) {
-  const apiUrl = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apiKey}&language=ko-KR`;
+async function fetchSimilarMovies() {
+  const apiUrl = getUrl("similar")
   try {
     const response = await fetch(apiUrl);
     const similarData = await response.json();
-    console.log("비슷한 장르의 영화 =>", similarData);
     similarMovie(similarData);
   } catch (error) {
     console.error("비슷한 영화 정보가 없습니다", error);
