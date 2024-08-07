@@ -449,9 +449,7 @@ textarea:focus {
   display: none;
 }
 .similar-title {
-  width: 150px;
-  height: 30px;
-  overflow: scroll;
+  word-break: keep-all;
 }
 .similar-title::-webkit-scrollbar {
   display: none;
