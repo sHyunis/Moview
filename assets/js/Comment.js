@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   makeReviewButton.addEventListener("click", () => {
     reviewCards.style.display = "none";
-    reviewForm.style.display = "flex";
+    reviewForm.style.display = "block";
   });
   seeReviewButton.addEventListener("click", () => {
     reviewCards.style.display = "flex";
