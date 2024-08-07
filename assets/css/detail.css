@@ -291,6 +291,7 @@ textarea{
 }
 #review-cards {
   display:flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap:20px;
 
@@ -306,7 +307,6 @@ textarea{
   height: 250px;
   background-color: rgba(0, 0, 0, 0.329);
   position: relative;
-  margin-bottom: 30px;
   border-radius: 5px;
   border: 1px solid gray;
 }
