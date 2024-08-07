@@ -63,7 +63,7 @@ async function handleLikeAdd({ id, img, title, overview }) {
       const newLikeState = !likeData.like;
 
       const docRef = doc(db, "like", likeDoc.id);
-      await updateDoc(docRef, { like: newLikeState });
+      await updateDoc(docRef, { like: newLikeState, movie_like_time: movieLikeTime });
 
     });
   } catch (e) {
