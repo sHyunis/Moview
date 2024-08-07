@@ -238,6 +238,7 @@ header h1 {
   flex-direction: column;
   /* border-bottom: 1px solid rgb(255, 250, 235); */
   position: relative;
+  cursor: pointer;
 }
 
 .movie-card::before {

@@ -466,6 +466,9 @@ textarea:focus {
   gap: 25px;
   justify-content: flex-start;
 }
+.movie-castReviewsOtt-ott {
+  width:100%;
+}
 .ott-card {
   width: calc(100% / 3.3);
   height: 60px;
@@ -475,7 +478,6 @@ textarea:focus {
   border-bottom: 1px solid rgba(90, 89, 89, 0.644);
   white-space: nowrap;
   overflow: hidden;
-  margin-left: 10px;
 }
 .ott-card-provider {
   display: flex;
