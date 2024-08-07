@@ -112,7 +112,7 @@ async function clickStars(loginId, movieId, index) {
   } else {
     resetStars();
     alert("로그인 해주세요");
-    window.location.href = "../view/member_login.html";
+    window.location.href = "./view/member_login.html";
   }
 }
 

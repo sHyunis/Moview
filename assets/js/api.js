@@ -29,7 +29,7 @@ async function changeMovieLang(language) {
         card.addEventListener("click", (e) => {
           if (!e.target.classList.contains("movie-like")) {
             // 좋아요 제외
-            window.location.href = `../view/detail.html?id=${cardID}`;
+            window.location.href = `./view/detail.html?id=${cardID}`;
           }
         });
       });
