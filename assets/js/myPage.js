@@ -27,7 +27,10 @@ async function fetchLike(userId) {
         })
 
         const results = await Promise.all(promises);
-        return results.filter(data => data !== null);
+
+        return results.filter(data => data !== null).sort((a, b) => {
+            return new Date(b.movie_like_time) - new Date(a.movie_like_time);
+        });
     } catch (e) {
         console.error("fetchLike Error =>", e);
     }
