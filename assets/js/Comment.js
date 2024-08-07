@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
       userId.value = "";
       reviewComment.value = "";
       uploadComment();
-      window.location.href = `/movie-detail.html?movieId=${getMovieIdFromUrl()}`;
     }
   });
 
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const comment = comments[currentEditIndex];
 
     try {
-      const response = await fetch("../view/modal.html");
+      const response = await fetch("/view/modal.html");
       const modalData = await response.text();
       document.body.insertAdjacentHTML("beforeend", modalData);
 
@@ -112,11 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments[index] = { name, review };
     localStorage.setItem("comments", JSON.stringify(comments));
-  }
-
-  function getMovieIdFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("movieId");
   }
 
   uploadComment();
