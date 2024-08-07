@@ -145,10 +145,10 @@ function showCastInfo(credit) {
 
     showCastInfoArea.appendChild(listItem);
 
-    // 추가된 부분: 배우 이름을 클릭하면 해당 배우의 상세 페이지로 이동
-    listItem.querySelector(".cast-info").addEventListener("click", () => {
-      window.location.href = `actorDetail.html?id=${cast.id}`;
-    });
+    // // 추가된 부분: 배우 이름을 클릭하면 해당 배우의 상세 페이지로 이동
+    // listItem.querySelector(".cast-info").addEventListener("click", () => {
+    //   window.location.href = `actorDetail.html?id=${cast.id}`;
+    // });
   });
 }
 

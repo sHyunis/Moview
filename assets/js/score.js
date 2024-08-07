@@ -82,6 +82,7 @@ async function getUserScore(loginId, movieId) {
             const scoreQuery = query(userRef, where('loginId', '==', loginId), where('movieId', '==', movieId));
             const scoreQuerySnapshot = await getDocs(scoreQuery);
             lastSaveScore = scoreQuerySnapshot.docs[0].data().score - 1;
+            console.log("실행됨");
         }
     } catch (error) {
         console.log(error);
@@ -216,10 +217,10 @@ function resetStars() {
 
 */
 function initializeStars(loginId, movieId) {
-    const inner = document.querySelector('#detail');
+    
     allStars.forEach((star, i) => {
         star.onclick = () => clickStars(loginId, movieId, i);
         star.onmouseover = () => showStars(i + 1);
-        inner.onmouseout = starMouseOut;
+        star.onmouseout = starMouseOut;
     })
 }
