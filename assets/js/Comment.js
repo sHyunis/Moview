@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const comment = comments[currentEditIndex];
 
     try {
-      const response = await fetch("/view/modal.html");
+      const response = await fetch("../view/modal.html");
       const modalData = await response.text();
       document.body.insertAdjacentHTML("beforeend", modalData);
 

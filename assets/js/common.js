@@ -3,13 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const aniList = document.querySelectorAll(".ani");
   setTimeout(() => {
-    aniList.forEach(anis => {
+    aniList.forEach((anis) => {
       anis.classList.add("ani-load");
-    })
+    });
   }, 500);
 });
-
-
 
 async function handleLoginChk() {
   const session = sessionStorage.getItem("loginState") === "true";
@@ -30,12 +28,10 @@ async function handleLoginChk() {
   }
 }
 
-
-
 const btnLogout = document.getElementById("header-btn-logout");
 btnLogout.addEventListener("click", async () => {
   sessionStorage.removeItem("loginState");
   sessionStorage.removeItem("userLoginId");
   alert("로그아웃 되었습니다.");
-  window.location.href = "/";
-})
+  window.location.href = "../index.html";
+});

@@ -7,8 +7,8 @@ btnJoinUp.addEventListener("click", async () => {
 
   let doc = {
     user_id: userJoinId,
-    user_pw: userJoinPw
-  }
+    user_pw: userJoinPw,
+  };
 
   try {
     const userDb = await getDocs(collection(db, "user"));
@@ -25,14 +25,11 @@ btnJoinUp.addEventListener("click", async () => {
       sessionStorage.setItem("loginState", "true");
       sessionStorage.setItem("loginId", "userLoginId");
       sessionStorage.setItem("userLoginId", userJoinId);
-      window.location.href = '/index.html'
+      window.location.href = "../index.html";
     } else {
       alert("중복된 아이디가 있습니다.");
     }
-
-
   } catch (e) {
-    console.error('error =>', e)
+    console.error("error =>", e);
   }
-})
-
+});
