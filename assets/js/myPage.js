@@ -20,7 +20,7 @@ async function fetchLike(userId) {
             const querySnapshot = await getDocs(q);
             data.likeCount = querySnapshot.size;
 
-            if (data.user_id === loginSession) {
+            if (data.user_id === loginSession && data.like === true) {
                 return data;
             }
             return null;
