@@ -213,7 +213,7 @@ function similarMovie(similarData) {
   const similarGenreList = document.querySelector(".genre-list");
   const similarMovies = similarData.results;
 
-  similarMovies.slice(0, 6).forEach((movie) => {
+  similarMovies.slice(0, 10).forEach((movie) => {
     const similarLi = document.createElement("li");
     similarLi.className = "similar-Movie";
     similarLi.innerHTML = `
